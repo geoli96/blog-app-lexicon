@@ -15,7 +15,7 @@ export default async function MyPosts({ searchParams }: { searchParams: Promise<
 
   return (
     <main className={styles.page}>
-      <SiteHeader actions={<HeaderLink href="/write-post" primary>Write a post <b>+</b></HeaderLink>} />
+      <SiteHeader  />
       <section className={styles.content}>
         <Link className={styles.backLink} href="/">← Back home</Link>
         <div className={styles.titleRow}>

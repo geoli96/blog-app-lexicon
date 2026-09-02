@@ -2,7 +2,7 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import { categories, getPosts, Post } from "./lib/posts";
 import CategoryFilter from "./CategoryFilter";
-import SiteHeader, { HeaderLink } from "./components/SiteHeader";
+import SiteHeader from "./components/SiteHeader";
 import SearchForm from "./components/SearchForm";
 
 export default async function Home({ searchParams }: { searchParams: Promise<{ search?: string; category?: string; page?: string }> }) {
@@ -33,7 +33,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ s
 
   return (
     <div className={styles.page}>
-      <SiteHeader actions={<><HeaderLink href="/my-posts">My blog posts <span>{posts.length}</span></HeaderLink><HeaderLink href="/write-post" primary>Write a post <b>+</b></HeaderLink></>} />
+      <SiteHeader />
 
       <main className={styles.main}>
         <>

@@ -1,0 +1,10 @@
+.page {
+  min-height: 100vh;
+  color: #1f2328;
+  background: #ffffff;
+  font-family: var(--font-geist-sans), sans-serif;
+}
+
+.content { max-width: 1240px; margin: 0 auto; padding: 63px 36px 90px; }
+
+.title{margin-bottom: 12px;}

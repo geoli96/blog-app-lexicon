@@ -10,7 +10,7 @@ export default async function MyPost({ params }: { params: Promise<{ id: string 
   if (!post) return <main className={styles.state}><h1>Post not found</h1><Link href="/my-posts">Return to my posts</Link></main>;
 
   return <main className={styles.page}>
-    <SiteHeader actions={<HeaderLink href="/my-posts">My blog posts <span>↗</span></HeaderLink>} />
+    <SiteHeader />
     <article className={styles.article}>
       <Link className={styles.backLink} href="/my-posts">← Back to my posts</Link>
       <div className={styles.meta}><span>{post.category}</span><i />{post.date}<i />{post.readTime}</div>

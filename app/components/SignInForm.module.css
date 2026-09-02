@@ -1,0 +1,3 @@
+.form { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+
+.formGroup { display: flex; flex-direction: column; gap: 4px; align-items: flex-start; }
