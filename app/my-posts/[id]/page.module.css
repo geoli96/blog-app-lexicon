@@ -1,0 +1,16 @@
+.page { min-height: 100vh; color: #1f2328; background: #ffffff; font-family: var(--font-geist-sans), sans-serif; }
+.article { max-width: 1240px; margin: 0 auto; padding: 65px 36px 90px; }
+.backLink { display: block; margin-bottom: 75px; color: #57606a; font-size: 12px; text-decoration: none; }
+.meta { display: flex; align-items: center; gap: 13px; color: #57606a; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
+.meta span { color: #0969da; }
+.meta i { width: 3px; height: 3px; background: #bd5438; border-radius: 50%; }
+.article h1 { margin: 25px 0 19px; font-family: Georgia, serif; font-size: clamp(44px, 6vw, 72px); font-weight: normal; line-height: 1; letter-spacing: -2px; }
+.lead { max-width: 580px; margin: 0 0 55px; color: #57606a; font-family: Georgia, serif; font-size: 20px; font-style: italic; line-height: 1.5; }
+.body { max-width: 640px; font-family: Georgia, serif; font-size: 18px; line-height: 1.75; }
+.body p { margin: 0 0 25px; }
+.editLink { display: inline-block; margin-top: 28px; padding-bottom: 7px; color: #0969da; border-bottom: 1px solid #0969da; font-size: 12px; text-decoration: none; }
+.editLink span { margin-left: 9px; font-size: 16px; }
+.state { display: grid; min-height: 100vh; place-items: center; color: #1f2328; background: #ffffff; font-family: Georgia, serif; }
+.state h1 { margin-bottom: 10px; font-size: 44px; font-weight: normal; }
+.state a { color: #bd5438; }
+@media (max-width: 700px) { .article { padding: 42px 25px 55px; } .backLink { margin-bottom: 52px; } .meta { gap: 8px; font-size: 8px; } .article h1 { font-size: 45px; } .body { font-size: 17px; } }

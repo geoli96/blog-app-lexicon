@@ -1,0 +1,53 @@
+.page {
+  min-height: 100vh;
+  color: #1f2328;
+  background: #ffffff;
+  font-family: var(--font-geist-sans), sans-serif;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1240px;
+  margin: 0 auto;
+  height: 87px;
+  min-height: 87px;
+  flex-shrink: 0;
+  padding: 28px 36px;
+  border-bottom: 1px solid #d0d7de;
+}
+
+.wordmark, .archiveLink, .backLink { color: inherit; text-decoration: none; }
+.wordmark { display: flex; align-items: center; gap: 11px; font-family: Georgia, serif; font-size: 19px; font-weight: bold; }
+.mark { display: grid; width: 30px; height: 30px; place-items: center; color: #ffffff; background: #24292f; border-radius: 50%; font-size: 13px; font-weight: 700; }
+.archiveLink { color: #57606a; font-size: 12px; }
+.archiveLink span { margin-left: 7px; color: #bd5438; font-size: 16px; }
+.editor { max-width: 1240px; margin: 0 auto; padding: 65px 36px 90px; }
+.backLink { display: block; margin-bottom: 75px; color: #57606a; font-size: 12px; }
+.eyebrow { margin: 0 0 18px; color: #bd5438; font-size: 10px; font-weight: bold; letter-spacing: .14em; text-transform: uppercase; }
+.editor h1 { margin: 0; font-family: Georgia, serif; font-size: clamp(48px, 7vw, 78px); font-weight: normal; line-height: .98; letter-spacing: -3px; }
+.editor h1 em { color: #bd5438; font-style: italic; }
+.intro { margin: 24px 0 60px; color: #57606a; font-family: Georgia, serif; font-size: 19px; font-style: italic; }
+.editor form { display: flex; flex-direction: column; gap: 25px; }
+.editor label { display: flex; flex-direction: column; gap: 9px; color: #57606a; font-size: 10px; font-weight: bold; letter-spacing: .08em; text-transform: uppercase; }
+.editor input, .editor select, .editor textarea { width: 100%; padding: 13px 0; border: 0; border-bottom: 1px solid #d0d7de; outline: 0; color: #1f2328; background: transparent; font: 18px Georgia, serif; }
+.editor input:focus, .editor textarea:focus { border-color: #bd5438; }
+.editor textarea { min-height: 230px; resize: vertical; line-height: 1.6; }
+.formRow { display: grid; grid-template-columns: 1fr 2fr; gap: 30px; }
+.formFooter { display: flex; align-items: center; justify-content: space-between; gap: 20px; margin-top: 10px; }
+.formFooter span { color: #57606a; font-size: 11px; line-height: 1.4; }
+.formFooter button { flex-shrink: 0; padding: 14px 18px; border: 0; color: #ffffff; background: #1f883d; border-radius: 6px; cursor: pointer; font: 13px var(--font-geist-sans), sans-serif; }
+.formFooter b { margin-left: 12px; font-size: 16px; font-weight: normal; }
+
+@media (max-width: 700px) {
+  .header { height: 70px; min-height: 70px; padding: 20px; }
+  .archiveLink { font-size: 0; }
+  .archiveLink span { font-size: 20px; }
+  .editor { padding: 42px 25px 55px; }
+  .backLink { margin-bottom: 52px; }
+  .editor h1 { font-size: 50px; letter-spacing: -2px; }
+  .intro { margin-bottom: 47px; }
+  .formRow { grid-template-columns: 1fr; gap: 25px; }
+  .formFooter { align-items: flex-start; flex-direction: column; }
+}
