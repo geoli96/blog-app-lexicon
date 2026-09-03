@@ -59,37 +59,13 @@
       "createdBy": "User2",
       "createdAt": "2026-09-03T02:02:58.717Z",
       "updatedAt": "2026-09-03T02:02:58.717Z"
-    },
-    {
-      "id": "gG643IH7gF4",
-      "title": "wedkwedwed",
-      "excerpt": "dwewe",
-      "content": "ewdwed",
-      "category": "General",
-      "date": "Sep 03, 2026",
-      "readTime": "1 min read",
-      "createdBy": "user21",
-      "createdAt": "2026-09-03T10:21:08.634Z",
-      "updatedAt": "2026-09-03T10:21:08.634Z"
-    },
-    {
-      "id": "TPlrDkT-2PI",
-      "title": "123",
-      "excerpt": "wendjk",
-      "content": "wnejk",
-      "category": "General",
-      "date": "Sep 03, 2026",
-      "readTime": "1 min read",
-      "createdBy": "User2",
-      "createdAt": "2026-09-03T10:23:06.892Z",
-      "updatedAt": "2026-09-03T10:23:06.892Z"
     }
   ],
   "users": [
     {
-      "id": "1",
+      "id": "JdwqiE23jj2",
       "username": "testuser",
-      "password": "secret-password"
+      "password": "f960370ab0be99a209547bf0d361b9dc0e62ab43109df79089f50a7830357e3b88df6ca7c00dd71d50ef795e07c8b849e322f311d38e1dbd5db5354ffc5f548c"
     },
     {
       "username": "User2",
