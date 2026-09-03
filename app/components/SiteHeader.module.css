@@ -16,9 +16,11 @@
 .actions { display: flex; align-items: center; gap: 29px; }
 .link, .primaryLink { color: #57606a; font: 13px var(--font-geist-sans), sans-serif; text-decoration: none; }
 .link:hover { color: #0969da; }
+.link {cursor: pointer; }
 .link span { margin-left: 5px; color: #57606a; font-size: 11px; }
 .primaryLink { padding: 11px 15px; color: #ffffff; background: #1f883d; border-radius: 6px; }
 .primaryLink b { margin-left: 10px; color: #ffffff; font-size: 17px; font-weight: normal; }
+.signedInAs{ color: #57606a; font-size: 13px; }
 
 @media (max-width: 700px) {
   .header { height: 70px; min-height: 70px; padding: 20px; }

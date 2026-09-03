@@ -1,0 +1,8 @@
+.form { display: flex; flex-direction: column; gap: 24px; align-items: stretch; }
+.formGroup { display: flex; flex-direction: column; gap: 9px; align-items: stretch; }
+.formGroup label { color: #57606a; font-size: 10px; font-weight: bold; letter-spacing: .08em; text-transform: uppercase; }
+.formGroup input { width: 100%; padding: 13px 0; border: 0; border-bottom: 1px solid #d0d7de; outline: 0; color: #1f2328; background: transparent; font: 18px Georgia, serif; }
+.formGroup input:focus { border-color: #bd5438; }
+.form button { align-self: flex-start; margin-top: 4px; padding: 14px 18px; border: 0; color: #ffffff; background: #1f883d; border-radius: 6px; cursor: pointer; font: 13px var(--font-geist-sans), sans-serif; }
+.form button:hover { background: #176b32; }
+.loginLink { display: inline-block; margin-top: 13px; color: #bd5438; font-size: 12px; font-weight: bold; text-decoration: underline; text-underline-offset: 3px; }

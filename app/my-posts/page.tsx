@@ -4,9 +4,11 @@ import { getPosts } from "../lib/posts";
 import PostActions from "./PostActions";
 import SiteHeader, { HeaderLink } from "../components/SiteHeader";
 import SearchForm from "../components/SearchForm";
+import { auth } from "@/auth";
 
 export default async function MyPosts({ searchParams }: { searchParams: Promise<{ search?: string }> }) {
-  const posts = await getPosts().catch(() => []);
+    const user:any = (await auth())?.user;
+  const posts = await getPosts({createdBy: user.username}).catch(() => []);
   const query = (await searchParams).search || "";
 
   const filteredPosts = posts.filter((post) =>
@@ -15,7 +17,7 @@ export default async function MyPosts({ searchParams }: { searchParams: Promise<
 
   return (
     <main className={styles.page}>
-      <SiteHeader actions={<HeaderLink href="/write-post" primary>Write a post <b>+</b></HeaderLink>} />
+      <SiteHeader  />
       <section className={styles.content}>
         <Link className={styles.backLink} href="/">← Back home</Link>
         <div className={styles.titleRow}>
