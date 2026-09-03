@@ -5,4 +5,4 @@
 .formGroup input:focus { border-color: #bd5438; }
 .form button { align-self: flex-start; margin-top: 4px; padding: 14px 18px; border: 0; color: #ffffff; background: #1f883d; border-radius: 6px; cursor: pointer; font: 13px var(--font-geist-sans), sans-serif; }
 .form button:hover { background: #176b32; }
-.form button:disabled { cursor: wait; opacity: .65; }
+.loginLink { display: inline-block; margin-top: 13px; color: #bd5438; font-size: 12px; font-weight: bold; text-decoration: underline; text-underline-offset: 3px; }

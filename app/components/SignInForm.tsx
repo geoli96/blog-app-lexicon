@@ -1,17 +1,19 @@
 "use client"
-import { useState } from "react"
+import { useActionState, useState } from "react"
 import styles from "./SignInForm.module.css"
+import { authenticate } from "../actions/actions";
 
 export default function SignInForm() {
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-  }
+  const [, formAction, isPending] = useActionState(
+    authenticate as any,
+    undefined,
+  );
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit}>
+    <form action={formAction} className={styles.form}>
         <div className={styles.formGroup}>
       <label htmlFor="username">
         Username
@@ -24,7 +26,9 @@ export default function SignInForm() {
         </label>
         <input name="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         </div>
-      <button type="submit">Sign In</button>
+      <button type="submit" disabled={isPending}>
+        {"Sign In"}
+      </button>
     </form>
   )
 }

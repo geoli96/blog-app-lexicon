@@ -64,7 +64,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ s
 function PostCard({ post, featured }: { post: Post; featured: boolean }) {
   return <Link className={`${styles.postCard} ${featured ? styles.featured : ""}`} href={`/posts/${post.id}`}>
     <div className={styles.cardVisual}><span>{featured ? "01" : "✦"}</span></div>
-    <div className={styles.cardContent}><div className={styles.cardMeta}><span>{post.category}</span><span>{post.date}</span></div><h3>{post.title}</h3><p>{post.excerpt}</p><span className={styles.readLink}>Read post <b>↗</b></span></div>
+    <div className={styles.cardContent}><div className={styles.cardMeta}><span>{post.category}</span><span>{post.date}</span></div><h3>{post.title}</h3><p>{post.excerpt}</p><span  className={styles.author}>Written by {post.createdBy} </span><span className={styles.readLink}>Read post <b>↗</b></span></div>
   </Link>;
 }
 

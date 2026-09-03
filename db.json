@@ -9,7 +9,8 @@
       "date": "Sep 01, 2026",
       "readTime": "1 min read",
       "createdAt": "2026-09-01T00:00:00.000Z",
-      "updatedAt": "2026-09-01T13:05:12.520Z"
+      "updatedAt": "2026-09-01T13:05:12.520Z",
+      "createdBy": "testuser"
     },
     {
       "id": "starter-02",
@@ -20,7 +21,80 @@
       "date": "Aug 28, 2026",
       "readTime": "2 min read",
       "createdAt": "2026-08-28T00:00:00.000Z",
-      "updatedAt": "2026-08-28T00:00:00.000Z"
+      "updatedAt": "2026-08-28T00:00:00.000Z",
+      "createdBy": "testuser"
+    },
+    {
+      "id": "k-pLjkeTb9Y",
+      "title": "ewdewdwe123",
+      "excerpt": "ewdew",
+      "content": "ewdweedwdew123",
+      "category": "General",
+      "readTime": "1 min read",
+      "date": "Sep 03, 2026",
+      "createdAt": "2026-09-03T00:27:32.143Z",
+      "createdBy": "User2",
+      "updatedAt": "2026-09-03T00:28:51.203Z"
+    },
+    {
+      "id": "u9UiOfaDNrs",
+      "title": "wdewdew",
+      "excerpt": "wedwe",
+      "content": "edwed",
+      "category": "General",
+      "date": "Sep 03, 2026",
+      "readTime": "1 min read",
+      "createdBy": "User2",
+      "createdAt": "2026-09-03T02:01:26.596Z",
+      "updatedAt": "2026-09-03T02:01:26.596Z"
+    },
+    {
+      "id": "vmvEqsfE9Uk",
+      "title": "ewdwenkjdw",
+      "excerpt": "dwekew",
+      "content": "ewdewdwe",
+      "category": "General",
+      "date": "Sep 03, 2026",
+      "readTime": "1 min read",
+      "createdBy": "User2",
+      "createdAt": "2026-09-03T02:02:58.717Z",
+      "updatedAt": "2026-09-03T02:02:58.717Z"
+    },
+    {
+      "id": "gG643IH7gF4",
+      "title": "wedkwedwed",
+      "excerpt": "dwewe",
+      "content": "ewdwed",
+      "category": "General",
+      "date": "Sep 03, 2026",
+      "readTime": "1 min read",
+      "createdBy": "user21",
+      "createdAt": "2026-09-03T10:21:08.634Z",
+      "updatedAt": "2026-09-03T10:21:08.634Z"
+    },
+    {
+      "id": "TPlrDkT-2PI",
+      "title": "123",
+      "excerpt": "wendjk",
+      "content": "wnejk",
+      "category": "General",
+      "date": "Sep 03, 2026",
+      "readTime": "1 min read",
+      "createdBy": "User2",
+      "createdAt": "2026-09-03T10:23:06.892Z",
+      "updatedAt": "2026-09-03T10:23:06.892Z"
+    }
+  ],
+  "users": [
+    {
+      "id": "1",
+      "username": "testuser",
+      "password": "secret-password"
+    },
+    {
+      "username": "User2",
+      "password": "$2b$10$YNCcpJv50FHd.e4wOw6rMe9pfwQuttVkUG9EOIIHOjArQPaZfkM3K",
+      "id": "ncBy664ORM0"
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

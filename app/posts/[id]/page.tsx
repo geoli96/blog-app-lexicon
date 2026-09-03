@@ -2,8 +2,10 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import { getPost } from "../../lib/posts";
 import SiteHeader, { HeaderLink } from "../../components/SiteHeader";
+import { auth } from "@/auth";
 
 export default async function PostPage({ params }: { params: Promise<{ id: string }> }) {
+  const user:any = (await auth())?.user;
   const { id } = await params;
   const post = await getPost(id);
 
@@ -16,11 +18,13 @@ export default async function PostPage({ params }: { params: Promise<{ id: strin
       <SiteHeader actions={<HeaderLink href="/">Back to archive <span>↗</span></HeaderLink>} />
       <article className={styles.article}>
         <Link className={styles.backLink} href="/">← Back to archive</Link>
-        <div className={styles.meta}><span>{post.category}</span><i />{post.date}<i />{post.readTime}</div>
+        <div className={styles.meta}><span>{post.category}</span><i />{post.date}<i />{post.readTime}<span>By {post.createdBy}</span></div>
         <h1>{post.title}</h1>
         <p className={styles.lead}>{post.excerpt}</p>
         <div className={styles.body}>{post.content.split("\n\n").map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
-        <Link className={styles.editLink} href={`/edit-post/${post.id}`}>Edit this post <span>↗</span></Link>
+        {user?.username === post.createdBy ? (
+          <Link className={styles.editLink} href={`/edit-post/${post.id}`}>Edit this post <span>↗</span></Link>
+        ) : null}
       </article>
     </main>
   );
