@@ -1,5 +1,5 @@
 'use server'
-import { auth, signIn, unstable_update } from "@/auth";
+import { auth, signIn } from "@/auth";
 import axios from "axios";
 import bcrypt from "bcrypt";
 import { redirect } from "next/navigation";
