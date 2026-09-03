@@ -36,6 +36,7 @@ export default function RegisterForm({user}: {user?: any}) {
   }
 
   return (
+    <>
     <form className={styles.form} onSubmit={handleSubmit}>
         <div className={styles.formGroup}>
       <label htmlFor="username">
@@ -57,5 +58,9 @@ export default function RegisterForm({user}: {user?: any}) {
         </div>
       <button type="submit">Register</button>
     </form>
+    <p className={styles.switchPrompt}>
+          Already have an account? <a href="/login">Log in</a>
+        </p>
+        </>
   )
 }
