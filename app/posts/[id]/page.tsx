@@ -15,7 +15,7 @@ export default async function PostPage({ params }: { params: Promise<{ id: strin
 
   return (
     <main className={styles.page}>
-      <SiteHeader actions={<HeaderLink href="/">Back to archive <span>↗</span></HeaderLink>} />
+      <SiteHeader actions={<HeaderLink href="/">Back to archive </HeaderLink>} />
       <article className={styles.article}>
         <Link className={styles.backLink} href="/">← Back to archive</Link>
         <div className={styles.meta}><span>{post.category}</span><i />{post.date}<i />{post.readTime}<span>By {post.createdBy}</span></div>
@@ -23,7 +23,7 @@ export default async function PostPage({ params }: { params: Promise<{ id: strin
         <p className={styles.lead}>{post.excerpt}</p>
         <div className={styles.body}>{post.content.split("\n\n").map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
         {user?.username === post.createdBy ? (
-          <Link className={styles.editLink} href={`/edit-post/${post.id}`}>Edit this post <span>↗</span></Link>
+          <Link className={styles.editLink} href={`/edit-post/${post.id}`}>Edit this post </Link>
         ) : null}
       </article>
     </main>

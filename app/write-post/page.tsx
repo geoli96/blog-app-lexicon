@@ -11,7 +11,7 @@ export default async function WritePost() {
 
   return (
     <main className={styles.page}>
-      <SiteHeader actions={<HeaderLink href="/">Back to archive <span>↗</span></HeaderLink>} />
+      <SiteHeader actions={<HeaderLink href="/">Back to archive </HeaderLink>} />
       <section className={styles.editor}>
         <Link className={styles.backLink} href="/">← Back to archive</Link>
         <h2 className={styles.title}>Write post</h2>
@@ -22,7 +22,7 @@ export default async function WritePost() {
             <label>Short description<input name="excerpt" required placeholder="What is this post about?" /></label>
           </div>
           <label>Body<textarea name="content" required placeholder="Start writing..."></textarea></label>
-          <div className={styles.formFooter}><span>Your post will be saved to the blog database.</span><button type="submit">Publish post <b>↗</b></button></div>
+          <div className={styles.formFooter}><span>Your post will be saved to the blog database.</span><button type="submit">Publish post </button></div>
             <input type="hidden" name="csrfToken" value={csrfToken} />
         </form>
       </section>

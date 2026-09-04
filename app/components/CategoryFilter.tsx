@@ -1,7 +1,7 @@
 "use client";
 
-import { categories } from "./lib/posts";
-import styles from "./page.module.css";
+import { categories } from "@/app/lib/posts";
+import styles from "./CategoryFilter.module.css";
 
 export default function CategoryFilter({ selectedCategory }: { selectedCategory: string }) {
   function changeCategory(value: string) {

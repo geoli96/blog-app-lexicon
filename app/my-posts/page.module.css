@@ -23,7 +23,7 @@
 .mark { display: grid; width: 30px; height: 30px; place-items: center; color: #ffffff; background: #24292f; border-radius: 50%; font-size: 13px; font-weight: 700; }
 .writeButton { padding: 11px 15px; color: #ffffff; background: #1f883d; border-radius: 6px; font-size: 13px; text-decoration: none; }
 .writeButton b { margin-left: 10px; color: #e9a183; font-size: 17px; font-weight: normal; }
-.content { max-width: 1240px; margin: 0 auto; padding: 63px 36px 90px; }
+.content { max-width: 1240px; margin: 0 auto; padding: 65px 36px 90px; }
 .backLink { display: block; margin-bottom: 69px; color: #57606a; font-size: 12px; }
 .titleRow { display: flex; align-items: end; justify-content: space-between; gap: 30px; }
 .eyebrow { margin: 0 0 17px; color: #bd5438; font-size: 10px; font-weight: bold; letter-spacing: .14em; text-transform: uppercase; }
@@ -33,12 +33,17 @@
 .search input { width: 100%; border: 0; outline: 0; color: #24231f; background: transparent; font: 12px var(--font-geist-sans), sans-serif; }
 .count { margin: 27px 0 18px; color: #817b72; font-size: 11px; }
 .postList { border-top: 1px solid #d0d7de; }
-.post { display: grid; grid-template-columns: 72px 1fr auto; align-items: center; gap: 26px; min-height: 165px; padding: 25px 12px 25px 0; border-bottom: 1px solid #d0d7de; transition: padding .2s ease, background .2s ease; }
+.post { display: grid; grid-template-columns: 72px 1fr auto; align-items: center; gap: 26px; height: 165px; padding: 25px 12px 25px 0; border-bottom: 1px solid #d0d7de; transition: padding .2s ease, background .2s ease; }
 .post:hover { padding-left: 12px; background: #f6f8fa; }
+.emptyPost { visibility: hidden; pointer-events: none; }
+.noPostsText { border-bottom: 0px; grid-template-columns: auto; align-items: flex-start; }
 .number { display: grid; width: 55px; height: 55px; place-items: center; color: #f2efe9; border-radius: 50%; font-family: Georgia, serif; font-size: 18px; font-style: italic; }
 .coral { background: #ca6b4e; }
 .green { background: #6f7c68; }
 .postInfo { min-width: 0; }
+.postInfo div {height: 15px; overflow: hidden;}
+.postInfo h2 {height: 26px; overflow: hidden;}
+.postInfo p {height: 60px; overflow: hidden;}
 .meta { display: flex; gap: 17px; color: #57606a; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
 .meta span:first-child { color: #0969da; }
 .post h2 { margin: 11px 0 7px; color: #0969da; font-family: var(--font-geist-sans), sans-serif; font-size: 20px; font-weight: 600; line-height: 1.3; }
@@ -46,6 +51,9 @@
 .actions { display: flex; align-items: center; gap: 13px; }
 .actions button { padding: 5px 0; border: 0; color: #cf222e; background: transparent; cursor: pointer; font: 11px var(--font-geist-sans), sans-serif; }
 .empty { color: #57606a; font-size: 14px; }
+.pagination { display: flex; align-items: center; justify-content: space-between; margin-top: 30px; padding-top: 18px; border-top: 1px solid #d0d7de; color: #57606a; font-size: 11px; }
+.pagination a { padding: 8px 0; color: #0969da; cursor: pointer; font: inherit; text-decoration: none; }
+.pagination .disabledPage { color: #8c959f; cursor: not-allowed; pointer-events: none; }
 
 @media (max-width: 700px) {
   .header { height: 70px; min-height: 70px; padding: 20px; }
@@ -56,11 +64,13 @@
   .titleRow { align-items: start; flex-direction: column; gap: 25px; }
   .titleRow h1 { font-size: 53px; letter-spacing: -2px; }
   .search { width: 100%; }
-  .post { grid-template-columns: 47px 1fr; gap: 15px; min-height: 145px; padding: 20px 0; }
+  .post { grid-template-columns: 47px 1fr; gap: 15px; height: 145px; padding: 20px 0; }
+  .noPostsText { border-bottom: 0px; grid-template-columns: auto; align-items: flex-start; }
   .post:hover { padding-left: 0; background: transparent; }
   .number { width: 43px; height: 43px; font-size: 15px; }
   .post h2 { font-size: 22px; }
   .post p { font-size: 12px; }
   .meta { gap: 9px; font-size: 8px; }
   .actions { grid-column: 2; gap: 16px; }
+  .pagination { gap: 12px; }
 }

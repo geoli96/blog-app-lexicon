@@ -19,7 +19,7 @@ export default async function SiteHeader({ actions }: { actions?: ReactNode }) {
         <HeaderLink href="/write-post" primary>Write a post <b>+</b></HeaderLink>
       ) : null}
        {isLoggedIn ? (
-        <HeaderLink href="/my-posts">My blog posts <span>↗</span></HeaderLink>
+        <HeaderLink href="/my-posts">My blog posts</HeaderLink>
       ) : null}
       {isLoggedIn ? (
         <HeaderLink href="/profile">Profile</HeaderLink>

@@ -204,7 +204,7 @@ export async function updateUser(formData: FormData) {
   }
 
   const usersPosts = (await axios.get(`${process.env.API_URL}/posts`, {
-    params: { createdBy: updatedUser.username },
+    params: { createdBy: _user.username },
   })).data;
 
   for(const post of usersPosts){
