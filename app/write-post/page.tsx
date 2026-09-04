@@ -14,7 +14,7 @@ export default async function WritePost() {
       <SiteHeader actions={<HeaderLink href="/">Back to archive <span>↗</span></HeaderLink>} />
       <section className={styles.editor}>
         <Link className={styles.backLink} href="/">← Back to archive</Link>
-        <p className={styles.eyebrow}>New post</p>
+        <h2 className={styles.title}>Write post</h2>
         <form action={publishPost} >
           <label>Title<input name="title" required placeholder="Give your post a good name" /></label>
           <div className={styles.formRow}>

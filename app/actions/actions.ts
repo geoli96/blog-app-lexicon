@@ -6,10 +6,11 @@ import { redirect } from "next/navigation";
 import { API_URL, Post } from "../lib/posts";
 import { verifyCsrfToken } from "../csrf";
 import { z } from 'zod';
+import { AuthError } from "next-auth";
  
 const CredentialsSchema = z.object({
-  username: z.string().min(2).max(100).trim(),
-  password: z.string().min(6).max(100).trim()
+  username: z.string(),
+  password: z.string()
 });
 
 export async function authenticate(
@@ -23,10 +24,17 @@ export async function authenticate(
     });
     
     await signIn('credentials', {username: credentials.username, password: credentials.password, redirect: false});
-    redirect('/');
+    return "success";
   } catch (error) {
     console.error(error);
-    throw error;
+    if (error instanceof AuthError) {
+      switch (error.type) {
+        case 'CredentialsSignin':
+          return 'Invalid credentials.';
+        default:
+          return 'Something went wrong.';
+      }
+    }
   }
 }
 

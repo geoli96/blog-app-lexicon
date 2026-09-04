@@ -2,7 +2,7 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import { getPosts } from "../lib/posts";
 import PostActions from "./PostActions";
-import SiteHeader, { HeaderLink } from "../components/SiteHeader";
+import SiteHeader from "../components/SiteHeader";
 import SearchForm from "../components/SearchForm";
 import { auth } from "@/auth";
 

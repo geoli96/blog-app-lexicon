@@ -4,29 +4,39 @@ import { categories, getPosts, Post } from "./lib/posts";
 import CategoryFilter from "./CategoryFilter";
 import SiteHeader from "./components/SiteHeader";
 import SearchForm from "./components/SearchForm";
+import axios from "axios";
 
 export default async function Home({ searchParams }: { searchParams: Promise<{ search?: string; category?: string; page?: string }> }) {
   const params = await searchParams;
-  const posts = await getPosts().catch(() => []);
   const query = params.search || "";
-  const selectedCategory = params.category || "All";
-  const category = categories.includes(selectedCategory) ? selectedCategory : "All";
+  const selectedCategory = params.category || "";
+  const category = categories.includes(selectedCategory) ? selectedCategory : "";
   const parsedPage = Number.parseInt(params.page || "1", 10);
   const currentPage = Number.isFinite(parsedPage) && parsedPage > 0 ? parsedPage : 1;
-  const postsPerPage = 4;
 
-  const filteredPosts = posts.filter((post) =>
-    (category === "All" || post.category === category) &&
-    `${post.title} ${post.excerpt} ${post.category}`.toLowerCase().includes(query.toLowerCase()),
-  );
-  const pageCount = Math.max(1, Math.ceil(filteredPosts.length / postsPerPage));
+  const filter = new URLSearchParams();
+  filter.append("_page", String(currentPage));
+  filter.append("_per_page", "4");
+  if(category){
+    filter.append("category", category);
+  }
+  if(query){
+    filter.append("q", query);
+  }
+  const filteredPostsResponse = (await axios.get('http://localhost:4000/posts?' + filter.toString())).data;
+  const filteredPosts = filteredPostsResponse.data;
+  const extraCards = 4 - filteredPosts.length - Number(filteredPosts.length === 0);
+  const extra:number[] = [];
+  extra.length = extraCards;
+  extra.fill(0);
+  
+  const pageCount = filteredPostsResponse.pages;
   const safePage = Math.min(currentPage, pageCount);
-  const visiblePosts = filteredPosts.slice((safePage - 1) * postsPerPage, safePage * postsPerPage);
 
   function pageUrl(page: number) {
     const nextParams = new URLSearchParams();
     if (query) nextParams.set("search", query);
-    if (category !== "All") nextParams.set("category", category);
+    if (category) nextParams.set("category", category);
     nextParams.set("page", String(page));
     return `/?${nextParams.toString()}`;
   }
@@ -42,17 +52,18 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ s
                 <div><p className={styles.eyebrow}>Blog posts</p><h2>Latest posts</h2></div>
                 <div className={styles.filterControls}>
                   <CategoryFilter selectedCategory={category} />
-                  <SearchForm value={query} action="/" clearHref={category !== "All" ? `/?category=${encodeURIComponent(category)}` : "/"} hiddenFields={category !== "All" ? { category } : {}} />
+                  <SearchForm value={query} action="/" clearHref={category ? `/?category=${encodeURIComponent(category)}` : "/"} hiddenFields={category !== "All" ? { category } : {}} />
                 </div>
               </div>
               <div className={styles.postGrid}>
-                {visiblePosts.map((post, index) => <PostCard key={post.id} post={post} featured={safePage === 1 && index === 0} />)}
+                {filteredPosts.map((post: Post, index:number) => <PostCard key={post.id} post={post} featured={safePage === 1 && index === 0} />)}
+                {filteredPosts.length === 0 && <p className={styles.empty}>No posts match that search.</p>}
+                {extra.map((v,i) => <Link key={"postcard-empty"+(i+1)} className={`${styles.postCardEmpty}`} href=""></Link>)}
               </div>
-              {filteredPosts.length === 0 && <p className={styles.empty}>No posts match that search.</p>}
-              {filteredPosts.length > 0 && <div className={styles.pagination} aria-label="Post pagination">
-                <Link aria-disabled={safePage === 1} className={safePage === 1 ? styles.disabledPage : ""} href={safePage === 1 ? "#" : pageUrl(safePage - 1)}>← Previous</Link>
+              {<div className={styles.pagination} aria-label="Post pagination">
+                <Link scroll={false} aria-disabled={safePage === 1} className={safePage === 1 ? styles.disabledPage : ""} href={safePage === 1 ? "#" : pageUrl(safePage - 1)}>← Previous</Link>
                 <span>Page {safePage} of {pageCount}</span>
-                <Link aria-disabled={safePage === pageCount} className={safePage === pageCount ? styles.disabledPage : ""} href={safePage === pageCount ? "#" : pageUrl(safePage + 1)}>Next →</Link>
+                <Link scroll={false} aria-disabled={safePage === pageCount} className={safePage === pageCount ? styles.disabledPage : ""} href={safePage === pageCount ? "#" : pageUrl(safePage + 1)}>Next →</Link>
               </div>}
             </section>
         </>

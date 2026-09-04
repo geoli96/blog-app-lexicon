@@ -11,9 +11,6 @@ export default async function RegisterPage() {
         <h1 className={styles.title}>Register</h1>
         <p className={styles.intro}>Make a little room for your words.</p>
         <RegisterForm />
-        <p className={styles.switchPrompt}>
-          Already have an account? <a href="/login">Log in</a>
-        </p>
       </section>
     </main>
   );
