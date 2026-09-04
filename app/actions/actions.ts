@@ -151,20 +151,22 @@ export async function createUser(formData: FormData) {
         password: String(formData.get("password")),
     });
 
-  const user = (await axios.get(`${process.env.API_URL}/users`, {
-    params: { username },
-  })).data[0];
+  const hashedPassword = await bcrypt.hash(password, 10);
 
-  if(user?.id){
+  const createdUser = (await axios.post(`http://localhost:4000/users`, {
+    username,
+    password: hashedPassword,
+  })).data;
+
+  const users = (await axios.get(`${process.env.API_URL}/users`, {
+    params: { username },
+  })).data;
+
+  if(users.length > 1){
+    await axios.delete(`http://localhost:4000/users/${createdUser.id}`);
     throw new Error('Username already in use');
   }
 
-  const hashedPassword = await bcrypt.hash(password, 10);
-
-  await axios.post(`http://localhost:4000/users`, {
-    username,
-    password: hashedPassword,
-  });
 }
 
 const UpdateUserSchema = z.object({
@@ -172,44 +174,42 @@ const UpdateUserSchema = z.object({
 });
 
 export async function updateUser(formData: FormData) {
-    
     const user:any = (await auth())?.user;
-
     if(!user) {
         throw new Error('User not authenticated');
     }
-
-    const { username } = UpdateUserSchema.parse({
-        username: String(formData.get("username")),
-    });
 
     const _user = (await axios.get(`${process.env.API_URL}/users`, {
         params: { username: user.username },
     })).data[0];
 
-  if(!_user){
-    throw new Error('Could not find user with username');
-  }
+    const { username } = UpdateUserSchema.parse({
+        username: String(formData.get("username")),
+    });
+    const previousUsername = user.username;
 
-  const userExisting = (await axios.get(`${process.env.API_URL}/users`, {
+    const updatedUser = (await axios.put(`http://localhost:4000/users/${user.id}`, {..._user,
+      username: username,
+    })).data;
+
+   const users = (await axios.get(`${process.env.API_URL}/users`, {
     params: { username },
-  })).data[0];
+  })).data;
 
-  if(userExisting?.id){
+  if(users.length > 1){
+    await axios.put(`http://localhost:4000/users/${_user.id}`, {..._user,
+      username: previousUsername,
+    });
     throw new Error('Username already in use');
   }
 
-  await axios.put(`http://localhost:4000/users/${_user.id}`, {..._user,
-    username: username,
-  });
-
   const usersPosts = (await axios.get(`${process.env.API_URL}/posts`, {
-    params: { createdBy: user.username },
+    params: { createdBy: _user.username },
   })).data;
 
   for(const post of usersPosts){
     await axios.put(`http://localhost:4000/posts/${post.id}`, {...post,
-      createdBy: username,
+      createdBy: updatedUser.username,
     });
   }
 }

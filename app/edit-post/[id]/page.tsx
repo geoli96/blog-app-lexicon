@@ -3,6 +3,7 @@ import { getPost } from "../../lib/posts";
 import EditForm from "./EditForm";
 import styles from "./page.module.css";
 import SiteHeader from "../../components/SiteHeader";
+import BackLink from "@/app/components/BackLink";
 
 export default async function EditPost({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
@@ -13,7 +14,7 @@ export default async function EditPost({ params }: { params: Promise<{ id: strin
   return <main className={styles.page}>
     <SiteHeader />
     <section className={styles.editor}>
-      <Link className={styles.backLink} href={`/posts/${post.id}`}>← Back to post</Link>
+      <BackLink>← Back to post</BackLink>
       <EditForm post={post} />
     </section>
   </main>;

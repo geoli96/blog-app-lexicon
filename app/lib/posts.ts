@@ -11,8 +11,19 @@ export type Post = {
   updatedAt: string;
 };
 
+export type PaginatedPosts = {
+  first: number;
+  prev: number | null;
+  next: number | null;
+  last: number;
+  pages: number;
+  items: number;
+  data: Post[];
+};
+
 export const API_URL = "http://localhost:4000";
 export const categories = ["All", "General", "Essay", "Ideas", "Guides", "Reviews", "Personal", "Travel", "Fitness", "Food"];
+export const searchFilters = ["title", "createdBy","excerpt","content"];
 
 export async function getPosts(searchParams?: Record<string, string>): Promise<Post[]> {
     const urlParams = new URLSearchParams({_per_page: "6" });
