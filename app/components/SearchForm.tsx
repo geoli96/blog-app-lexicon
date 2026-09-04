@@ -14,6 +14,7 @@ export default function SearchForm({ value, action, clearHref = action, hiddenFi
     <button onClick={() => {
       const value = (document.getElementById("search") as HTMLInputElement)!.value;
       const nextParams = new URLSearchParams(searchParams);
+      nextParams.delete("page");
       if(value){
         nextParams.set("search", value);
       }else{
