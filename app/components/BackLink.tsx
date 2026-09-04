@@ -17,5 +17,5 @@ export default function BackLink({ fallback = "/my-posts", children = "← Back"
     }
   }
 
-  return <button className={styles.link} onClick={goBack}>wedwe{children}</button>;
+  return <button className={styles.link} onClick={goBack}>{children}</button>;
 }
