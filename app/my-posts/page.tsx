@@ -1,16 +1,19 @@
 import Link from "next/link";
 import styles from "./page.module.css";
-import { Post } from "../lib/posts";
+import { categories, Post } from "../lib/posts";
 import PostActions from "./PostActions";
 import SiteHeader from "../components/SiteHeader";
 import SearchForm from "../components/SearchForm";
 import { auth } from "@/auth";
 import axios from "axios";
+import CategoryFilter from "../components/CategoryFilter";
 
-export default async function MyPosts({ searchParams }: { searchParams: Promise<{ search?: string; page?: string }> }) {
+export default async function MyPosts({ searchParams }: { searchParams: Promise<{ search?: string; page?: string; category?: string }> }) {
     const user:any = (await auth())?.user;
   const params = await searchParams;
   const query = params.search || "";
+  const selectedCategory = params.category || "";
+  const category = categories.includes(selectedCategory) ? selectedCategory : "";
   const parsedPage = Number.parseInt(params.page || "1", 10);
   const currentPage = Number.isFinite(parsedPage) && parsedPage > 0 ? parsedPage : 1;
 
@@ -19,6 +22,9 @@ export default async function MyPosts({ searchParams }: { searchParams: Promise<
     _per_page: "6",
     createdBy: user.username,
   });
+  if(category){
+    filter.append("category", category);
+  }
   if (query) filter.set("title:contains", query);
 
   const postsResponse = await axios.get("http://localhost:4000/posts?" + filter.toString()).catch(() => ({ data: { data: [], items: 0, pages: 1 } }));
@@ -43,7 +49,10 @@ export default async function MyPosts({ searchParams }: { searchParams: Promise<
         <Link className={styles.backLink} href="/">← Back home</Link>
         <div className={styles.titleRow}>
           <div><p className={styles.eyebrow}>The collection</p><h1>My blog posts</h1></div>
+          <div className={styles.filterControls}>
+          <CategoryFilter selectedCategory={category} />
           <SearchForm value={query} action="/my-posts" clearHref="/my-posts" />
+          </div>
         </div>
         <p className={styles.count}>{postCount} {postCount === 1 ? "post" : "posts"}</p>
         <div className={styles.postList}>

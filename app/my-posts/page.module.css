@@ -54,23 +54,11 @@
 .pagination { display: flex; align-items: center; justify-content: space-between; margin-top: 30px; padding-top: 18px; border-top: 1px solid #d0d7de; color: #57606a; font-size: 11px; }
 .pagination a { padding: 8px 0; color: #0969da; cursor: pointer; font: inherit; text-decoration: none; }
 .pagination .disabledPage { color: #8c959f; cursor: not-allowed; pointer-events: none; }
+.filterControls { display: flex; align-items: end; gap: 24px; }
 
 @media (max-width: 700px) {
-  .header { height: 70px; min-height: 70px; padding: 20px; }
-  .writeButton { padding: 10px; font-size: 0; }
-  .writeButton b { margin: 0; font-size: 21px; }
-  .content { padding: 42px 20px 55px; }
-  .backLink { margin-bottom: 52px; }
   .titleRow { align-items: start; flex-direction: column; gap: 25px; }
   .titleRow h1 { font-size: 53px; letter-spacing: -2px; }
-  .search { width: 100%; }
-  .post { grid-template-columns: 47px 1fr; gap: 15px; height: 145px; padding: 20px 0; }
-  .noPostsText { border-bottom: 0px; grid-template-columns: auto; align-items: flex-start; }
-  .post:hover { padding-left: 0; background: transparent; }
-  .number { width: 43px; height: 43px; font-size: 15px; }
-  .post h2 { font-size: 22px; }
-  .post p { font-size: 12px; }
-  .meta { gap: 9px; font-size: 8px; }
-  .actions { grid-column: 2; gap: 16px; }
-  .pagination { gap: 12px; }
+
+  .filterControls { align-items: stretch; flex-direction: column; gap: 18px; width: 100%; }
 }
