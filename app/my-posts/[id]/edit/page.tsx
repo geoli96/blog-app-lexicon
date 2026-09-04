@@ -11,7 +11,7 @@ export default async function EditMyPost({ params }: { params: Promise<{ id: str
   if (!post) return <main className={styles.state}><h1>Post not found</h1><Link href="/my-posts">Return to my posts</Link></main>;
 
   return <main className={styles.page}>
-    <SiteHeader actions={<HeaderLink href={`/my-posts/${id}`}>Back to post <span>↗</span></HeaderLink>} />
+    <SiteHeader  />
     <section className={styles.editor}>
       <Link className={styles.backLink} href={`/my-posts/${id}`}>← Back to post</Link>
       <EditForm post={post} returnTo={`/my-posts/${id}`} />

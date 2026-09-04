@@ -3,25 +3,33 @@ import { useState } from "react"
 import styles from "./RegisterForm.module.css"
 import { createUser } from "../actions/actions";
 
-export default function RegisterForm({user}: {user?: any}) {
+export default function RegisterForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [completedRegistration, setCompletedRegistration] = useState(false);
+  const [errorMsg, setErrorMsg] = useState("");
+  const [saving, setSaving] = useState(false)
 
   const handleSubmit = async (e: React.FormEvent) => {
+    setErrorMsg("")
     e.preventDefault();
-    if(!username || !password || !confirmPassword) {
-      alert("Please fill in all fields.");
-      return;
-    }
     if(password !== confirmPassword) {
-      alert("Passwords do not match.");
+      setErrorMsg("Passwords do not match.");
       return;
     }
     const formData = new FormData(e.target as HTMLFormElement);
-    await createUser(formData);
-    setCompletedRegistration(true);
+    try {
+      setSaving(true);
+      await new Promise(res => setTimeout(() => res(null), 4000));
+      await createUser(formData);
+      setCompletedRegistration(true); 
+    } catch (error) {
+      console.error(error);
+      setErrorMsg("Error occured while creating user")
+    } finally{
+      setSaving(false)
+    }
   }
 
   if(completedRegistration) {
@@ -42,25 +50,35 @@ export default function RegisterForm({user}: {user?: any}) {
       <label htmlFor="username">
         Username
         </label>
-        <input name="username" type="text" value={username} onChange={(e) => setUsername(e.target.value)} required />
+        <input name="username" minLength={2} maxLength={100} type="text" value={username} onChange={(e) => setUsername(e.target.value.trim())} required />
         </div>
         <div className={styles.formGroup}>
       <label htmlFor="password">
         Password
         </label>
-        <input name="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+        <input name="password" minLength={6} maxLength={100} type="password" value={password} onChange={(e) => setPassword(e.target.value.trim())} required />
         </div>
         <div className={styles.formGroup}>
         <label htmlFor="confirmPassword">
         Confirm Password
         </label>
-        <input name="confirmPassword" type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
+        <input name="confirmPassword" type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value.trim())} required />
         </div>
-      <button type="submit">Register</button>
+        {errorMsg && (
+            <>
+              <p className={styles.error}>{errorMsg}</p>
+            </>
+          )}
+          {!errorMsg && (
+            <>
+              <p className={styles.errorHidden}></p>
+            </>
+          )}
+      <button type="submit" disabled={saving}>{saving ? "Saving" : "Register"}</button>
     </form>
-    <p className={styles.switchPrompt}>
+      <p className={styles.switchPrompt}>
           Already have an account? <a href="/login">Log in</a>
         </p>
-        </>
+    </>
   )
 }

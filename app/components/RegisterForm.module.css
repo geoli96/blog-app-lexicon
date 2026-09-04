@@ -8,3 +8,5 @@
 .loginLink { display: inline-block; margin-top: 13px; color: #bd5438; font-size: 12px; font-weight: bold; text-decoration: underline; text-underline-offset: 3px; }
 .switchPrompt { margin-top: 30px; color: #57606a; font-size: 12px; }
 .switchPrompt a { color: #bd5438; font-weight: bold; text-decoration: underline; text-underline-offset: 3px; }
+.error {color: red; height: 22px;}
+.errorHidden {visibility: hidden; height: 22px;}

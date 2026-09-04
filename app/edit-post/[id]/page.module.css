@@ -24,6 +24,7 @@
 .state { display: grid; min-height: 100vh; place-items: center; color: #1f2328; background: #ffffff; font-family: Georgia, serif; }
 .state h1 { margin-bottom: 10px; font-size: 44px; font-weight: normal; }
 .state a { color: #bd5438; }
+.title {margin-bottom: 20px;}
 @media (max-width: 700px) {
   .header { height: 70px; min-height: 70px; padding: 20px; }
   .archiveLink { font-size: 0; }

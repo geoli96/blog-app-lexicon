@@ -1,16 +1,24 @@
 "use client"
-import { useActionState, useState } from "react"
+import { useActionState, useEffect, useState } from "react"
 import styles from "./SignInForm.module.css"
 import { authenticate } from "../actions/actions";
+import {useRouter} from "next/navigation";
 
 export default function SignInForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const router = useRouter();
 
-  const [, formAction, isPending] = useActionState(
+  const [errorMessage, formAction, isPending] = useActionState(
     authenticate as any,
     undefined,
   );
+
+  useEffect(() => {
+    if(errorMessage === "success"){
+      router.push("/");
+  }
+  })
 
   return (
     <form action={formAction} className={styles.form}>
@@ -26,6 +34,16 @@ export default function SignInForm() {
         </label>
         <input name="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         </div>
+        {errorMessage && errorMessage !== "success" && (
+            <>
+              <p className={styles.error}>{errorMessage}</p>
+            </>
+          )}
+          {(!errorMessage || errorMessage === "success") && (
+            <>
+              <p className={styles.errorHidden}></p>
+            </>
+          )}
       <button type="submit" disabled={isPending}>
         {"Sign In"}
       </button>

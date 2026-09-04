@@ -25,7 +25,7 @@
 .archiveLink span { margin-left: 7px; color: #bd5438; font-size: 16px; }
 .editor { max-width: 1240px; margin: 0 auto; padding: 65px 36px 90px; }
 .backLink { display: block; margin-bottom: 75px; color: #57606a; font-size: 12px; }
-.eyebrow { margin: 0 0 18px; color: #bd5438; font-size: 10px; font-weight: bold; letter-spacing: .14em; text-transform: uppercase; }
+.title {margin-bottom: 20px;}
 .editor h1 { margin: 0; font-family: Georgia, serif; font-size: clamp(48px, 7vw, 78px); font-weight: normal; line-height: .98; letter-spacing: -3px; }
 .editor h1 em { color: #bd5438; font-style: italic; }
 .intro { margin: 24px 0 60px; color: #57606a; font-family: Georgia, serif; font-size: 19px; font-style: italic; }

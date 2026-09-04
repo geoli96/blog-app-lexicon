@@ -18,7 +18,7 @@
   border-bottom: 1px solid #d0d7de;
 }
 
-.wordmark, .navLink, .navLinkActive, .writeButton, .backButton, .closeButton, .postCard {
+.wordmark, .navLink, .navLinkActive, .writeButton, .backButton, .closeButton, .postCard,.postCardEmpty {
   border: 0;
   font: inherit;
   cursor: pointer;
@@ -72,20 +72,22 @@
 .search input::placeholder { color: #8d8880; }
 .search button { padding: 5px 0 5px 8px; border: 0; border-left: 1px solid #d0d7de; color: #0969da; background: transparent; cursor: pointer; font: bold 10px var(--font-geist-sans), sans-serif; }
 .postGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
-.postCard { display: flex; min-height: 250px; padding: 0; overflow: hidden; color: inherit; text-align: left; background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 6px; transition: border-color .2s ease, box-shadow .2s ease; }
+.postCard,.postCardEmpty { display: flex; padding: 0; overflow: hidden; color: inherit; text-align: left; background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 6px; transition: border-color .2s ease, box-shadow .2s ease; }
+.postCardEmpty {height: 288px;}
 .postCard:hover { border-color: #0969da; box-shadow: 0 3px 8px rgba(31, 35, 40, .12); }
 .cardVisual { display: grid; min-width: 34%; place-items: center; color: #f2efe9; background: #ca6b4e; background-image: repeating-linear-gradient(135deg, transparent 0 21px, rgba(255,255,255,.13) 21px 22px); }
 .postCard:not(.featured) .cardVisual { background: #6f7c68; }
+.postCardEmpty{visibility: hidden;}
 .cardVisual span { font-family: Georgia, serif; font-size: 48px; font-style: italic; }
 .cardContent { display: flex; flex: 1; flex-direction: column; align-items: flex-start; padding: 26px 27px; }
-.cardMeta { display: flex; justify-content: space-between; width: 100%; color: #817b72; font-size: 10px; letter-spacing: .07em; text-transform: uppercase; }
+.cardMeta { display: flex; height: 14px; overflow: hidden; justify-content: space-between; width: 100%; color: #817b72; font-size: 10px; letter-spacing: .07em; text-transform: uppercase; }
 .cardMeta span:first-child { color: #bd5438; }
-.cardContent h3 { max-width: 340px; margin: 29px 0 10px; font-family: Georgia, serif; font-size: 26px; font-weight: normal; line-height: 1.08; }
-.cardContent p { max-width: 310px; margin: 0; color: #57606a; font-size: 13px; line-height: 1.5; }
-.readLink { margin-top: auto; padding-top: 20px; color: #0969da; font-size: 11px; font-weight: bold; }
-.author { margin-top: auto; padding-top: 20px; color: #57606a; font-size: 13px;  }
+.cardContent h3 { height: 59px; overflow: hidden; max-width: 340px; margin: 29px 0 10px; font-family: Georgia, serif; font-size: 26px; font-weight: normal; line-height: 1.08; }
+.cardContent p { max-width: 310px; height: 42px; overflow: hidden; margin: 0; color: #57606a; font-size: 13px; line-height: 1.5; }
+.readLink { margin-top: auto; height: 42px; padding-top: 20px; color: #0969da; font-size: 11px; font-weight: bold; }
+.author { margin-top: auto; height: 40px; padding-top: 20px; color: #57606a; font-size: 13px;  }
 .readLink b { margin-left: 7px; color: #0969da; font-size: 16px; font-weight: normal; }
-.empty { color: #57606a; font-size: 14px; }
+.empty { color: #57606a; font-size: 14px }
 .pagination { display: flex; align-items: center; justify-content: space-between; margin-top: 30px; padding-top: 18px; border-top: 1px solid #d0d7de; color: #57606a; font-size: 11px; }
 .pagination a { padding: 8px 0; color: #0969da; cursor: pointer; font: inherit; text-decoration: none; }
 .pagination .disabledPage { color: #8c959f; cursor: not-allowed; pointer-events: none; }
@@ -130,7 +132,7 @@
   .categoryFilter select { flex: 1; max-width: 220px; }
   .search { width: 100%; }
   .postGrid { grid-template-columns: 1fr; }
-  .postCard { min-height: 225px; }
+  .empty {height: 225px;}
   .cardVisual { min-width: 30%; }
   .cardContent h3 { margin-top: 24px; font-size: 22px; }
   .cardContent { padding: 22px 20px; }
