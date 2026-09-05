@@ -1,6 +1,6 @@
 "use client"
 import { useState } from "react"
-import styles from "./RegisterForm.module.css"
+import styles from "./ProfileForm.module.css"
 import { updateUser } from "../actions/actions";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";

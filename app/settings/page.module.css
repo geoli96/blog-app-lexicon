@@ -1,0 +1,20 @@
+.page {
+  min-height: 100vh;
+  color: #1f2328;
+  background: #ffffff;
+  font-family: var(--font-geist-sans), sans-serif;
+}
+
+.content { max-width: 1240px; margin: 0 auto; padding: 65px 36px 90px; }
+.content > * { max-width: 500px; }
+.eyebrow { margin: 0 0 18px; color: #bd5438; font-size: 10px; font-weight: bold; letter-spacing: .14em; text-transform: uppercase; }
+.title { margin: 0; font-family: Georgia, serif; font-size: clamp(52px, 7vw, 78px); font-weight: normal; line-height: .98; letter-spacing: -3px; }
+.intro { margin: 20px 0 43px; color: #57606a; font-family: Georgia, serif; font-size: 19px; font-style: italic; }
+.switchPrompt { margin-top: 30px; color: #57606a; font-size: 12px; }
+.switchPrompt a { color: #bd5438; font-weight: bold; text-decoration: underline; text-underline-offset: 3px; }
+
+@media (max-width: 700px) {
+  .content { padding: 42px 25px 55px; }
+  .title { font-size: 54px; letter-spacing: -2px; }
+  .intro { margin-bottom: 35px; }
+}

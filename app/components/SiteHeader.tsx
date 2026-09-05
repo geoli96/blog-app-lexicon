@@ -11,7 +11,7 @@ export default async function SiteHeader({ actions }: { actions?: ReactNode }) {
   return <header className={styles.header}>
     <Link className={styles.wordmark} href="/" aria-label="Back to the blog">
       <span className={styles.mark}>tb</span>
-      <span>the blog</span>
+      <span className={styles.markFull}>the blog</span>
     </Link>
     <nav className={styles.actions} aria-label="Main navigation">
       {actions}
@@ -23,6 +23,9 @@ export default async function SiteHeader({ actions }: { actions?: ReactNode }) {
       ) : null}
       {isLoggedIn ? (
         <HeaderLink href="/profile">Profile</HeaderLink>
+      ) : null}
+      {isLoggedIn ? (
+        <HeaderLink href="/settings">Settings</HeaderLink>
       ) : null}
       {isLoggedIn ? (
         <p className={styles.signedInAs}>Signed in as <b>{session?.user?.username}</b></p>
