@@ -157,7 +157,20 @@ export async function deletePost(id: string) {
         console.error(`User ${user.username} is not authorized to edit post created by ${post.createdBy})`);
         throw new Error('User not authorized to edit this post');
     }
-    await fetch(`${API_URL}/posts/${post.id}`, { method: "DELETE" });
+
+    if(post.id in updatingPost){
+          throw new Error('Post already updating');
+    }
+
+    try {
+      updatingPost[post.id] = true;
+      await fetch(`${API_URL}/posts/${post.id}`, { method: "DELETE" }); 
+    } catch (error) {
+      console.log("Could not update post", error); 
+      throw error;
+    } finally{
+      delete updatingPost[post.id];
+    }
 }
 
 const UserSchema = z.object({
