@@ -7,9 +7,14 @@ import { API_URL, Post } from "../lib/posts";
 import { verifyCsrfToken } from "../csrf";
 import { z } from 'zod';
 import { AuthError } from "next-auth";
+import fs from 'fs';
 
-const updating: Record<string, boolean> = {};
+const updatingUser: Record<string, boolean> = {};
 const updatingPost: Record<string, boolean> = {};
+
+function objectIsEmpty(obj: Record<any, any>){
+  return Object.keys(obj).length === 0;
+}
  
 const CredentialsSchema = z.object({
   username: z.string(),
@@ -87,6 +92,9 @@ export async function publishPost(formData: FormData) {
     };
 
     const postResponse = (await axios.post(`${API_URL}/posts`, post)).data;
+    if(objectIsEmpty(updatingPost) && objectIsEmpty(updatingUser)){
+      fs.copyFileSync("db.json", "db_copy.json");
+    }
     redirect(`/posts/${postResponse.id}`);
   }
 
@@ -138,6 +146,9 @@ export async function publishPost(formData: FormData) {
         }
         finally{
           delete updatingPost[post.id];
+          if(objectIsEmpty(updatingPost) && objectIsEmpty(updatingUser)){
+            fs.copyFileSync("db.json", "db_copy.json");
+          }
         }
     }
 
@@ -170,6 +181,9 @@ export async function deletePost(id: string) {
       throw error;
     } finally{
       delete updatingPost[post.id];
+      if(objectIsEmpty(updatingPost) && objectIsEmpty(updatingUser)){
+        fs.copyFileSync("db.json", "db_copy.json");
+      }
     }
 }
 
@@ -203,6 +217,10 @@ export async function createUser(formData: FormData) {
     throw new Error('Username already in use');
   }
 
+  if(objectIsEmpty(updatingPost) && objectIsEmpty(updatingUser)){
+      fs.copyFileSync("db.json", "db_copy.json");
+    }
+
 }
 
 const UpdateUserSchema = z.object({
@@ -216,11 +234,11 @@ export async function updateUser(formData: FormData) {
         throw new Error('User not authenticated');
     }
 
-    if(user.id in updating){
+    if(user.id in updatingUser){
       throw new Error('User already updating');
     }
 
-    updating[user.id] = true;
+    updatingUser[user.id] = true;
 
     try {
           const _user = (await axios.get(`${process.env.API_URL}/users`, {
@@ -263,7 +281,10 @@ export async function updateUser(formData: FormData) {
       console.log("Could not update user", error);
       throw error;
     } finally{
-      delete updating[user.id];
+      delete updatingUser[user.id];
+      if(objectIsEmpty(updatingPost) && objectIsEmpty(updatingUser)){
+        fs.copyFileSync("db.json", "db_copy.json");
+      }
     }
 }
 
@@ -278,11 +299,11 @@ export async function updatePassword(formData: FormData) {
         throw new Error('User not authenticated');
     }
 
-    if(user.id in updating){
+    if(user.id in updatingUser){
       throw new Error('User already updating password');
     }
 
-    updating[user.id] = true;
+    updatingUser[user.id] = true;
 
     try {
       const _user = (await axios.get(`${process.env.API_URL}/users`, {
@@ -308,6 +329,9 @@ export async function updatePassword(formData: FormData) {
       throw error;
     }
     finally{
-      delete updating[user.id];
+      delete updatingUser[user.id];
+      if(objectIsEmpty(updatingPost) && objectIsEmpty(updatingUser)){
+        fs.copyFileSync("db.json", "db_copy.json");
+      }
     }
 }
