@@ -7,6 +7,9 @@ import { API_URL, Post } from "../lib/posts";
 import { verifyCsrfToken } from "../csrf";
 import { z } from 'zod';
 import { AuthError } from "next-auth";
+
+const updating: Record<string, boolean> = {};
+const updatingPost: Record<string, boolean> = {};
  
 const CredentialsSchema = z.object({
   username: z.string(),
@@ -96,6 +99,16 @@ export async function publishPost(formData: FormData) {
 
         const postId = z.string().trim().parse(String(formData.get("id")));
         const post = await axios.get(`${API_URL}/posts/${postId}`).then(res => res.data).catch(() => null);
+         if(!post){
+          throw new Error('No post with id');
+        }
+        if(post.id in updatingPost){
+          throw new Error('Post already updating');
+        }
+
+        updatingPost[post.id] = true;
+        try {
+
         if(user.username !== post.createdBy) {
             console.error(`User ${user.username} is not authorized to edit post created by ${post.createdBy})`);
             throw new Error('User not authorized to edit this post');
@@ -119,6 +132,12 @@ export async function publishPost(formData: FormData) {
       };
       await axios.put(`${API_URL}/posts/${post.id}`, updatedPost);
       redirect(`/posts/${post.id}`);
+      } catch (error) {
+          console.log("Could not update post", error); 
+        }
+        finally{
+          delete updatingPost[post.id];
+        }
     }
 
 export async function deletePost(id: string) {
@@ -183,40 +202,97 @@ export async function updateUser(formData: FormData) {
         throw new Error('User not authenticated');
     }
 
-    const _user = (await axios.get(`${process.env.API_URL}/users`, {
-        params: { username: user.username },
-    })).data[0];
+    if(user.id in updating){
+      throw new Error('User already updating');
+    }
 
-    const { username,name } = UpdateUserSchema.parse({
-        username: String(formData.get("username")),
-        name: String(formData.get("name")),
-    });
+    updating[user.id] = true;
 
-    const previousUsername = user.username;
+    try {
+          const _user = (await axios.get(`${process.env.API_URL}/users`, {
+              params: { username: user.username },
+          })).data[0];
 
-    const updatedUser = (await axios.put(`http://localhost:4000/users/${user.id}`, {..._user,
-      username: username,
-      name
-    })).data;
+          const { username,name } = UpdateUserSchema.parse({
+              username: String(formData.get("username")),
+              name: String(formData.get("name")),
+          });
 
-   const users = (await axios.get(`${process.env.API_URL}/users`, {
-    params: { username },
-  })).data;
+          const previousUsername = user.username;
 
-  if(users.length > 1){
-    await axios.put(`http://localhost:4000/users/${_user.id}`, {..._user,
-      username: previousUsername,
-    });
-    throw new Error('Username already in use');
-  }
+          const updatedUser = (await axios.put(`http://localhost:4000/users/${user.id}`, {..._user,
+            username: username,
+            name
+          })).data;
 
-  const usersPosts = (await axios.get(`${process.env.API_URL}/posts`, {
-    params: { createdBy: _user.username },
-  })).data;
+          const users = (await axios.get(`${process.env.API_URL}/users`, {
+            params: { username },
+          })).data;
 
-  for(const post of usersPosts){
-    await axios.put(`http://localhost:4000/posts/${post.id}`, {...post,
-      createdBy: updatedUser.username,
-    });
-  }
+          if(users.length > 1){
+            await axios.put(`http://localhost:4000/users/${_user.id}`, {..._user,
+              username: previousUsername,
+            });
+            throw new Error('Username already in use');
+          }
+
+          const usersPosts = (await axios.get(`${process.env.API_URL}/posts`, {
+            params: { createdBy: _user.username },
+          })).data;
+
+          for(const post of usersPosts){
+            await axios.put(`http://localhost:4000/posts/${post.id}`, {...post,
+              createdBy: updatedUser.username,
+            });
+          } 
+    } catch (error) {
+      console.log("Could not update user", error);
+    } finally{
+      delete updating[user.id];
+    }
+}
+
+const UpdatePasswordSchema = z.object({
+  password: z.string().min(6).max(100),
+  newpassword: z.string().min(6).max(100)
+});
+
+export async function updatePassword(formData: FormData) {
+    const user:any = (await auth())?.user;
+    if(!user) {
+        throw new Error('User not authenticated');
+    }
+
+    if(user.id in updating){
+      throw new Error('User already updating password');
+    }
+
+    updating[user.id] = true;
+
+    try {
+      const _user = (await axios.get(`${process.env.API_URL}/users`, {
+          params: { username: user.username },
+      })).data[0]; 
+
+      const { password, newpassword } = UpdatePasswordSchema.parse({
+          password: String(formData.get("password")),
+          newpassword: String(formData.get("newpassword")),
+      });
+
+      const passwordsMatch = await bcrypt.compare(password, _user.password);
+
+      if(!passwordsMatch){
+        throw new Error("Incorrect password");
+      }
+
+      const hashedPassword = await bcrypt.hash(newpassword, 10);
+
+      await axios.put(`${process.env.API_URL}/users/${user.id}`,{..._user, password: hashedPassword}); 
+    } catch (error) {
+      console.log("Could not update password", error);
+      throw error;
+    }
+    finally{
+      delete updating[user.id];
+    }
 }

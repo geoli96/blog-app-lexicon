@@ -27,6 +27,7 @@
   .actions { gap: 15px; }
   .link span { font-size: 11px; }
   .signedInAs{ display: none;}
+  .markFull {display: none;}
   .primaryLink { padding: 10px; }
   .primaryLink b { margin: 0; font-size: 21px; }
 }
