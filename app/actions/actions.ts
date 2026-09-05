@@ -142,12 +142,14 @@ export async function deletePost(id: string) {
 
 const UserSchema = z.object({
   username: z.string().min(2).max(100).trim(),
-  password: z.string().min(6).max(100).trim()
+  name: z.string().min(2).max(100).trim(),
+  password: z.string().min(6).max(100)
 });
  
 export async function createUser(formData: FormData) {
-    const { username, password } = UserSchema.parse({
+    const { username, password, name } = UserSchema.parse({
         username: String(formData.get("username")),
+        name: String(formData.get("name")),
         password: String(formData.get("password")),
     });
 
@@ -155,6 +157,7 @@ export async function createUser(formData: FormData) {
 
   const createdUser = (await axios.post(`http://localhost:4000/users`, {
     username,
+    name,
     password: hashedPassword,
   })).data;
 
@@ -171,6 +174,7 @@ export async function createUser(formData: FormData) {
 
 const UpdateUserSchema = z.object({
   username: z.string().min(2).max(100).trim(),
+  name: z.string().min(2).max(100).trim()
 });
 
 export async function updateUser(formData: FormData) {
@@ -183,13 +187,16 @@ export async function updateUser(formData: FormData) {
         params: { username: user.username },
     })).data[0];
 
-    const { username } = UpdateUserSchema.parse({
+    const { username,name } = UpdateUserSchema.parse({
         username: String(formData.get("username")),
+        name: String(formData.get("name")),
     });
+
     const previousUsername = user.username;
 
     const updatedUser = (await axios.put(`http://localhost:4000/users/${user.id}`, {..._user,
       username: username,
+      name
     })).data;
 
    const users = (await axios.get(`${process.env.API_URL}/users`, {

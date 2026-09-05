@@ -5,6 +5,7 @@ import { createUser } from "../actions/actions";
 
 export default function RegisterForm() {
   const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [completedRegistration, setCompletedRegistration] = useState(false);
@@ -53,16 +54,22 @@ export default function RegisterForm() {
         <input name="username" minLength={2} maxLength={100} type="text" value={username} onChange={(e) => setUsername(e.target.value.trim())} required />
         </div>
         <div className={styles.formGroup}>
+      <label htmlFor="name">
+        Name
+        </label>
+        <input name="name" minLength={2} maxLength={100} type="text" value={name} onChange={(e) => setName(e.target.value)} required />
+        </div>
+        <div className={styles.formGroup}>
       <label htmlFor="password">
         Password
         </label>
-        <input name="password" minLength={6} maxLength={100} type="password" value={password} onChange={(e) => setPassword(e.target.value.trim())} required />
+        <input name="password" minLength={6} maxLength={100} type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         </div>
         <div className={styles.formGroup}>
         <label htmlFor="confirmPassword">
         Confirm Password
         </label>
-        <input name="confirmPassword" type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value.trim())} required />
+        <input name="confirmPassword" type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
         </div>
         {errorMsg && (
             <>
