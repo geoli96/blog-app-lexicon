@@ -106,13 +106,13 @@ export async function publishPost(formData: FormData) {
           throw new Error('Post already updating');
         }
 
-        updatingPost[post.id] = true;
-        try {
-
         if(user.username !== post.createdBy) {
             console.error(`User ${user.username} is not authorized to edit post created by ${post.createdBy})`);
             throw new Error('User not authorized to edit this post');
         }
+
+        updatingPost[post.id] = true;
+        try {
 
          const postData = PostSchema.parse({
             title: String(formData.get("title")),
@@ -134,6 +134,7 @@ export async function publishPost(formData: FormData) {
       redirect(`/posts/${post.id}`);
       } catch (error) {
           console.log("Could not update post", error); 
+          throw error;
         }
         finally{
           delete updatingPost[post.id];
@@ -247,6 +248,7 @@ export async function updateUser(formData: FormData) {
           } 
     } catch (error) {
       console.log("Could not update user", error);
+      throw error;
     } finally{
       delete updating[user.id];
     }
