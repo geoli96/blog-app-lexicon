@@ -1,6 +1,6 @@
 "use client";
 
-import { searchFilters } from "@/app/lib/posts";
+import { searchFilters, searchFilterLabelMapper } from "@/app/lib/posts";
 import styles from "./SearchFilter.module.css";
 
 export default function CategoryFilter({ selectedSearchFilter }: { selectedSearchFilter: string }) {
@@ -12,5 +12,5 @@ export default function CategoryFilter({ selectedSearchFilter }: { selectedSearc
     window.location.assign(url.toString());
   }
 
-  return <label className={styles.searchFilter}>Search by<select defaultValue={selectedSearchFilter} onChange={(event) => changeCategory(event.target.value)} aria-label="Filter posts by category">{searchFilters.map((option) => <option value={option} key={option}>{option[0].toUpperCase()+option.substring(1)}</option>)}</select></label>;
+  return <label className={styles.searchFilter}>Search by<select defaultValue={selectedSearchFilter} onChange={(event) => changeCategory(event.target.value)} aria-label="Filter posts by category">{searchFilters.map((option) => <option value={option} key={option}>{searchFilterLabelMapper[option]}</option>)}</select></label>;
 }
