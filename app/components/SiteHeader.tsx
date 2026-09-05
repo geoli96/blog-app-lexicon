@@ -16,7 +16,7 @@ export default async function SiteHeader({ actions }: { actions?: ReactNode }) {
     <nav className={styles.actions} aria-label="Main navigation">
       {actions}
       {isLoggedIn ? (
-        <HeaderLink href="/write-post" primary>Write a post <b>+</b></HeaderLink>
+        <HeaderLink href="/write-post" primary>Write post <b>+</b></HeaderLink>
       ) : null}
        {isLoggedIn ? (
         <HeaderLink href="/my-posts">My blog posts</HeaderLink>
