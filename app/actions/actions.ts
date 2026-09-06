@@ -7,6 +7,7 @@ import { API_URL, Post } from "../lib/posts";
 import { verifyCsrfToken } from "../csrf";
 import { z } from 'zod';
 import { AuthError } from "next-auth";
+import fs from 'fs';
 
 const processingUsername: Record<string, boolean> = {};
 
@@ -87,6 +88,7 @@ export async function publishPost(formData: FormData) {
 
     try {
       const postResponse = (await axios.post(`${API_URL}/posts`, post)).data;
+      fs.copyFileSync("db.json", "db_copy.json");
       redirect(`/posts/${postResponse.id}`); 
     } catch (error) {
       console.log(error);
@@ -130,6 +132,7 @@ export async function publishPost(formData: FormData) {
         updatedAt: new Date().toISOString(),
       };
       await axios.put(`${API_URL}/posts/${post.id}`, updatedPost);
+      fs.copyFileSync("db.json", "db_copy.json");
       redirect(`/posts/${post.id}`);
       } catch (error) {
           console.log("Could not update post", error); 
@@ -155,7 +158,8 @@ export async function deletePost(id: string) {
           throw new Error('User not authorized to edit this post');
       }
 
-      await fetch(`${API_URL}/posts/${post.id}`, { method: "DELETE" }); 
+      await axios.delete(`${API_URL}/posts/${post.id}`); 
+      fs.copyFileSync("db.json", "db_copy.json");
     } catch (error) {
       console.log("Could not update post", error); 
       throw error;
@@ -197,6 +201,7 @@ export async function createUser(formData: FormData) {
           name,
           password: hashedPassword,
         });
+        fs.copyFileSync("db.json", "db_copy.json");
 
     } catch (error) {
       console.log(error);
@@ -230,6 +235,7 @@ export async function updateUser(formData: FormData) {
         await axios.put(`http://localhost:4000/users/${user.id}`, {..._user,
           name
         });
+        fs.copyFileSync("db.json", "db_copy.json");
     } catch (error) {
       console.log("Could not update user", error);
       throw error;
@@ -266,6 +272,7 @@ export async function updatePassword(formData: FormData) {
       const hashedPassword = await bcrypt.hash(newpassword, 10);
 
       await axios.put(`${process.env.API_URL}/users/${user.id}`,{..._user, password: hashedPassword}); 
+      fs.copyFileSync("db.json", "db_copy.json");
     } catch (error) {
       console.log("Could not update password", error);
       throw error;
