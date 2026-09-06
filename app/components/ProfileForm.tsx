@@ -8,15 +8,10 @@ import { useRouter } from "next/navigation";
 export default function ProfileForm({user}: {user: any}) {
   const router = useRouter();
   const {update} = useSession();
-  const [username, setUsername] = useState(user.username || "");
   const [name, setName] = useState(user.name || "");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if(!username) {
-      alert("Please fill in all fields.");
-      return;
-    }
     const formData = new FormData(e.target as HTMLFormElement);
     await updateUser(formData);
     await update(null);
@@ -30,7 +25,7 @@ export default function ProfileForm({user}: {user: any}) {
       <label htmlFor="username">
         Username
         </label>
-        <input name="username" type="text" value={username} onChange={(e) => setUsername(e.target.value)} required />
+        <input className={styles.username} name="username" type="text" value={user.username} disabled/>
         </div>
         <div className={styles.formGroup}>
       <label htmlFor="name">
