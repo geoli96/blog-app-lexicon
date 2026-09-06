@@ -9,8 +9,12 @@ import { z } from 'zod';
 import { AuthError } from "next-auth";
 import fs from 'fs';
 
-const processingUsername: Record<string, boolean> = {};
+const createUserTransaction: Record<string, boolean> = {};
 
+function objectIsEmpty(obj: Record<any, any>){
+  return Object.keys(obj).length === 0;
+}
+ 
 const CredentialsSchema = z.object({
   username: z.string(),
   password: z.string()
@@ -86,14 +90,11 @@ export async function publishPost(formData: FormData) {
       updatedAt: timestamp,
     };
 
-    try {
-      const postResponse = (await axios.post(`${API_URL}/posts`, post)).data;
+    const postResponse = (await axios.post(`${API_URL}/posts`, post)).data;
+    if(objectIsEmpty(createUserTransaction)){
       fs.copyFileSync("db.json", "db_copy.json");
-      redirect(`/posts/${postResponse.id}`); 
-    } catch (error) {
-      console.log(error);
-      throw error;
     }
+    redirect(`/posts/${postResponse.id}`);
   }
 
  export async function updatePost(formData: FormData) {
@@ -103,17 +104,17 @@ export async function publishPost(formData: FormData) {
             throw new Error('User not authenticated');
         }
 
-        try {
         const postId = z.string().trim().parse(String(formData.get("id")));
-        const post = await axios.get(`${API_URL}/posts/${postId}`).then(res => res.data);
+        const post = await axios.get(`${API_URL}/posts/${postId}`).then(res => res.data).catch(() => null);
          if(!post){
           throw new Error('No post with id');
         }
-
         if(user.username !== post.createdBy) {
             console.error(`User ${user.username} is not authorized to edit post created by ${post.createdBy})`);
             throw new Error('User not authorized to edit this post');
         }
+
+        try {
 
          const postData = PostSchema.parse({
             title: String(formData.get("title")),
@@ -132,11 +133,15 @@ export async function publishPost(formData: FormData) {
         updatedAt: new Date().toISOString(),
       };
       await axios.put(`${API_URL}/posts/${post.id}`, updatedPost);
-      fs.copyFileSync("db.json", "db_copy.json");
       redirect(`/posts/${post.id}`);
       } catch (error) {
           console.log("Could not update post", error); 
           throw error;
+        }
+        finally{
+          if(objectIsEmpty(createUserTransaction)){
+            fs.copyFileSync("db.json", "db_copy.json");
+          }
         }
     }
 
@@ -147,22 +152,25 @@ export async function deletePost(id: string) {
         throw new Error('User not authenticated');
     }
 
-    try {
-      const postId = z.string().trim().parse(id);
-      const post = await axios.get(`${API_URL}/posts/${postId}`).then(res => res.data);
-      if(!post) {
-          throw new Error('Post not found');
-      }
-      if(user.username !== post.createdBy) {
-          console.error(`User ${user.username} is not authorized to edit post created by ${post.createdBy})`);
-          throw new Error('User not authorized to edit this post');
-      }
+    const postId = z.string().trim().parse(id);
+    const post = await axios.get(`${API_URL}/posts/${postId}`).then(res => res.data).catch(() => null);
+    if(!post) {
+        throw new Error('Post not found');
+    }
+    if(user.username !== post.createdBy) {
+        console.error(`User ${user.username} is not authorized to edit post created by ${post.createdBy})`);
+        throw new Error('User not authorized to edit this post');
+    }
 
+    try {
       await axios.delete(`${API_URL}/posts/${post.id}`); 
-      fs.copyFileSync("db.json", "db_copy.json");
     } catch (error) {
       console.log("Could not update post", error); 
       throw error;
+    } finally{
+      if(objectIsEmpty(createUserTransaction)){
+        fs.copyFileSync("db.json", "db_copy.json");
+      }
     }
 }
 
@@ -179,36 +187,34 @@ export async function createUser(formData: FormData) {
         password: String(formData.get("password")),
     });
 
-    if(username in processingUsername){
-      throw new Error('Username in process. Please try again later');
-    }
-
-    processingUsername[username] = true;
+    const reqId = crypto.randomUUID();
+    createUserTransaction[reqId] = true;
 
     try {
-        const users = (await axios.get(`${process.env.API_URL}/users`, {
+         const hashedPassword = await bcrypt.hash(password, 10);
+
+          const createdUser = (await axios.post(`http://localhost:4000/users`, {
+            username,
+            name,
+            password: hashedPassword,
+          })).data;
+
+          const users = (await axios.get(`${process.env.API_URL}/users`, {
             params: { username },
-        })).data;
+          })).data;
 
-        if(users.length > 1){
-          throw new Error('Username already in use');
-        }
-
-        const hashedPassword = await bcrypt.hash(password, 10);
-
-        await axios.post(`http://localhost:4000/users`, {
-          username,
-          name,
-          password: hashedPassword,
-        });
-        fs.copyFileSync("db.json", "db_copy.json");
-
+          if(users.length > 1){
+            await axios.delete(`http://localhost:4000/users/${createdUser.id}`);
+            throw new Error('Username already in use');
+          }
     } catch (error) {
       console.log(error);
-      delete processingUsername[username];
       throw error;
     } finally {
-      delete processingUsername[username];
+      delete createUserTransaction[reqId];
+      if(objectIsEmpty(createUserTransaction)){
+        fs.copyFileSync("db.json", "db_copy.json");
+      }
     }
 
 }
@@ -224,22 +230,27 @@ export async function updateUser(formData: FormData) {
     }
 
     try {
-        const _user = (await axios.get(`${process.env.API_URL}/users`, {
-            params: { username: user.username },
-        })).data[0];
+          const _user = (await axios.get(`${process.env.API_URL}/users`, {
+              params: { username: user.username },
+          })).data[0];
 
-        const { name } = UpdateUserSchema.parse({
-            name: String(formData.get("name"))
-        });
+          const { name } = UpdateUserSchema.parse({
+              name: String(formData.get("name"))
+          });
 
-        await axios.put(`http://localhost:4000/users/${user.id}`, {..._user,
-          name
-        });
-        fs.copyFileSync("db.json", "db_copy.json");
+          await axios.put(`http://localhost:4000/users/${user.id}`, {..._user,
+            name
+          });
+
+
     } catch (error) {
       console.log("Could not update user", error);
       throw error;
-    } 
+    } finally{
+      if(objectIsEmpty(createUserTransaction)){
+        fs.copyFileSync("db.json", "db_copy.json");
+      }
+    }
 }
 
 const UpdatePasswordSchema = z.object({
@@ -272,9 +283,13 @@ export async function updatePassword(formData: FormData) {
       const hashedPassword = await bcrypt.hash(newpassword, 10);
 
       await axios.put(`${process.env.API_URL}/users/${user.id}`,{..._user, password: hashedPassword}); 
-      fs.copyFileSync("db.json", "db_copy.json");
     } catch (error) {
       console.log("Could not update password", error);
       throw error;
+    }
+    finally{
+      if(objectIsEmpty(createUserTransaction)){
+        fs.copyFileSync("db.json", "db_copy.json");
+      }
     }
 }
