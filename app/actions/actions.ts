@@ -90,11 +90,16 @@ export async function publishPost(formData: FormData) {
       updatedAt: timestamp,
     };
 
-    const postResponse = (await axios.post(`${API_URL}/posts`, post)).data;
-    if(objectIsEmpty(createUserTransaction)){
-      fs.copyFileSync("db.json", "db_backup.json");
+    try {
+      const postResponse = (await axios.post(`${API_URL}/posts`, post)).data;
+      if(objectIsEmpty(createUserTransaction)){
+        fs.copyFileSync("db.json", "db_backup.json");
+      }
+      redirect(`/posts/${postResponse.id}`); 
+    } catch (error) {
+      console.log(error);
+      throw error;
     }
-    redirect(`/posts/${postResponse.id}`);
   }
 
  export async function updatePost(formData: FormData) {
@@ -153,7 +158,8 @@ export async function deletePost(id: string) {
     }
 
     const postId = z.string().trim().parse(id);
-    const post = await axios.get(`${API_URL}/posts/${postId}`).then(res => res.data).catch(() => null);
+    try {
+    const post = await axios.get(`${API_URL}/posts/${postId}`).then(res => res.data);
     if(!post) {
         throw new Error('Post not found');
     }
@@ -162,7 +168,6 @@ export async function deletePost(id: string) {
         throw new Error('User not authorized to edit this post');
     }
 
-    try {
       await axios.delete(`${API_URL}/posts/${post.id}`); 
     } catch (error) {
       console.log("Could not update post", error); 
