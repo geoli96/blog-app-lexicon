@@ -22,7 +22,6 @@ export default function RegisterForm() {
     const formData = new FormData(e.target as HTMLFormElement);
     try {
       setSaving(true);
-      await new Promise(res => setTimeout(() => res(null), 4000));
       await createUser(formData);
       setCompletedRegistration(true); 
     } catch (error) {

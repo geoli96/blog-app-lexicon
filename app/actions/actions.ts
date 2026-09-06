@@ -183,16 +183,16 @@ export async function createUser(formData: FormData) {
       throw new Error('Username in process. Please try again later');
     }
 
+    processingUsername[username] = true;
+
     try {
-      const users = (await axios.get(`${process.env.API_URL}/users`, {
-          params: { username },
+        const users = (await axios.get(`${process.env.API_URL}/users`, {
+            params: { username },
         })).data;
 
         if(users.length > 1){
           throw new Error('Username already in use');
         }
-
-        processingUsername[username] = true;
 
         const hashedPassword = await bcrypt.hash(password, 10);
 
