@@ -7,13 +7,6 @@ import { API_URL, Post } from "../lib/posts";
 import { verifyCsrfToken } from "../csrf";
 import { z } from 'zod';
 import { AuthError } from "next-auth";
-import fs from 'fs';
-
-const createUserTransaction: Record<string, boolean> = {};
-
-function objectIsEmpty(obj: Record<any, any>){
-  return Object.keys(obj).length === 0;
-}
  
 const CredentialsSchema = z.object({
   username: z.string(),
@@ -92,9 +85,6 @@ export async function publishPost(formData: FormData) {
 
     try {
       const postResponse = (await axios.post(`${API_URL}/posts`, post)).data;
-      if(objectIsEmpty(createUserTransaction)){
-        fs.copyFileSync("db.json", "db_backup.json");
-      }
       redirect(`/posts/${postResponse.id}`); 
     } catch (error) {
       console.log(error);
@@ -143,11 +133,6 @@ export async function publishPost(formData: FormData) {
           console.log("Could not update post", error); 
           throw error;
         }
-        finally{
-          if(objectIsEmpty(createUserTransaction)){
-            fs.copyFileSync("db.json", "db_backup.json");
-          }
-        }
     }
 
 export async function deletePost(id: string) {
@@ -172,10 +157,6 @@ export async function deletePost(id: string) {
     } catch (error) {
       console.log("Could not update post", error); 
       throw error;
-    } finally{
-      if(objectIsEmpty(createUserTransaction)){
-        fs.copyFileSync("db.json", "db_backup.json");
-      }
     }
 }
 
@@ -191,9 +172,6 @@ export async function createUser(formData: FormData) {
         name: String(formData.get("name")),
         password: String(formData.get("password")),
     });
-
-    const reqId = crypto.randomUUID();
-    createUserTransaction[reqId] = true;
 
     try {
          const hashedPassword = await bcrypt.hash(password, 10);
@@ -215,11 +193,6 @@ export async function createUser(formData: FormData) {
     } catch (error) {
       console.log(error);
       throw error;
-    } finally {
-      delete createUserTransaction[reqId];
-      if(objectIsEmpty(createUserTransaction)){
-        fs.copyFileSync("db.json", "db_backup.json");
-      }
     }
 
 }
@@ -251,10 +224,6 @@ export async function updateUser(formData: FormData) {
     } catch (error) {
       console.log("Could not update user", error);
       throw error;
-    } finally{
-      if(objectIsEmpty(createUserTransaction)){
-        fs.copyFileSync("db.json", "db_backup.json");
-      }
     }
 }
 
@@ -291,10 +260,5 @@ export async function updatePassword(formData: FormData) {
     } catch (error) {
       console.log("Could not update password", error);
       throw error;
-    }
-    finally{
-      if(objectIsEmpty(createUserTransaction)){
-        fs.copyFileSync("db.json", "db_backup.json");
-      }
     }
 }
