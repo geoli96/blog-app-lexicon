@@ -176,7 +176,7 @@ export async function createUser(formData: FormData) {
     });
 
     if(username in processingUsername){
-      throw new Error('Username in process');
+      throw new Error('Username in process. Please try again later');
     }
 
     try {
