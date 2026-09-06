@@ -92,7 +92,7 @@ export async function publishPost(formData: FormData) {
 
     const postResponse = (await axios.post(`${API_URL}/posts`, post)).data;
     if(objectIsEmpty(createUserTransaction)){
-      fs.copyFileSync("db.json", "db_copy.json");
+      fs.copyFileSync("db.json", "db_backup.json");
     }
     redirect(`/posts/${postResponse.id}`);
   }
@@ -140,7 +140,7 @@ export async function publishPost(formData: FormData) {
         }
         finally{
           if(objectIsEmpty(createUserTransaction)){
-            fs.copyFileSync("db.json", "db_copy.json");
+            fs.copyFileSync("db.json", "db_backup.json");
           }
         }
     }
@@ -169,7 +169,7 @@ export async function deletePost(id: string) {
       throw error;
     } finally{
       if(objectIsEmpty(createUserTransaction)){
-        fs.copyFileSync("db.json", "db_copy.json");
+        fs.copyFileSync("db.json", "db_backup.json");
       }
     }
 }
@@ -213,7 +213,7 @@ export async function createUser(formData: FormData) {
     } finally {
       delete createUserTransaction[reqId];
       if(objectIsEmpty(createUserTransaction)){
-        fs.copyFileSync("db.json", "db_copy.json");
+        fs.copyFileSync("db.json", "db_backup.json");
       }
     }
 
@@ -248,7 +248,7 @@ export async function updateUser(formData: FormData) {
       throw error;
     } finally{
       if(objectIsEmpty(createUserTransaction)){
-        fs.copyFileSync("db.json", "db_copy.json");
+        fs.copyFileSync("db.json", "db_backup.json");
       }
     }
 }
@@ -289,7 +289,7 @@ export async function updatePassword(formData: FormData) {
     }
     finally{
       if(objectIsEmpty(createUserTransaction)){
-        fs.copyFileSync("db.json", "db_copy.json");
+        fs.copyFileSync("db.json", "db_backup.json");
       }
     }
 }
