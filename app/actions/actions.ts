@@ -176,6 +176,7 @@ export async function createUser(formData: FormData) {
     try {
          const hashedPassword = await bcrypt.hash(password, 10);
 
+         // code below should be a transaction in real database
           const createdUser = (await axios.post(`http://localhost:4000/users`, {
             username,
             name,
