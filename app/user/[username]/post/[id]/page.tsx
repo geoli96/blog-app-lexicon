@@ -1,7 +1,7 @@
 import Link from "next/link";
-import styles from "./page.module.css";
-import { getPost } from "../../lib/posts";
-import SiteHeader, { HeaderLink } from "../../components/SiteHeader";
+import styles from "@/app/posts/[id]/page.module.css";
+import { getPost } from "@/app/lib/posts";
+import SiteHeader, { HeaderLink } from "@/app/components/SiteHeader";
 import { auth } from "@/auth";
 import BackLink from "@/app/components/BackLink";
 
@@ -16,9 +16,9 @@ export default async function PostPage({ params }: { params: Promise<{ id: strin
 
   return (
     <main className={styles.page}>
-      <SiteHeader actions={<HeaderLink href="/">Back to archive </HeaderLink>} />
+      <SiteHeader />
       <article className={styles.article}>
-        <BackLink>← Back to archive</BackLink>
+        <BackLink>← Back to user</BackLink>
         <div className={styles.meta}><span>{post.category}</span><i />{post.date}<i />{post.readTime}<span>By {post.createdBy}</span></div>
         <h1>{post.title}</h1>
         <p className={styles.lead}>{post.excerpt}</p>
