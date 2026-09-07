@@ -18,7 +18,7 @@ export const authConfig = {
         if(trigger === "update" && token){
             const user = (await axios.get(`http://localhost:4000/users/${(token as unknown as any).user.id}`)).data;
             if(user){
-                delete user.password;
+                delete user.password; // Remove password from user object before returning
                 token.user = user;
             }
         }
