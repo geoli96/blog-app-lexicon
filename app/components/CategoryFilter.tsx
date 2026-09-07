@@ -12,5 +12,5 @@ export default function CategoryFilter({ selectedCategory }: { selectedCategory:
     window.location.assign(url.toString());
   }
 
-  return <label className={styles.categoryFilter}>Category<select defaultValue={selectedCategory} onChange={(event) => changeCategory(event.target.value)} aria-label="Filter posts by category">{categories.map((option) => <option value={option} key={option}>{option}</option>)}</select></label>;
+  return <label className={styles.categoryFilter}>Category<select key={selectedCategory} defaultValue={selectedCategory} onChange={(event) => changeCategory(event.target.value)} aria-label="Filter posts by category">{categories.map((option) => <option value={option} key={option}>{option}</option>)}</select></label>;
 }
