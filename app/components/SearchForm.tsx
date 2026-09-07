@@ -25,6 +25,6 @@ export default function SearchForm({ value, action, clearHref = action, hiddenFi
       router.push(action + (nextParams.size ? "?" + nextParams.toString() : ""), {scroll:false})
     }
     } type="submit">Search</button>
-    {value && <Link scroll={false} className={styles.clear} href={clearHref + (clearParams.size ? "?" + clearParams.toString() : "")}>Clear</Link>}
+    {value && <Link scroll={false} className={styles.clear} href={clearHref}>Clear</Link>}
   </div>;
 }

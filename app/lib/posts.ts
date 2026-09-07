@@ -1,3 +1,9 @@
+type User = {
+  id: string;
+  username: string;
+  name: string;
+}
+
 export type Post = {
   id: string;
   title: string;
@@ -9,6 +15,9 @@ export type Post = {
   createdAt: string;
   createdBy: string;
   updatedAt: string;
+  imageUrl: string;
+  imageKey:string;
+  imageCaption: string;
 };
 
 export type PaginatedPosts = {
