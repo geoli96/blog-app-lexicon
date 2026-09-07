@@ -9,6 +9,7 @@ export default function EditForm({ post }: { post: Post; returnTo?: string }) {
     <label>Title<input name="title" required defaultValue={post.title} /></label>
     <div className={styles.formRow}><label>Category<select name="category" defaultValue={post.category}>{!categories.includes(post.category) && <option value={post.category}>{post.category}</option>}{categories.filter((category) => category !== "All").map((category) => <option value={category} key={category}>{category}</option>)}</select></label><label>Short description<input name="excerpt" required defaultValue={post.excerpt} /></label></div>
     <label>Body<textarea name="content" required defaultValue={post.content}></textarea></label>
+    <label>Image</label>
     <ImageInput imgUrl={post.imageUrl}/>
     <div className={styles.formFooter}><span>Originally published {post.date}.</span><button type="submit">Save changes </button></div>
     <input type="hidden" name="createdBy" value={post.createdBy} />
