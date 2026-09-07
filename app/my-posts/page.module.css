@@ -33,14 +33,12 @@
 .search input { width: 100%; border: 0; outline: 0; color: #24231f; background: transparent; font: 12px var(--font-geist-sans), sans-serif; }
 .count { margin: 27px 0 18px; color: #817b72; font-size: 11px; }
 .postList { border-top: 1px solid #d0d7de; }
-.post { display: grid; grid-template-columns: 72px 1fr auto; align-items: center; gap: 26px; height: 165px; padding: 25px 12px 25px 0; border-bottom: 1px solid #d0d7de; transition: padding .2s ease, background .2s ease; }
+.post { display: grid; height: 170px; grid-template-columns: 72px 1fr auto; align-items: center; gap: 26px; padding: 25px 12px 25px 0; border-bottom: 1px solid #d0d7de; transition: padding .2s ease, background .2s ease; }
 .post:hover { padding-left: 12px; background: #f6f8fa; }
 .emptyPost { visibility: hidden; pointer-events: none; }
 .noPostsText { border-bottom: 0px; grid-template-columns: auto; align-items: flex-start; }
-.number { display: grid; width: 55px; height: 55px; place-items: center; color: #f2efe9; border-radius: 50%; font-family: Georgia, serif; font-size: 18px; font-style: italic; }
-.coral { background: #ca6b4e; }
-.green { background: #6f7c68; }
-.postInfo { min-width: 0; }
+.image { display: grid; width:120px; height: 120px; place-items: center; color: #f2efe9; font-family: Georgia, serif; font-size: 18px; font-style: italic; }
+.postInfo { min-width: 0;margin-left: 40px; }
 .postInfo div {height: 15px; overflow: hidden;}
 .postInfo h2 {height: 26px; overflow: hidden;}
 .postInfo p {height: 60px; overflow: hidden;}

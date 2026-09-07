@@ -40,6 +40,7 @@
 .formFooter button { flex-shrink: 0; padding: 14px 18px; border: 0; color: #ffffff; background: #1f883d; border-radius: 6px; cursor: pointer; font: 13px var(--font-geist-sans), sans-serif; }
 .formFooter b { margin-left: 12px; font-size: 16px; font-weight: normal; }
 
+
 @media (max-width: 700px) {
   .header { height: 70px; min-height: 70px; padding: 20px; }
   .archiveLink { font-size: 0; }

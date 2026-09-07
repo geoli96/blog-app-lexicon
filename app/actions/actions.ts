@@ -7,6 +7,7 @@ import { API_URL, Post } from "../lib/posts";
 import { verifyCsrfToken } from "../csrf";
 import { z } from 'zod';
 import { AuthError } from "next-auth";
+import { utapi } from "../uploadthing";
  
 const CredentialsSchema = z.object({
   username: z.string(),
@@ -19,8 +20,8 @@ export async function authenticate(
 ) {
   try {
     const credentials = CredentialsSchema.parse({
-        username: String(formData.get('username')),
-        password: String(formData.get('password')),
+        username: formData.get('username'),
+        password: formData.get('password'),
     });
     
     await signIn('credentials', {username: credentials.username, password: credentials.password, redirect: false});
@@ -42,7 +43,7 @@ const PostSchema = z.object({
     title: z.string().min(1).max(200).trim(),
     excerpt: z.string().min(1).max(500).trim(),
     content: z.string().min(1).trim(),
-    category: z.enum(["All", "General", "Essay", "Ideas", "Guides", "Reviews", "Personal", "Travel", "Fitness", "Food"]),
+    category: z.enum(["All", "General", "Essay", "Ideas", "Guides", "Reviews", "Personal", "Travel", "Fitness", "Food"])
 });
 
 export async function publishPost(formData: FormData) {
@@ -52,7 +53,7 @@ export async function publishPost(formData: FormData) {
       throw new Error('User not authenticated');
     }
 
-    const csrfToken = String(formData.get("csrfToken"));
+    const csrfToken = formData.get("csrfToken") as string;
     if(!csrfToken) {
       throw new Error('CSRF token missing');
     }
@@ -62,11 +63,24 @@ export async function publishPost(formData: FormData) {
     }
 
     const postData = PostSchema.parse({
-        title: String(formData.get("title")),
-        excerpt: String(formData.get("excerpt")),
-        content: String(formData.get("content")),
-        category: String(formData.get("category")),
+        title: formData.get("title"),
+        excerpt: formData.get("excerpt"),
+        content: formData.get("content"),
+        category: formData.get("category")
     });
+
+    const postImageFile = formData.get('image');
+    if(!(postImageFile instanceof File && postImageFile)){
+      throw new Error("Invalid image file");
+    }
+    const imageCaption = formData.get('imagecaption');
+    if(!(typeof imageCaption === "string" && imageCaption)){
+      throw new Error("Image caption");
+    }
+
+    const imageData = (await utapi.uploadFiles(postImageFile)).data;
+    const imageUrl = imageData!.ufsUrl!;
+    const imageKey = imageData!.key;
 
     const timestamp = new Date().toISOString();
 
@@ -81,6 +95,9 @@ export async function publishPost(formData: FormData) {
       createdBy: user.username,
       createdAt: timestamp,
       updatedAt: timestamp,
+      imageUrl: imageUrl,
+      imageKey: imageKey,
+      imageCaption: imageCaption
     };
 
     try {
@@ -99,8 +116,8 @@ export async function publishPost(formData: FormData) {
             throw new Error('User not authenticated');
         }
 
-        const postId = z.string().trim().parse(String(formData.get("id")));
-        const post = await axios.get(`${API_URL}/posts/${postId}`).then(res => res.data).catch(() => null);
+        const postId = z.string().trim().parse(formData.get("id"));
+        const post = await axios.get(`${API_URL}/posts/${postId}`).then(res => res.data);
          if(!post){
           throw new Error('No post with id');
         }
@@ -112,11 +129,26 @@ export async function publishPost(formData: FormData) {
         try {
 
          const postData = PostSchema.parse({
-            title: String(formData.get("title")),
-            excerpt: String(formData.get("excerpt")),
-            content: String(formData.get("content")),
-            category: String(formData.get("category")),
+            title: formData.get("title"),
+            excerpt: formData.get("excerpt"),
+            content: formData.get("content"),
+            category: formData.get("category"),
         });
+
+        await utapi.deleteFiles([post.imageKey]);
+        
+        const postImageFile = formData.get('image');
+        if(!(postImageFile instanceof File && postImageFile)){
+          throw new Error("Invalid image file");
+        }
+        const imageCaption = formData.get('imagecaption');
+        if(!(typeof imageCaption === "string" && imageCaption)){
+          throw new Error("Image caption");
+        }
+
+        const imageData = (await utapi.uploadFiles(postImageFile)).data;
+        const imageUrl = imageData!.ufsUrl!;
+        const imageKey = imageData!.key;
 
       const updatedPost = {
         ...post,
@@ -125,6 +157,9 @@ export async function publishPost(formData: FormData) {
         content: postData.content,
         category: postData.category,
         readTime: `${Math.max(1, Math.ceil(postData.content.split(/\s+/).length / 180))} min read`,
+        imageUrl,
+        imageKey,
+        imageCaption: imageCaption,
         updatedAt: new Date().toISOString(),
       };
       await axios.put(`${API_URL}/posts/${post.id}`, updatedPost);
@@ -168,9 +203,9 @@ const UserSchema = z.object({
  
 export async function createUser(formData: FormData) {
     const { username, password, name } = UserSchema.parse({
-        username: String(formData.get("username")),
-        name: String(formData.get("name")),
-        password: String(formData.get("password")),
+        username: formData.get("username"),
+        name: formData.get("name"),
+        password: formData.get("password"),
     });
 
     try {
@@ -214,7 +249,7 @@ export async function updateUser(formData: FormData) {
           })).data[0];
 
           const { name } = UpdateUserSchema.parse({
-              name: String(formData.get("name"))
+              name: formData.get("name")
           });
 
           await axios.put(`http://localhost:4000/users/${user.id}`, {..._user,
@@ -245,8 +280,8 @@ export async function updatePassword(formData: FormData) {
       })).data[0]; 
 
       const { password, newpassword } = UpdatePasswordSchema.parse({
-          password: String(formData.get("password")),
-          newpassword: String(formData.get("newpassword")),
+          password: formData.get("password"),
+          newpassword: formData.get("newpassword"),
       });
 
       const passwordsMatch = await bcrypt.compare(password, _user.password);

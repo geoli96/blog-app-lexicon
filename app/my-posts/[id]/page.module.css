@@ -7,7 +7,8 @@
 .article h1 { margin: 25px 0 19px; font-family: Georgia, serif; font-size: clamp(44px, 6vw, 72px); font-weight: normal; line-height: 1; letter-spacing: -2px; }
 .lead { max-width: 580px; margin: 0 0 55px; color: #57606a; font-family: Georgia, serif; font-size: 20px; font-style: italic; line-height: 1.5; }
 .body { max-width: 640px; font-family: Georgia, serif; font-size: 18px; line-height: 1.75; }
-.body p { margin: 0 0 25px; }
+.body p { margin: 0 0 25px;margin-top: 20px; }
+.image {width:100%; height: 700px; object-fit: cover;}
 .editLink { display: inline-block; margin-top: 28px; padding-bottom: 7px; color: #0969da; border-bottom: 1px solid #0969da; font-size: 12px; text-decoration: none; }
 .editLink span { margin-left: 9px; font-size: 16px; }
 .state { display: grid; min-height: 100vh; place-items: center; color: #1f2328; background: #ffffff; font-family: Georgia, serif; }

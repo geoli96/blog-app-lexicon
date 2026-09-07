@@ -1,0 +1,11 @@
+.preview{height: 300px; width: 300px; aspect-ratio: 1/1; object-fit: cover;}
+.input{border-bottom: 0px !important;}
+.inputHidden{display: none;}
+.fakeFileInputContainer{display: flex; align-items: center; gap:4px}
+.fakeButton{color: #1f2328;
+  font-size: 18px;
+  padding:4px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+align-self: flex-start;}
+.fakeButtonLabel{font: 18px Georgia, serif;}

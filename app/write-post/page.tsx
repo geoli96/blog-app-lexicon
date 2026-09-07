@@ -5,6 +5,7 @@ import { categories } from "../lib/posts";
 import SiteHeader, { HeaderLink } from "../components/SiteHeader";
 import { publishPost } from "../actions/actions";
 import {generateCsrfToken} from "../csrf";
+import ImageInput from "../components/ImageInput";
 
 export default async function WritePost() {
     const csrfToken = generateCsrfToken();
@@ -22,6 +23,8 @@ export default async function WritePost() {
             <label>Short description<input name="excerpt" required placeholder="What is this post about?" /></label>
           </div>
           <label>Body<textarea name="content" required placeholder="Start writing..."></textarea></label>
+          <label>Image</label>
+          <ImageInput></ImageInput>
           <div className={styles.formFooter}><span>Your post will be saved to the blog database.</span><button type="submit">Publish post </button></div>
             <input type="hidden" name="csrfToken" value={csrfToken} />
         </form>

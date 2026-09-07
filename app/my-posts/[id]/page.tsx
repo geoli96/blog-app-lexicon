@@ -19,6 +19,10 @@ export default async function MyPost({ params }: { params: Promise<{ id: string 
       <div className={styles.meta}><span>{post.category}</span><i />{post.date}<i />{post.readTime}<span>By {post.createdBy}</span></div>
       <h1>{post.title}</h1>
       <p className={styles.lead}>{post.excerpt}</p>
+      <figure>
+          <img className={styles.image} src={post.imageUrl}/>
+          <figcaption>{post.imageCaption}</figcaption>
+          </figure>
       <div className={styles.body}>{post.content.split("\n\n").map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
       {user?.username === post.createdBy ? (
         <Link className={styles.editLink} href={`/my-posts/${post.id}/edit`}>Edit this post </Link>

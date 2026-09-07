@@ -51,14 +51,14 @@ export default async function MyPosts({ searchParams }: { searchParams: Promise<
           <div><p className={styles.eyebrow}>The collection</p><h1>My blog posts</h1></div>
           <div className={styles.filterControls}>
           <CategoryFilter selectedCategory={category} />
-          <SearchForm value={query} action="/my-posts" clearHref="/my-posts" />
+          <SearchForm value={query} action="/my-posts" clearHref={category ? `/my-posts?category=${encodeURIComponent(category)}` : "/my-posts"} />
           </div>
         </div>
         <p className={styles.count}>{postCount} {postCount === 1 ? "post" : "posts"}</p>
         <div className={styles.postList}>
           {filteredPosts.map((post: Post, index: number) => (
             <div className={styles.post} key={post.id}>
-              <div className={`${styles.number} ${index % 2 === 0 ? styles.coral : styles.green}`}>{String((safePage - 1) * 6 + index + 1).padStart(2, "0")}</div>
+              <img src={post.imageUrl} className={`${styles.image} ${index % 2 === 0 ? styles.coral : styles.green}`}></img>
               <Link className={styles.postInfo} href={`/my-posts/${post.id}`}><div className={styles.meta}><span>{post.category}</span><span>{post.date}</span></div><h2>{post.title}</h2><p>{post.excerpt}</p></Link>
               <PostActions id={post.id} title={post.title} />
             </div>
