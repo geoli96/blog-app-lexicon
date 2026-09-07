@@ -16,6 +16,7 @@
     "bcryptjs": "^3.0.3",
     "csrf": "^3.1.0",
     "jose": "^6.2.10",
+    "json-server": "^1.0.0-beta.15",
     "next": "16.3.4",
     "next-auth": "^5.0.0-beta.32",
     "react": "19.2.8",
@@ -32,7 +33,6 @@
     "concurrently": "^10.0.5",
     "eslint": "^9",
     "eslint-config-next": "16.3.4",
-    "json-server": "^1.0.0-beta.15",
     "typescript": "^5"
   }
 }
