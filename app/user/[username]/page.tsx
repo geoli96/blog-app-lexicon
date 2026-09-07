@@ -1,23 +1,24 @@
 import styles from "./page.module.css";
-import { categories } from "../lib/posts";
-import SiteHeader from "../components/SiteHeader";
+import { categories } from "@/app/lib/posts";
+import SiteHeader from "@/app/components/SiteHeader";
 import { auth } from "@/auth";
 import axios from "axios";
-import ProfilePosts from "../components/ProfilePosts";
+import ProfilePosts from "@/app/components/ProfilePosts";
 
-export default async function MyPosts({ searchParams }: { searchParams: Promise<{ search?: string; page?: string; category?: string }> }) {
+export default async function UserPosts({ searchParams, params }: { params: Promise<{username:string}>; searchParams: Promise<{ search?: string; page?: string; category?: string }> }) {
     const user:any = (await auth())?.user;
-  const params = await searchParams;
-  const query = params.search || "";
-  const selectedCategory = params.category || "";
+    const username = (await params)?.username
+  const _searchParams = await searchParams;
+  const query = _searchParams.search || "";
+  const selectedCategory = _searchParams.category || "";
   const category = categories.includes(selectedCategory) ? selectedCategory : "";
-  const parsedPage = Number.parseInt(params.page || "1", 10);
+  const parsedPage = Number.parseInt(_searchParams.page || "1", 10);
   const currentPage = Number.isFinite(parsedPage) && parsedPage > 0 ? parsedPage : 1;
 
   const filter = new URLSearchParams({
     _page: String(currentPage),
     _per_page: "6",
-    createdBy: user.username,
+    createdBy: username,
   });
   if(category){
     filter.append("category", category);
@@ -29,7 +30,7 @@ export default async function MyPosts({ searchParams }: { searchParams: Promise<
   return (
     <main className={styles.page}>
       <SiteHeader  />
-      <ProfilePosts params={params} authedUser={user} username={user.username}  postsResponse={postsResponse}></ProfilePosts>
+      <ProfilePosts params={_searchParams} authedUser={user} username={username}  postsResponse={postsResponse}></ProfilePosts>
     </main>
   );
 }

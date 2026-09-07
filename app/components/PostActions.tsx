@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import styles from "./page.module.css";
+import styles from "./PostActions.module.css";
 import { deletePost } from "../actions/actions";
 
 export default function PostActions({ id, title }: { id: string; title: string }) {

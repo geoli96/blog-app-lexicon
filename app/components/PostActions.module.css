@@ -1,0 +1,2 @@
+.actions { display: flex; align-items: center; gap: 13px; }
+.actions button { padding: 5px 0; border: 0; color: #cf222e; background: transparent; cursor: pointer; font: 11px var(--font-geist-sans), sans-serif; }
