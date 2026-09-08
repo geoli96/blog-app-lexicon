@@ -90,7 +90,7 @@ export default async function Home({ searchParams, isFollowingPage }: {isFollowi
 
 function PostCard({ post, featured }: { post: Post; featured: boolean }) {
   return <Link className={`${styles.postCard} ${featured ? styles.featured : ""}`} href={`/posts/${post.id}`}>
-    <img className={styles.cardVisual} height={288} width={"40%"} src={post.imageUrl}/>
+    <img className={styles.cardVisual} height={295} width={"40%"} src={post.imageUrl}/>
     <div className={styles.cardContent}><div className={styles.cardMeta}>
       <span>{post.category}</span>
       <span>{post.date}</span>

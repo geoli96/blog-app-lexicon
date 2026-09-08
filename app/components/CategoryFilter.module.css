@@ -1,2 +1,2 @@
-.categoryFilter { display: flex; align-items: center; gap: 9px; color: #57606a;  font-weight: bold; letter-spacing: .08em;  }
+.categoryFilter { display: flex; align-items: center; gap: 9px; color: #57606a;   letter-spacing: .08em;  }
 .categoryFilter select { min-width: 105px; padding: 8px 18px 8px 8px; border: 1px solid #d0d7de; border-radius: 6px; outline: 0; color: #1f2328; background: #f6f8fa; cursor: pointer;  }

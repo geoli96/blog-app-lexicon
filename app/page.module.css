@@ -36,7 +36,7 @@
   background: transparent;
   font-family: Georgia, serif;
   font-size: 19px;
-  font-weight: bold;
+  
 }
 
 .mark {
@@ -56,7 +56,7 @@
 .navLink, .navLinkActive { padding: 8px 0; color: #57606a; background: transparent;  }
 .navLink span, .navLinkActive span { margin-left: 5px; color: #57606a;  }
 .navLinkActive { color: #1f2328; border-bottom: 1px solid #0969da; }
-.writeButton { padding: 11px 15px; color: #ffffff; background: #1f883d; border-radius: 6px;  }
+.writeButton { padding: 11px 15px; color: #ffffff; background: black; border-radius: 6px;  }
 .writeButton b { margin-left: 10px; color: #ffffff; font-size: 17px; font-weight: normal; }
 
 .main { max-width: 1240px; margin: 0 auto; padding: 0 36px 90px; }
@@ -70,21 +70,21 @@
 .search span { font-family: Georgia, serif; font-size: 22px; line-height: 1; }
 .search input { width: 100%; border: 0; outline: 0; color: #1f2328; background: transparent;  }
 .search input::placeholder { color: #8d8880; }
-.search button { padding: 5px 0 5px 8px; border: 0; border-left: 1px solid #d0d7de; color: #0969da; background: transparent; cursor: pointer; font: bold 10px var(--font-geist-sans), sans-serif; }
+.search button { padding: 5px 0 5px 8px; border: 0; border-left: 1px solid #d0d7de; color: #0969da; background: transparent; cursor: pointer;}
 .postGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
 .postCard,.postCardEmpty { display: flex; padding: 0; overflow: hidden; color: inherit; text-align: left; background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 6px; transition: border-color .2s ease, box-shadow .2s ease; }
-.postCardEmpty {border: 1px solid #1f883d; visibility: hidden;}
-.postCardEmpty > div {height: 288px;}
+.postCardEmpty {border: 1px solid black; visibility: hidden;}
+.postCardEmpty > div {height: 295px;}
 .postCard:hover { border-color: #0969da; box-shadow: 0 3px 8px rgba(31, 35, 40, .12); }
 .cardVisual { display: grid; min-width: 34%; place-items: center; object-fit: cover; }
 .postCard:not(.featured) .cardVisual { background: white }
 .cardVisual span { font-family: Georgia, serif; font-size: 48px;  }
 .cardContent { display: flex; flex: 1; flex-direction: column; align-items: flex-start; padding: 26px 27px; }
-.cardMeta { display: flex; height: 14px; overflow: hidden; justify-content: space-between; width: 100%; color: #817b72;  letter-spacing: .07em;  }
+.cardMeta { display: flex; height: 21px; overflow: hidden; justify-content: space-between; width: 100%; color: #817b72;  letter-spacing: .07em;  }
 .cardMeta span:first-child { color: #bd5438; }
 .cardContent h3 { height: 59px; overflow: hidden; max-width: 340px; margin: 29px 0 10px; font-family: Georgia, serif; font-size: 26px; font-weight: normal; line-height: 1.08; }
 .cardContent p { max-width: 310px; height: 42px; overflow: hidden; margin: 0; color: #57606a;  line-height: 1.5; }
-.readLink { margin-top: auto; height: 42px; padding-top: 20px; color: #0969da;  font-weight: bold; }
+.readLink { margin-top: auto; height: 42px; padding-top: 20px; color: #0969da;   }
 .author { margin-top: auto; height: 40px; padding-top: 20px; color: #57606a;   }
 .readLink b { margin-left: 7px; color: #0969da; font-size: 16px; font-weight: normal; }
 .empty { color: #57606a; font-size: 14px }
@@ -109,7 +109,7 @@
 .composerHeader  { margin-bottom: 8px; }
 .closeButton { padding: 0; color: #6c6962; background: transparent; font-size: 28px; font-weight: 200; line-height: .7; }
 .composer form { display: flex; flex-direction: column; gap: 19px; }
-.composer label { display: flex; flex-direction: column; gap: 8px; color: #6c6962;  font-weight: bold; letter-spacing: .08em;  }
+.composer label { display: flex; flex-direction: column; gap: 8px; color: #6c6962;   letter-spacing: .08em;  }
 .composer input, .composer textarea { width: 100%; padding: 12px 0; border: 0; border-bottom: 1px solid #bdb6aa; outline: 0; color: #24231f; background: transparent; font: 17px Georgia, serif; }
 .composer input:focus, .composer textarea:focus { border-color: #bd5438; }
 .composer textarea { min-height: 150px; resize: vertical; line-height: 1.5; }
