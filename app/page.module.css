@@ -48,7 +48,6 @@
   background: #24292f;
   border-radius: 50%;
   font-family: Georgia, serif;
-  font-size: 14px;
   
 }
 
@@ -87,7 +86,7 @@
 .readLink { margin-top: auto; height: 42px; padding-top: 20px; color: #0969da;   }
 .author { margin-top: auto; height: 40px; padding-top: 20px; color: #57606a;   }
 .readLink b { margin-left: 7px; color: #0969da; font-size: 16px; font-weight: normal; }
-.empty { color: #57606a; font-size: 14px }
+.empty { color: #57606a;}
 .pagination { display: flex; align-items: center; justify-content: space-between; margin-top: 30px; padding-top: 18px; border-top: 1px solid #d0d7de; color: #57606a;  }
 .pagination a { padding: 8px 0; color: #0969da; cursor: pointer; font: inherit; text-decoration: none; }
 .pagination .disabledPage { color: #8c959f; cursor: not-allowed; pointer-events: none; }
