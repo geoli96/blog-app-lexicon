@@ -13,8 +13,8 @@
 
 .wordmark, .backLink, .postInfo { color: inherit; text-decoration: none; }
 .wordmark { display: flex; align-items: center; gap: 11px; font-family: Georgia, serif; font-size: 19px; font-weight: bold; }
-.mark { display: grid; width: 30px; height: 30px; place-items: center; color: #ffffff; background: #24292f; border-radius: 50%; font-size: 13px; font-weight: 700; }
-.writeButton { padding: 11px 15px; color: #ffffff; background: #1f883d; border-radius: 6px; font-size: 13px; text-decoration: none; }
+.mark { display: grid; width: 30px; height: 30px; place-items: center; color: #ffffff; background: #24292f; border-radius: 50%;  font-weight: 700; }
+.writeButton { padding: 11px 15px; color: #ffffff; background: #1f883d; border-radius: 6px;  text-decoration: none; }
 .writeButton b { margin-left: 10px; color: #e9a183; font-size: 17px; font-weight: normal; }
 .content { max-width: 1240px; margin: 0 auto; padding: 65px 36px 90px; }
 .backLink { display: block; margin-bottom: 69px; color: #57606a;  }
@@ -29,15 +29,15 @@
 .post:hover { padding-left: 12px; background: #f6f8fa; }
 .emptyPost { visibility: hidden; pointer-events: none; }
 .noPostsText { border-bottom: 0px; grid-template-columns: auto; align-items: flex-start; }
-.image { display: grid; width:120px; height: 120px; place-items: center; color: #f2efe9; font-family: Georgia, serif; font-size: 18px; font-style: italic; }
+.image { display: grid; width:120px; height: 120px; place-items: center; color: #f2efe9; font-family: Georgia, serif; font-size: 18px;  }
 .postInfo { min-width: 0;margin-left: 40px; }
 .postInfo div {height: 15px; overflow: hidden;}
 .postInfo h2 {height: 26px; overflow: hidden;}
 .postInfo p {height: 60px; overflow: hidden;}
-.meta { display: flex; gap: 17px; color: #57606a; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
+.meta { display: flex; gap: 17px; color: #57606a;  letter-spacing: .08em;  }
 .meta span:first-child { color: #0969da; }
 .post h2 { margin: 11px 0 7px; color: #0969da; font-family: var(--font-geist-sans), sans-serif; font-size: 20px; font-weight: 600; line-height: 1.3; }
-.post p { margin: 0; color: #57606a; font-size: 13px; line-height: 1.5; }
+.post p { margin: 0; color: #57606a;  line-height: 1.5; }
 .empty { color: #57606a; font-size: 14px; }
 .pagination { display: flex; align-items: center; justify-content: space-between; margin-top: 30px; padding-top: 18px; border-top: 1px solid #d0d7de; color: #57606a;  }
 .pagination a { padding: 8px 0; color: #0969da; cursor: pointer; font: inherit; text-decoration: none; }

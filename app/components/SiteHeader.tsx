@@ -9,10 +9,7 @@ export default async function SiteHeader({ actions }: { actions?: ReactNode }) {
   const isLoggedIn = !!session?.user;
 
   return <header className={styles.header}>
-    <Link className={styles.wordmark} href="/" aria-label="Back to the blog">
-      <span className={styles.mark}>tb</span>
-      <span className={styles.markFull}>the blog</span>
-    </Link>
+    <HeaderLink href="/">Posts</HeaderLink>
     <nav className={styles.actions} aria-label="Main navigation">
       {actions}
       {isLoggedIn ? (
