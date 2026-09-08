@@ -39,21 +39,21 @@ export default function ProfileForm({user}: {user: any}) {
         <h2>Change password</h2>
         <div className={styles.formGroup}>
      <label htmlFor="password">
-        PASSWORD
+        Password
         </label>
         <input name="password" minLength={6} maxLength={100} type="password" 
         value={password} onChange={(e) => setPassword(e.target.value)} required />
         </div>
         <div className={styles.formGroup}>
      <label htmlFor="password">
-        NEW PASSWORD
+        New password
         </label>
         <input name="newpassword" minLength={6} maxLength={100} type="password"
          value={newPassword} onChange={(e) => setNewPassword(e.target.value)} required />
         </div>
         <div className={styles.formGroup}>
      <label htmlFor="password">
-        CONFIRM NEW PASSWORD
+        Confirm new password
         </label>
         <input name="confirmpassword" minLength={6} maxLength={100} type="password"
          value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />

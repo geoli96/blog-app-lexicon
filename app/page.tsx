@@ -90,15 +90,14 @@ export default async function Home({ searchParams, isFollowingPage }: {isFollowi
 
 function PostCard({ post, featured }: { post: Post; featured: boolean }) {
   return <Link className={`${styles.postCard} ${featured ? styles.featured : ""}`} href={`/posts/${post.id}`}>
-    <img className={styles.cardVisual} height={288} width={"40%"} src={post.imageUrl}/>
+    <img className={styles.cardVisual} height={295} width={"40%"} src={post.imageUrl}/>
     <div className={styles.cardContent}><div className={styles.cardMeta}>
       <span>{post.category}</span>
       <span>{post.date}</span>
       </div>
         <h3>{post.title}</h3>
         <p>{post.excerpt}</p>
-        <span  className={styles.author}>Written by {post.createdBy} </span>
-        <span className={styles.readLink}>Read post </span>
+        <span  className={styles.author}>By {post.createdBy} </span>
       </div>
   </Link>;
 }

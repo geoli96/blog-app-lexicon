@@ -33,7 +33,7 @@ export default function ProfileForm({user}: {user: any}) {
         </label>
         <input name="name" type="text" value={name} onChange={(e) => setName(e.target.value)} required />
         </div>
-      <button type="submit">Update Profile</button>
+      <button type="submit">Update profile</button>
     </form>
   )
 }
