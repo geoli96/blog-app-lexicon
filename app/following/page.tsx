@@ -87,8 +87,7 @@ function PostCard({ post, featured }: { post: Post; featured: boolean }) {
       </div>
         <h3>{post.title}</h3>
         <p>{post.excerpt}</p>
-        <span  className={styles.author}>Written by {post.createdBy} </span>
-        <span className={styles.readLink}>Read post </span>
+        <span  className={styles.author}>By {post.createdBy} </span>
       </div>
   </Link>;
 }
