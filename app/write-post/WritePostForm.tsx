@@ -13,7 +13,7 @@ export default function WritePostForm({csrfToken}: {csrfToken:string}){
         const formData = new FormData(e.target);
         const res = await publishPost(formData);
         sessionStorage.setItem("pushed","true");
-        router.push(`/posts/${res.id}`);
+        router.push(`/posts/${res.id}?hideBackLink=true`);
     }}  >
           <label>Title<input name="title" required placeholder="Give your post a good name" /></label>
           <div className={styles.formRow}>
