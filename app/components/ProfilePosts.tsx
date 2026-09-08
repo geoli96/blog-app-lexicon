@@ -45,7 +45,7 @@ export default function ProfilePosts({ params, authedUser, username, postsRespon
   return (
       <section className={styles.content}>
         <div className={styles.titleRow}>
-          <div><p className={styles.eyebrow}>The collection</p><h1>{authedUser?.username === username ? 'My blog posts' : `${username}'s posts`}</h1></div>
+          <div><h1>{authedUser?.username === username ? 'My blog posts' : `${username}'s posts`}</h1></div>
           <div className={styles.filterControls}>
           <CategoryFilter selectedCategory={category} />
           <SearchForm value={query} action="/my-posts" clearHref={category ? `/my-posts?category=${encodeURIComponent(category)}` : "/my-posts"} />

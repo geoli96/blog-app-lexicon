@@ -102,7 +102,7 @@ export async function publishPost(formData: FormData) {
 
     try {
       const postResponse = (await axios.post(`${API_URL}/posts`, post)).data;
-      redirect(`/posts/${postResponse.id}`); 
+      return postResponse;
     } catch (error) {
       console.log(error);
       throw error;
@@ -134,21 +134,24 @@ export async function publishPost(formData: FormData) {
             content: formData.get("content"),
             category: formData.get("category"),
         });
-
-        await utapi.deleteFiles([post.imageKey]);
         
         const postImageFile = formData.get('image');
-        if(!(postImageFile instanceof File && postImageFile)){
-          throw new Error("Invalid image file");
-        }
         const imageCaption = formData.get('imagecaption');
-        if(!(typeof imageCaption === "string" && imageCaption)){
-          throw new Error("Image caption");
+        const updatedImage: {imageUrl?:string, imageKey?:string, imageCaption?: string} = {};
+
+        if(typeof imageCaption === "string" && imageCaption){
+          updatedImage["imageCaption"] = imageCaption;
         }
 
-        const imageData = (await utapi.uploadFiles(postImageFile)).data;
-        const imageUrl = imageData!.ufsUrl!;
-        const imageKey = imageData!.key;
+        if((postImageFile instanceof File && postImageFile.size)){
+          await utapi.deleteFiles([post.imageKey]);
+          const imageData = (await utapi.uploadFiles(postImageFile)).data;
+          const imageUrl = imageData!.ufsUrl!;
+          const imageKey = imageData!.key;
+          updatedImage["imageUrl"] = imageUrl;
+          updatedImage["imageKey"] = imageKey;
+        }
+
 
       const updatedPost = {
         ...post,
@@ -157,13 +160,12 @@ export async function publishPost(formData: FormData) {
         content: postData.content,
         category: postData.category,
         readTime: `${Math.max(1, Math.ceil(postData.content.split(/\s+/).length / 180))} min read`,
-        imageUrl,
-        imageKey,
-        imageCaption: imageCaption,
+        imageUrl: updatedImage.imageUrl ?? post.imageUrl,
+        imageKey: updatedImage.imageKey ?? post.imageKey,
+        imageCaption: updatedImage.imageCaption ?? post.imageCaption,
         updatedAt: new Date().toISOString(),
       };
       await axios.put(`${API_URL}/posts/${post.id}`, updatedPost);
-      redirect(`/posts/${post.id}`);
       } catch (error) {
           console.log("Could not update post", error); 
           throw error;

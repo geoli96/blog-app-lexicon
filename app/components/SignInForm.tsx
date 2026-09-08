@@ -16,6 +16,7 @@ export default function SignInForm() {
 
   useEffect(() => {
     if(errorMessage === "success"){
+      sessionStorage.setItem("pushed","true");
       router.push("/");
   }
   })

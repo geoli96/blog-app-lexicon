@@ -59,7 +59,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ s
         <>
             <section className={styles.archive}>
               <div className={styles.sectionHeader}>
-                <div><p className={styles.eyebrow}>Blog posts</p><h2>Latest posts</h2></div>
+                <div><h2>Latest posts</h2></div>
                 <div className={styles.filterControls}>
                   <CategoryFilter selectedCategory={category} />
                   <SearchFilter selectedSearchFilter={searchFilter}/>

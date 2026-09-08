@@ -16,7 +16,7 @@ export default async function PostPage({ params }: { params: Promise<{ id: strin
 
   return (
     <main className={styles.page}>
-      <SiteHeader actions={<HeaderLink href="/">Back to archive </HeaderLink>} />
+      <SiteHeader />
       <article className={styles.article}>
         <BackLink>← Back to archive</BackLink>
         <div className={styles.meta}><span>{post.category}</span><i />{post.date}<i />{post.readTime}<span>By {post.createdBy}</span></div>

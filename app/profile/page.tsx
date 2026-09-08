@@ -11,7 +11,6 @@ export default async function ProfilePage() {
     <main className={styles.page}>
       <SiteHeader />
       <section className={styles.content}>
-        <p className={styles.eyebrow}>Join the collection</p>
         <h1 className={styles.title}>Profile</h1>
         <p className={styles.intro}>Manage your profile information.</p>
         <SessionProvider session={session}>

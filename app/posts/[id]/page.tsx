@@ -5,9 +5,10 @@ import SiteHeader, { HeaderLink } from "../../components/SiteHeader";
 import { auth } from "@/auth";
 import BackLink from "@/app/components/BackLink";
 
-export default async function PostPage({ params }: { params: Promise<{ id: string }> }) {
+export default async function PostPage({ params, searchParams }: { params: Promise<{ id: string }>; searchParams:  Promise<{ hideBackLink: string }> }) {
   const user:any = (await auth())?.user;
   const { id } = await params;
+  const  hideBackLink  = Boolean((await searchParams).hideBackLink);
   const post = await getPost(id);
 
   if (!post) {
@@ -16,9 +17,9 @@ export default async function PostPage({ params }: { params: Promise<{ id: strin
 
   return (
     <main className={styles.page}>
-      <SiteHeader actions={<HeaderLink href="/">Back to archive </HeaderLink>} />
+      <SiteHeader />
       <article className={styles.article}>
-        <BackLink>← Back to archive</BackLink>
+        <BackLink hideBackLink={hideBackLink}>← Back to archive</BackLink>
         <div className={styles.meta}><span>{post.category}</span><i />{post.date}<i />{post.readTime}<span>By {post.createdBy}</span></div>
         <h1>{post.title}</h1>
         <p className={styles.lead}>{post.excerpt}</p>
