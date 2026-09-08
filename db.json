@@ -1,5 +1,6 @@
 {
-  "posts": [],
   "users": [],
+  "follows": [],
+  "posts": [],
   "$schema": "./node_modules/json-server/schema.json"
 }
