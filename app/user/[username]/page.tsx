@@ -30,7 +30,7 @@ export default async function UserPosts({ searchParams, params }: { params: Prom
   return (
     <main className={styles.page}>
       <SiteHeader  />
-      <ProfilePosts params={_searchParams} authedUser={user} username={username}  postsResponse={postsResponse}></ProfilePosts>
+      <ProfilePosts backLinkVisible params={_searchParams} authedUser={user} username={username}  postsResponse={postsResponse}></ProfilePosts>
     </main>
   );
 }

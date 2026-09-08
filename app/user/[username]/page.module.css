@@ -4,3 +4,5 @@
   background: #ffffff;
   font-family: var(--font-geist-sans), sans-serif;
 }
+
+.article { max-width: 1240px; margin: 0 auto; padding: 65px 36px 90px; }
