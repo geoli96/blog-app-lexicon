@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import styles from './ImageInput.module.css'
 
-export default function ImageInput({imgUrl}: {imgUrl?:string}){
+export default function ImageInput({imgUrl,imgCaption}: {imgUrl?:string;imgCaption?:string}){
     const [selectedImage, setSelectedImage] = useState(false);
     useEffect(() => {
         if(selectedImage){
@@ -28,7 +28,6 @@ export default function ImageInput({imgUrl}: {imgUrl?:string}){
             <p className={styles.fakeButtonLabel}>Change image</p>
             </div>: null}
           <input onClick={(e) => {
-            console.log("clicked");
             e.stopPropagation();
           }} className={styles.input + (imgUrl ? " "+ styles.inputHidden : "")} placeholder="" onChange={() => {
             if(!selectedImage){
@@ -42,9 +41,9 @@ export default function ImageInput({imgUrl}: {imgUrl?:string}){
             if (file) {
               imgPreview.src = URL.createObjectURL(file)
             }
-          }} type="file" id="image" name="image" accept="image/png, image/jpeg" required/>
+          }} type="file" id="image" name="image" accept="image/png, image/jpeg"/>
           <label>Image Caption</label>
-          <input name="imagecaption" type='text' required />
+          <input name="imagecaption" defaultValue={imgCaption} type='text' required />
           </>
           
 }

@@ -7,7 +7,6 @@ export default async function RegisterPage() {
     <main className={styles.page}>
       <SiteHeader />
       <section className={styles.content}>
-        <p className={styles.eyebrow}>Join the collection</p>
         <h1 className={styles.title}>Register</h1>
         <p className={styles.intro}>Make a little room for your words.</p>
         <RegisterForm />

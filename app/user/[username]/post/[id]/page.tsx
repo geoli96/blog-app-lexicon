@@ -1,11 +1,11 @@
 import Link from "next/link";
 import styles from "@/app/posts/[id]/page.module.css";
 import { getPost } from "@/app/lib/posts";
-import SiteHeader, { HeaderLink } from "@/app/components/SiteHeader";
+import SiteHeader from "@/app/components/SiteHeader";
 import { auth } from "@/auth";
 import BackLink from "@/app/components/BackLink";
 
-export default async function PostPage({ params }: { params: Promise<{ id: string }> }) {
+export default async function PostPage({ params }: { params: Promise<{ id: string }>; }) {
   const user:any = (await auth())?.user;
   const { id } = await params;
   const post = await getPost(id);
@@ -18,7 +18,7 @@ export default async function PostPage({ params }: { params: Promise<{ id: strin
     <main className={styles.page}>
       <SiteHeader />
       <article className={styles.article}>
-        <BackLink>← Back to user</BackLink>
+        <BackLink >← {`Back to ${post.createdBy}'s posts`}</BackLink>
         <div className={styles.meta}><span>{post.category}</span><i />{post.date}<i />{post.readTime}<span>By {post.createdBy}</span></div>
         <h1>{post.title}</h1>
         <p className={styles.lead}>{post.excerpt}</p>

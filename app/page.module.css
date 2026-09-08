@@ -51,22 +51,21 @@
 
 .nav { display: flex; align-items: center; gap: 29px; }
 .navLink, .navLinkActive { padding: 8px 0; color: #57606a; background: transparent; font-size: 13px; }
-.navLink span, .navLinkActive span { margin-left: 5px; color: #57606a; font-size: 11px; }
+.navLink span, .navLinkActive span { margin-left: 5px; color: #57606a;  }
 .navLinkActive { color: #1f2328; border-bottom: 1px solid #0969da; }
 .writeButton { padding: 11px 15px; color: #ffffff; background: #1f883d; border-radius: 6px; font-size: 13px; }
 .writeButton b { margin-left: 10px; color: #ffffff; font-size: 17px; font-weight: normal; }
 
 .main { max-width: 1240px; margin: 0 auto; padding: 0 36px 90px; }
-.eyebrow { margin: 0 0 20px; color: #57606a; font-size: 10px; font-weight: bold; letter-spacing: .08em; text-transform: uppercase; }
 
 .archive { padding: 55px 0 0; }
 .sectionHeader { display: flex; align-items: end; justify-content: space-between; margin-bottom: 29px; }
-.sectionHeader .eyebrow { margin-bottom: 9px; }
+.sectionHeader { margin-bottom: 30px; }
 .sectionHeader h2, .composer h2 { margin: 0; font-family: Georgia, serif; font-size: 31px; font-weight: normal; }
 .filterControls { display: flex; align-items: end; gap: 24px; }
 .search { display: flex; align-items: center; gap: 8px; width: 180px; padding: 8px 0; border-bottom: 1px solid #d0d7de; color: #57606a; }
 .search span { font-family: Georgia, serif; font-size: 22px; line-height: 1; }
-.search input { width: 100%; border: 0; outline: 0; color: #1f2328; background: transparent; font: 12px var(--font-geist-sans), sans-serif; }
+.search input { width: 100%; border: 0; outline: 0; color: #1f2328; background: transparent;  }
 .search input::placeholder { color: #8d8880; }
 .search button { padding: 5px 0 5px 8px; border: 0; border-left: 1px solid #d0d7de; color: #0969da; background: transparent; cursor: pointer; font: bold 10px var(--font-geist-sans), sans-serif; }
 .postGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
@@ -82,16 +81,16 @@
 .cardMeta span:first-child { color: #bd5438; }
 .cardContent h3 { height: 59px; overflow: hidden; max-width: 340px; margin: 29px 0 10px; font-family: Georgia, serif; font-size: 26px; font-weight: normal; line-height: 1.08; }
 .cardContent p { max-width: 310px; height: 42px; overflow: hidden; margin: 0; color: #57606a; font-size: 13px; line-height: 1.5; }
-.readLink { margin-top: auto; height: 42px; padding-top: 20px; color: #0969da; font-size: 11px; font-weight: bold; }
+.readLink { margin-top: auto; height: 42px; padding-top: 20px; color: #0969da;  font-weight: bold; }
 .author { margin-top: auto; height: 40px; padding-top: 20px; color: #57606a; font-size: 13px;  }
 .readLink b { margin-left: 7px; color: #0969da; font-size: 16px; font-weight: normal; }
 .empty { color: #57606a; font-size: 14px }
-.pagination { display: flex; align-items: center; justify-content: space-between; margin-top: 30px; padding-top: 18px; border-top: 1px solid #d0d7de; color: #57606a; font-size: 11px; }
+.pagination { display: flex; align-items: center; justify-content: space-between; margin-top: 30px; padding-top: 18px; border-top: 1px solid #d0d7de; color: #57606a;  }
 .pagination a { padding: 8px 0; color: #0969da; cursor: pointer; font: inherit; text-decoration: none; }
 .pagination .disabledPage { color: #8c959f; cursor: not-allowed; pointer-events: none; }
 
 .article { max-width: 770px; margin: 0 auto; padding: 65px 0; }
-.backButton { display: block; margin-bottom: 75px; padding: 0; color: #6c6962; background: transparent; font-size: 12px; }
+.backButton { display: block; margin-bottom: 75px; padding: 0; color: #6c6962; background: transparent;  }
 .backButton span { margin-right: 8px; color: #bd5438; font-size: 18px; }
 .articleMeta { display: flex; align-items: center; gap: 13px; color: #817b72; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; }
 .articleMeta span { color: #bd5438; }
@@ -104,7 +103,7 @@
 .modalBackdrop { position: fixed; z-index: 2; inset: 0; display: grid; padding: 20px; place-items: center; background: rgba(36, 35, 31, .48); }
 .composer { width: min(650px, 100%); max-height: 90vh; overflow-y: auto; padding: 38px; background: #f2efe9; box-shadow: 0 20px 60px rgba(36, 35, 31, .25); }
 .composerHeader { display: flex; align-items: start; justify-content: space-between; margin-bottom: 35px; }
-.composerHeader .eyebrow { margin-bottom: 8px; }
+.composerHeader  { margin-bottom: 8px; }
 .closeButton { padding: 0; color: #6c6962; background: transparent; font-size: 28px; font-weight: 200; line-height: .7; }
 .composer form { display: flex; flex-direction: column; gap: 19px; }
 .composer label { display: flex; flex-direction: column; gap: 8px; color: #6c6962; font-size: 10px; font-weight: bold; letter-spacing: .08em; text-transform: uppercase; }
@@ -120,7 +119,7 @@
   .main { padding: 0 20px 55px; }
   .nav { gap: 15px; }
   .navLink, .navLinkActive { font-size: 0; }
-  .navLink span, .navLinkActive span { font-size: 11px; }
+  .navLink span, .navLinkActive span {  }
   .writeButton { padding: 10px; font-size: 0; }
   .writeButton b { margin: 0; font-size: 21px; }
   .archive { padding: 45px 0 0; }

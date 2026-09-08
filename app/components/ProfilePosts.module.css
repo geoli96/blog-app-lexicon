@@ -17,14 +17,13 @@
 .writeButton { padding: 11px 15px; color: #ffffff; background: #1f883d; border-radius: 6px; font-size: 13px; text-decoration: none; }
 .writeButton b { margin-left: 10px; color: #e9a183; font-size: 17px; font-weight: normal; }
 .content { max-width: 1240px; margin: 0 auto; padding: 65px 36px 90px; }
-.backLink { display: block; margin-bottom: 69px; color: #57606a; font-size: 12px; }
+.backLink { display: block; margin-bottom: 69px; color: #57606a;  }
 .titleRow { display: flex; align-items: end; justify-content: space-between; gap: 30px; }
-.eyebrow { margin: 0 0 17px; color: #bd5438; font-size: 10px; font-weight: bold; letter-spacing: .14em; text-transform: uppercase; }
 .titleRow h1 { margin: 0; font-family: Georgia, serif; font-size: clamp(48px, 7vw, 78px); font-weight: normal; line-height: .98; letter-spacing: -3px; }
 .search { display: flex; align-items: center; gap: 8px; width: 200px; padding: 8px 0; border-bottom: 1px solid #aaa49a; color: #6c6962; }
 .search span { font-family: Georgia, serif; font-size: 22px; line-height: 1; }
-.search input { width: 100%; border: 0; outline: 0; color: #24231f; background: transparent; font: 12px var(--font-geist-sans), sans-serif; }
-.count { margin: 27px 0 18px; color: #817b72; font-size: 11px; }
+.search input { width: 100%; border: 0; outline: 0; color: #24231f; background: transparent;  }
+.count { margin: 27px 0 18px; color: #817b72;  }
 .postList { border-top: 1px solid #d0d7de; }
 .post { display: grid; height: 170px; grid-template-columns: 72px 1fr auto; align-items: center; gap: 26px; padding: 25px 12px 25px 0; border-bottom: 1px solid #d0d7de; transition: padding .2s ease, background .2s ease; }
 .post:hover { padding-left: 12px; background: #f6f8fa; }
@@ -40,7 +39,7 @@
 .post h2 { margin: 11px 0 7px; color: #0969da; font-family: var(--font-geist-sans), sans-serif; font-size: 20px; font-weight: 600; line-height: 1.3; }
 .post p { margin: 0; color: #57606a; font-size: 13px; line-height: 1.5; }
 .empty { color: #57606a; font-size: 14px; }
-.pagination { display: flex; align-items: center; justify-content: space-between; margin-top: 30px; padding-top: 18px; border-top: 1px solid #d0d7de; color: #57606a; font-size: 11px; }
+.pagination { display: flex; align-items: center; justify-content: space-between; margin-top: 30px; padding-top: 18px; border-top: 1px solid #d0d7de; color: #57606a;  }
 .pagination a { padding: 8px 0; color: #0969da; cursor: pointer; font: inherit; text-decoration: none; }
 .pagination .disabledPage { color: #8c959f; cursor: not-allowed; pointer-events: none; }
 .filterControls { display: flex; align-items: end; gap: 24px; }

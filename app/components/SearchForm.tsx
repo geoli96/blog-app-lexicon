@@ -22,6 +22,7 @@ export default function SearchForm({ value, action, clearHref = action, hiddenFi
       }else{
         nextParams.delete("search");
       }
+      sessionStorage.setItem("pushed","true");
       router.push(action + (nextParams.size ? "?" + nextParams.toString() : ""), {scroll:false})
     }
     } type="submit">Search</button>
