@@ -19,7 +19,6 @@ export default async function MyPost({ params }: { params: Promise<{ id: string 
       <div className={styles.meta}><span>{post.category}</span><i />{post.date}<i />{post.readTime}<span>By {post.createdBy}</span></div>
       <h1>{post.title}</h1>
       <p className={styles.lead}>{post.excerpt}</p>
-      <p className={styles.lead}>{post.createdBy}</p>
       <figure>
           <img className={styles.image} src={post.imageUrl}/>
           <figcaption>{post.imageCaption}</figcaption>
