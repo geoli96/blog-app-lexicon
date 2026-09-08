@@ -9,7 +9,7 @@ import axios from "axios";
 import FollowButton from "./FollowButton";
 import BackLink from "./BackLink";
 
-export default async function ProfilePosts({ params, authedUser, username, postsResponse,backLinkVisible }: {backLinkVisible: boolean; authedUser?: {id:number, username:string,name:string} ; params: Record<string, string>; username: string, postsResponse: {
+export default async function ProfilePosts({ params, authedUser, username, postsResponse,backLinkVisible }: {backLinkVisible?: boolean; authedUser?: {id:number, username:string,name:string} ; params: Record<string, string>; username: string, postsResponse: {
     data: {
         data: Post[];
         items: number;
