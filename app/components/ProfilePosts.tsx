@@ -4,19 +4,24 @@ import { categories, Post } from "../lib/posts";
 import PostActions from "./PostActions";
 import SearchForm from "../components/SearchForm";
 import CategoryFilter from "../components/CategoryFilter";
+import { auth } from "@/auth";
+import axios from "axios";
+import FollowButton from "./FollowButton";
 
-export default function ProfilePosts({ params, authedUser, username, postsResponse }: { authedUser?: {id:number, username:string,name:string} ; params: Record<string, string>; username: string, postsResponse: {
+export default async function ProfilePosts({ params, authedUser, username, postsResponse }: { authedUser?: {id:number, username:string,name:string} ; params: Record<string, string>; username: string, postsResponse: {
     data: {
         data: Post[];
         items: number;
         pages: number;
     };
 } }) {
+  const user:any = (await auth())?.user;
   const query = params.search || "";
   const selectedCategory = params.category || "";
   const category = categories.includes(selectedCategory) ? selectedCategory : "";
   const parsedPage = Number.parseInt(params.page || "1", 10);
   const currentPage = Number.isFinite(parsedPage) && parsedPage > 0 ? parsedPage : 1;
+  const isFollowedByUser = Boolean((await axios.get(`http://localhost:4000/follows?followedBy=${user.username}&follow=${username}`)).data[0]);
 
   const filter = new URLSearchParams({
     _page: String(currentPage),
@@ -46,11 +51,14 @@ export default function ProfilePosts({ params, authedUser, username, postsRespon
       <section className={styles.content}>
         <div className={styles.titleRow}>
           <div><h1>{authedUser?.username === username ? 'My blog posts' : `${username}'s posts`}</h1></div>
-          <div className={styles.filterControls}>
+          <div className={styles.followButtonContainer}>
+          {user && user.username !== username ? <FollowButton isFollowedByUser={isFollowedByUser} username={username}/>: null}
+          </div>
+        </div>
+        <div className={styles.filterControls}>
           <CategoryFilter selectedCategory={category} />
           <SearchForm value={query} action="/my-posts" clearHref={category ? `/my-posts?category=${encodeURIComponent(category)}` : "/my-posts"} />
           </div>
-        </div>
         <p className={styles.count}>{postCount} {postCount === 1 ? "post" : "posts"}</p>
         <div className={styles.postList}>
           {filteredPosts.map((post: Post, index: number) => (

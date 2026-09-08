@@ -18,7 +18,7 @@
 .writeButton b { margin-left: 10px; color: #e9a183; font-size: 17px; font-weight: normal; }
 .content { max-width: 1240px; margin: 0 auto; padding: 65px 36px 90px; }
 .backLink { display: block; margin-bottom: 69px; color: #57606a;  }
-.titleRow { display: flex; align-items: end; justify-content: space-between; gap: 30px; }
+.titleRow { display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; gap: 30px; }
 .titleRow h1 { margin: 0; font-family: Georgia, serif; font-size: clamp(48px, 7vw, 78px); font-weight: normal; line-height: .98; letter-spacing: -3px; }
 .search { display: flex; align-items: center; gap: 8px; width: 200px; padding: 8px 0; border-bottom: 1px solid #aaa49a; color: #6c6962; }
 .search span { font-family: Georgia, serif; font-size: 22px; line-height: 1; }
@@ -42,7 +42,14 @@
 .pagination { display: flex; align-items: center; justify-content: space-between; margin-top: 30px; padding-top: 18px; border-top: 1px solid #d0d7de; color: #57606a;  }
 .pagination a { padding: 8px 0; color: #0969da; cursor: pointer; font: inherit; text-decoration: none; }
 .pagination .disabledPage { color: #8c959f; cursor: not-allowed; pointer-events: none; }
-.filterControls { display: flex; align-items: end; gap: 24px; }
+.filterControls {margin-top: 20px; display: flex; align-items: end; gap: 24px;justify-content: flex-end; }
+.followButton {color: #fff;
+  background: #000000;
+  border: 0px;
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 11px 15px;}
+.followButtonContainer{height: 40px;}
 
 @media (max-width: 700px) {
   .titleRow { align-items: start; flex-direction: column; gap: 25px; }

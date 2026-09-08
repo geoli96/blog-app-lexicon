@@ -1,16 +1,19 @@
 import Link from "next/link";
-import styles from "./page.module.css";
-import { categories, PaginatedPosts, Post, searchFilters } from "./lib/posts";
-import CategoryFilter from "./components/CategoryFilter";
-import SiteHeader from "./components/SiteHeader";
-import SearchForm from "./components/SearchForm";
+import styles from "../page.module.css";
+import { categories, PaginatedPosts, Post, searchFilters } from "../lib/posts";
+import CategoryFilter from "../components/CategoryFilter";
+import SiteHeader from "../components/SiteHeader";
+import SearchForm from "../components/SearchForm";
 import axios from "axios";
-import SearchFilter from "./components/SearchFilter";
+import SearchFilter from "../components/SearchFilter";
 import { auth } from "@/auth";
 
-export default async function Home({ searchParams, isFollowingPage }: {isFollowingPage?:boolean; searchParams: Promise<{ search?: string; category?: string; page?: string; searchFilter?:string }> }) {
+export default async function FollowingPage({ searchParams }: {searchParams: Promise<{ search?: string; category?: string; page?: string; searchFilter?:string }> }) {
   const user:any = (await auth())?.user;
-  const params = await searchParams;
+  if(!user){
+    return null;
+  }
+    const params = await searchParams;
   const query = params.search || "";
   const selectedCategory = params.category || "";
   const category = categories.includes(selectedCategory) ? selectedCategory : "";
@@ -22,17 +25,9 @@ export default async function Home({ searchParams, isFollowingPage }: {isFollowi
   const filter = new URLSearchParams();
   filter.append("_page", String(currentPage));
   filter.append("_per_page", "6");
-  if(category){
-    filter.append("category", category);
-  }
-  if(query){
-    if(searchFilter){
-      filter.append(searchFilter+":contains", query);
-    }else{
-      filter.append("title:contains", query);
-    }
-  }
 
+  const followedAuthors:any = (await axios.get(`http://localhost:4000/follows?followedBy=${user.username}`)).data;
+  filter.append("_where", `{"or": ${JSON.stringify(followedAuthors.map(({follow}:{follow:string}) => ({createdBy: {eq: follow}})))} }`);
   const filteredPostsResponse = await axios.get<PaginatedPosts>('http://localhost:4000/posts?' + filter.toString());
 
   const filteredPosts = filteredPostsResponse.data.data;
@@ -60,20 +55,15 @@ export default async function Home({ searchParams, isFollowingPage }: {isFollowi
         <>
             <section className={styles.archive}>
               <div className={styles.pageLinksContainer}>
-              <a href="/" className={styles.pageLinkActive}>All posts</a>
-              {user?<a href="/following">Followed authors</a> : null}
+              <a href="/" >All posts</a>
+              {user?<a href="/following" className={styles.pageLinkActive}>Followed authors</a> : null}
               </div>
               <div className={styles.sectionHeader}>
                 <div><h2>Latest posts</h2></div>
-                <div className={styles.filterControls}>
-                  <CategoryFilter selectedCategory={category} />
-                  <SearchFilter selectedSearchFilter={searchFilter}/>
-                  <SearchForm value={query} action="/" clearHref={category ? `/?category=${encodeURIComponent(category)}` : "/"} hiddenFields={category !== "All" ? { category } : {}} />
-                </div>
               </div>
               <div className={styles.postGrid}>
                 {filteredPosts.map((post: Post, index:number) => <PostCard key={post.id} post={post} featured={safePage === 1 && index === 0} />)}
-                {filteredPosts.length === 0 && <p className={styles.empty}>No posts match that search.</p>}
+                {filteredPosts.length === 0 && <p className={styles.empty}>No posts found.</p>}
                 {extra.map((v,i) => <Link key={"postcard-empty"+(i+1)} className={`${styles.postCardEmpty}`} href=""><div></div></Link>)}
               </div>
               {<div className={styles.pagination} aria-label="Post pagination">

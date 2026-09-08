@@ -300,3 +300,80 @@ export async function updatePassword(formData: FormData) {
       throw error;
     }
 }
+
+export async function followAuthor(username:string) {
+    const user:any = (await auth())?.user;
+    if(!user) {
+        throw new Error('User not authenticated');
+    }
+    const _username = z.string().parse(username);
+
+    try {
+          const users = (await axios.get(`${process.env.API_URL}/users`, {
+            params: { username:_username },
+          })).data;
+
+          if(users.length === 0){
+            throw new Error('No user found with username');
+          }
+          const followedUser = users[0];
+          if(followedUser.id === user.id){
+            throw new Error();
+          }
+
+          // code below should be a transaction in real database
+          const follow = (await axios.post(`${process.env.API_URL}/follows`, {
+            follow: followedUser.username,
+            followedBy: user.username
+          })).data;
+
+          const follows = (await axios.get(`${process.env.API_URL}/follows`, {
+            params: { follow: _username, followedBy: user.username },
+          })).data;
+
+          if(follows.length > 1){
+            await axios.delete(`http://localhost:4000/follows/${follow.id}`);
+            throw new Error('Already following');
+          }
+
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+}
+
+export async function unfollowAuthor(username:string) {
+    const user:any = (await auth())?.user;
+    if(!user) {
+        throw new Error('User not authenticated');
+    }
+    const _username = z.string().parse(username);
+
+    try {
+          const users = (await axios.get(`${process.env.API_URL}/users`, {
+            params: { username:_username },
+          })).data;
+
+          if(users.length === 0){
+            throw new Error('No user found with username');
+          }
+          const unfollowedUser = users[0];
+
+          const follow = (await axios.get(`${process.env.API_URL}/follows`, {
+            params: {
+              follow: unfollowedUser.username,
+              followedBy: user.username
+            }
+          })).data[0];
+
+          if(!follow){
+            throw new Error("Not following");
+          }
+          
+          await axios.delete(`http://localhost:4000/follows/${follow.id}`);
+
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+}
