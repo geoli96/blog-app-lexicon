@@ -7,8 +7,9 @@ import CategoryFilter from "../components/CategoryFilter";
 import { auth } from "@/auth";
 import axios from "axios";
 import FollowButton from "./FollowButton";
+import BackLink from "./BackLink";
 
-export default async function ProfilePosts({ params, authedUser, username, postsResponse }: { authedUser?: {id:number, username:string,name:string} ; params: Record<string, string>; username: string, postsResponse: {
+export default async function ProfilePosts({ params, authedUser, username, postsResponse,backLinkVisible }: {backLinkVisible: boolean; authedUser?: {id:number, username:string,name:string} ; params: Record<string, string>; username: string, postsResponse: {
     data: {
         data: Post[];
         items: number;
@@ -49,6 +50,7 @@ export default async function ProfilePosts({ params, authedUser, username, posts
 
   return (
       <section className={styles.content}>
+        {backLinkVisible ? <BackLink>← Back to post</BackLink> : null}
         <div className={styles.titleRow}>
           <div><h1>{authedUser?.username === username ? 'My blog posts' : `${username}'s posts`}</h1></div>
           <div className={styles.followButtonContainer}>
