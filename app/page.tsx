@@ -7,11 +7,13 @@ import SearchForm from "./components/SearchForm";
 import axios from "axios";
 import SearchFilter from "./components/SearchFilter";
 import { auth } from "@/auth";
+import SortBy from "./components/SortBy";
 
-export default async function Home({ searchParams, isFollowingPage }: {isFollowingPage?:boolean; searchParams: Promise<{ search?: string; category?: string; page?: string; searchFilter?:string }> }) {
+export default async function Home({ searchParams }: { searchParams: Promise<{ search?: string; category?: string; page?: string; searchFilter?:string;sortBy?:string }> }) {
   const user:any = (await auth())?.user;
   const params = await searchParams;
   const query = params.search || "";
+  const sortBy = params.sortBy || "";
   const selectedCategory = params.category || "";
   const category = categories.includes(selectedCategory) ? selectedCategory : "";
   const selectedSearchFilter = params.searchFilter || "";
@@ -22,6 +24,7 @@ export default async function Home({ searchParams, isFollowingPage }: {isFollowi
   const filter = new URLSearchParams();
   filter.append("_page", String(currentPage));
   filter.append("_per_page", "6");
+  filter.append("_sort", sortBy || "-dateInMs");
   if(category){
     filter.append("category", category);
   }
@@ -61,12 +64,13 @@ export default async function Home({ searchParams, isFollowingPage }: {isFollowi
             <section className={styles.archive}>
               <div className={styles.pageLinksContainer}>
               <a href="/" className={styles.pageLinkActive}>All posts</a>
-              {user?<a href="/following">Followed authors</a> : null}
+              {user?<a href="/following">By followed authors</a> : null}
               </div>
               <div className={styles.sectionHeader}>
                 <div><h2>Latest posts</h2></div>
                 <div className={styles.filterControls}>
                   <CategoryFilter selectedCategory={category} />
+                  <SortBy selectedSort={sortBy} />
                   <SearchFilter selectedSearchFilter={searchFilter}/>
                   <SearchForm value={query} action="/" clearHref={category ? `/?category=${encodeURIComponent(category)}` : "/"} hiddenFields={category !== "All" ? { category } : {}} />
                 </div>

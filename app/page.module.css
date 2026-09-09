@@ -27,6 +27,8 @@
   cursor: pointer;
 }
 
+.filterControls { display: flex; align-items: end; gap: 24px; height: 48px; }
+
 .wordmark {
   display: flex;
   align-items: center;
@@ -61,7 +63,7 @@
 .main { max-width: 1240px; margin: 0 auto; padding: 0 36px 90px; }
 
 .archive { padding: 55px 0 0; }
-.sectionHeader { display: flex; align-items: end; justify-content: space-between; margin-bottom: 29px; height: 43px;}
+.sectionHeader { display: flex; margin-bottom: 29px; flex-wrap: wrap; flex-direction: column;}
 .sectionHeader { margin-bottom: 30px; }
 .sectionHeader h2, .composer h2 { margin: 0; font-family: Georgia, serif; font-size: 31px; font-weight: normal; }
 .filterControls { display: flex; align-items: end; gap: 24px; }

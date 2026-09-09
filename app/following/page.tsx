@@ -1,20 +1,19 @@
 import Link from "next/link";
 import styles from "../page.module.css";
 import { categories, PaginatedPosts, Post, searchFilters } from "../lib/posts";
-import CategoryFilter from "../components/CategoryFilter";
 import SiteHeader from "../components/SiteHeader";
-import SearchForm from "../components/SearchForm";
 import axios from "axios";
-import SearchFilter from "../components/SearchFilter";
 import { auth } from "@/auth";
+import SortBy from "../components/SortBy";
 
-export default async function FollowingPage({ searchParams }: {searchParams: Promise<{ search?: string; category?: string; page?: string; searchFilter?:string }> }) {
+export default async function FollowingPage({ searchParams }: {searchParams: Promise<{sortBy?:string; search?: string; category?: string; page?: string; searchFilter?:string }> }) {
   const user:any = (await auth())?.user;
   if(!user){
     return null;
   }
     const params = await searchParams;
   const query = params.search || "";
+  const sortBy = params.sortBy || "";
   const selectedCategory = params.category || "";
   const category = categories.includes(selectedCategory) ? selectedCategory : "";
   const selectedSearchFilter = params.searchFilter || "";
@@ -25,6 +24,7 @@ export default async function FollowingPage({ searchParams }: {searchParams: Pro
   const filter = new URLSearchParams();
   filter.append("_page", String(currentPage));
   filter.append("_per_page", "6");
+  filter.append("_sort", sortBy || "-dateInMs");
 
   const followedAuthors:any = (await axios.get(`http://localhost:4000/follows?followedBy=${user.username}`)).data;
   filter.append("_where", `{"or": ${JSON.stringify(followedAuthors.map(({follow}:{follow:string}) => ({createdBy: {eq: follow}})))} }`);
@@ -56,10 +56,13 @@ export default async function FollowingPage({ searchParams }: {searchParams: Pro
             <section className={styles.archive}>
               <div className={styles.pageLinksContainer}>
               <a href="/" >All posts</a>
-              {user?<a href="/following" className={styles.pageLinkActive}>Followed authors</a> : null}
+              {user?<a href="/following" className={styles.pageLinkActive}>By followed authors</a> : null}
               </div>
               <div className={styles.sectionHeader}>
                 <div><h2>Latest posts</h2></div>
+                <div className={styles.filterControls}>
+                <SortBy selectedSort={sortBy} />
+                </div>
               </div>
               <div className={styles.postGrid}>
                 {filteredPosts.map((post: Post, index:number) => <PostCard key={post.id} post={post} featured={safePage === 1 && index === 0} />)}

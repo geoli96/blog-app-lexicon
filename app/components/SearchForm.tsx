@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import styles from "./SearchForm.module.css";
 import Link from "next/link";
 
@@ -9,6 +9,13 @@ export default function SearchForm({ value, action, clearHref = action, hiddenFi
   const searchParams = useSearchParams();
   const clearParams = new URLSearchParams(searchParams);
   clearParams.delete("search");
+
+  function getClearHref(){  
+    const nextParams = new URLSearchParams(searchParams);
+    nextParams.delete("search");
+    return `${window.location.pathname}?${nextParams.toString()}`;
+  }
+
   return <div className={styles.search} >
     <input key={value} id="search" name="search" defaultValue={value} placeholder="Search posts" aria-label="Search posts" />
     {Object.entries(hiddenFields).map(([name, fieldValue]) => <input type="hidden" name={name} value={fieldValue} key={name} />)}
@@ -25,6 +32,6 @@ export default function SearchForm({ value, action, clearHref = action, hiddenFi
       router.push(action + (nextParams.size ? "?" + nextParams.toString() : ""), {scroll:false})
     }
     } type="submit">Search</button>
-    {value && <Link scroll={false} className={styles.clear} href={clearHref}>Clear</Link>}
+    {value && <Link scroll={false} className={styles.clear} href={getClearHref()}>Clear</Link>}
   </div>;
 }

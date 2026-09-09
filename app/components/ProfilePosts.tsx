@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styles from "./ProfilePosts.module.css";
-import { categories, Post } from "../lib/posts";
+import { categories, Post, sortKeys } from "../lib/posts";
 import PostActions from "./PostActions";
 import SearchForm from "../components/SearchForm";
 import CategoryFilter from "../components/CategoryFilter";
@@ -8,8 +8,9 @@ import { auth } from "@/auth";
 import axios from "axios";
 import FollowButton from "./FollowButton";
 import BackLink from "./BackLink";
+import SortBy from "./SortBy";
 
-export default async function ProfilePosts({ params, authedUser, username, postsResponse,backLinkVisible }: {backLinkVisible?: boolean; authedUser?: {id:number, username:string,name:string} ; params: Record<string, string>; username: string, postsResponse: {
+export default async function ProfilePosts({ params, authedUser, username, postsResponse,backLinkVisible, pathname }: {pathname: string; backLinkVisible?: boolean; authedUser?: {id:number, username:string,name:string} ; params: Record<string, string>; username: string, postsResponse: {
     data: {
         data: Post[];
         items: number;
@@ -18,6 +19,7 @@ export default async function ProfilePosts({ params, authedUser, username, posts
 } }) {
   const user:any = (await auth())?.user;
   const query = params.search || "";
+  const sortBy = params.sortBy || "";
   const selectedCategory = params.category || "";
   const category = categories.includes(selectedCategory) ? selectedCategory : "";
   const parsedPage = Number.parseInt(params.page || "1", 10);
@@ -33,10 +35,10 @@ export default async function ProfilePosts({ params, authedUser, username, posts
   const emptyPostCount = Math.max(0, 6 - filteredPosts.length);
 
   function pageUrl(page: number) {
-    const nextParams = new URLSearchParams();
+    const nextParams = new URLSearchParams(params);
     if (query) nextParams.set("search", query);
     nextParams.set("page", String(page));
-    return `/my-posts?${nextParams.toString()}`;
+    return `${pathname}?${nextParams.toString()}`;
   }
 
   return (
@@ -51,7 +53,8 @@ export default async function ProfilePosts({ params, authedUser, username, posts
         </div>
         <div className={styles.filterControls}>
           <CategoryFilter selectedCategory={category} />
-          <SearchForm value={query} action="/my-posts" clearHref={category ? `/my-posts?category=${encodeURIComponent(category)}` : "/my-posts"} />
+          <SortBy selectedSort={sortBy} _sortKeys={sortKeys.filter(key => key !== "createdBy")}/>
+          <SearchForm value={query} action={pathname} />
           </div>
         <p className={styles.count}>{postCount} {postCount === 1 ? "post" : "posts"}</p>
         <div className={styles.postList}>

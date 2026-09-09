@@ -95,6 +95,7 @@ export async function publishPost(formData: FormData) {
       createdBy: user.username,
       createdAt: timestamp,
       updatedAt: timestamp,
+      dateInMs: Date.now().toString(),
       imageUrl: imageUrl,
       imageKey: imageKey,
       imageCaption: imageCaption

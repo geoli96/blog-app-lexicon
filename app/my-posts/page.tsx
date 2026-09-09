@@ -5,10 +5,11 @@ import { auth } from "@/auth";
 import axios from "axios";
 import ProfilePosts from "../components/ProfilePosts";
 
-export default async function MyPosts({ searchParams }: { searchParams: Promise<{ search?: string; page?: string; category?: string }> }) {
+export default async function MyPosts({ searchParams }: { searchParams: Promise<{sortBy?:string; search?: string; page?: string; category?: string }> }) {
     const user:any = (await auth())?.user;
   const params = await searchParams;
   const query = params.search || "";
+  const sortBy = params.sortBy || "";
   const selectedCategory = params.category || "";
   const category = categories.includes(selectedCategory) ? selectedCategory : "";
   const parsedPage = Number.parseInt(params.page || "1", 10);
@@ -25,6 +26,8 @@ export default async function MyPosts({ searchParams }: { searchParams: Promise<
     _per_page: "6",
     createdBy: user.username,
   });
+  filter.append("_sort", sortBy || "-dateInMs");
+
   if(category){
     filter.append("category", category);
   }
@@ -35,7 +38,7 @@ export default async function MyPosts({ searchParams }: { searchParams: Promise<
   return (
     <main className={styles.page}>
       <SiteHeader  />
-      <ProfilePosts params={params} authedUser={user} username={user.username}  postsResponse={postsResponse}></ProfilePosts>
+      <ProfilePosts pathname={"/my-posts"} params={params} authedUser={user} username={user.username}  postsResponse={postsResponse}></ProfilePosts>
     </main>
   );
 }
