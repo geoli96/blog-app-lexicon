@@ -33,7 +33,6 @@ export default function BackLink({ path = "/", children = "← Back", navigatedT
   if(!navigatedTo || hideBackLink) return <div className={styles.emptyLink} ></div>;
 
   function goBack() {
-    console.log(-navigations.current.navigations)
       history.go(-1-navigations.current.navigations);
   }
 
