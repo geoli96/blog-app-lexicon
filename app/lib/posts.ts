@@ -34,7 +34,9 @@ export type PaginatedPosts = {
 export const API_URL = "http://localhost:4000";
 export const categories = ["All", "General", "Essay", "Ideas", "Guides", "Reviews", "Personal", "Travel", "Fitness", "Food"];
 export const searchFilters = ["title", "createdBy","excerpt","content"];
-export const searchFilterLabelMapper: Record<string, string> = {title: "Title", createdBy: "Author", excerpt: "Description", content: "Content"}
+export const searchFilterLabelMapper: Record<string, string> = {title: "Title", createdBy: "Author", excerpt: "Description", content: "Content"};
+export const sortKeys = ["-dateInMs", "title","createdBy"];
+export const sortKeyMapper: Record<string, string> = {title: "Title", createdBy: "Author", "-dateInMs": "Publication date"};
 
 export async function getPosts(searchParams?: Record<string, string>): Promise<Post[]> {
     const urlParams = new URLSearchParams({_per_page: "6", _sort: "-dateInMs" });

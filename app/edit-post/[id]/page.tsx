@@ -14,7 +14,7 @@ export default async function EditPost({ params }: { params: Promise<{ id: strin
   return <main className={styles.page}>
     <SiteHeader />
     <section className={styles.editor}>
-      <BackLink>← Back to post</BackLink>
+      <BackLink >← Back to post</BackLink>
       <EditForm post={post} />
     </section>
   </main>;

@@ -1,16 +1,28 @@
 "use client";
 
-import { ReactNode, useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { ReactNode, useEffect, useState, useRef } from "react";
 import styles from "./BackLink.module.css";
+import { usePathname, useSearchParams } from "next/navigation";
 
-export default function BackLink({ fallback = "/", children = "← Back", navigatedTo = true, hideBackLink }: { fallback?: string; children?: ReactNode; navigatedTo?:boolean; hideBackLink?:boolean }) {
-  const router = useRouter();
+export default function BackLink({ path = "/", children = "← Back", navigatedTo = true, hideBackLink }: { path?: string; children?: ReactNode; navigatedTo?:boolean; hideBackLink?:boolean }) {
   const [loaded, setLoaded] = useState(false);
+  const initialBackIndex = useRef(0);
+  const pathname = usePathname();
+  const searchParams = useSearchParams()
+  const _path = pathname+"?"+searchParams.toString();
+  const navigations = useRef({pathname: _path, navigations: 0});
 
   useEffect(() => {
     setLoaded(true);
+    initialBackIndex.current = window.history.length;
   },[])
+
+  useEffect(() => {
+    if(navigations.current.pathname !== _path){
+      navigations.current.pathname = _path;
+      navigations.current.navigations = navigations.current.navigations+1;
+    }
+  })
 
   if(!loaded) return <div className={styles.emptyLink} ></div>;
 
@@ -21,7 +33,8 @@ export default function BackLink({ fallback = "/", children = "← Back", naviga
   if(!navigatedTo || hideBackLink) return <div className={styles.emptyLink} ></div>;
 
   function goBack() {
-      router.back();
+    console.log(-navigations.current.navigations)
+      history.go(-1-navigations.current.navigations);
   }
 
   return <button className={styles.link} onClick={goBack}>{children}</button>;

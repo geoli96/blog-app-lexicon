@@ -5,11 +5,12 @@ import { auth } from "@/auth";
 import axios from "axios";
 import ProfilePosts from "@/app/components/ProfilePosts";
 
-export default async function UserPosts({ searchParams, params }: { params: Promise<{username:string}>; searchParams: Promise<{ search?: string; page?: string; category?: string }> }) {
+export default async function UserPosts({ searchParams, params }: { params: Promise<{username:string}>; searchParams: Promise<{sortBy?:string; search?: string; page?: string; category?: string }> }) {
     const user:any = (await auth())?.user;
     const username = (await params)?.username
   const _searchParams = await searchParams;
   const query = _searchParams.search || "";
+  const sortBy = _searchParams.sortBy || "";
   const selectedCategory = _searchParams.category || "";
   const category = categories.includes(selectedCategory) ? selectedCategory : "";
   const parsedPage = Number.parseInt(_searchParams.page || "1", 10);
@@ -20,7 +21,7 @@ export default async function UserPosts({ searchParams, params }: { params: Prom
     _per_page: "6",
     createdBy: username,
   });
-  filter.append("_sort", "-dateInMs");
+  filter.append("_sort", sortBy || "-dateInMs");
   if(category){
     filter.append("category", category);
   }
@@ -31,7 +32,7 @@ export default async function UserPosts({ searchParams, params }: { params: Prom
   return (
     <main className={styles.page}>
       <SiteHeader  />
-      <ProfilePosts backLinkVisible params={_searchParams} authedUser={user} username={username}  postsResponse={postsResponse}></ProfilePosts>
+      <ProfilePosts pathname={`/user/${username}`} backLinkVisible params={_searchParams} authedUser={user} username={username}  postsResponse={postsResponse}></ProfilePosts>
     </main>
   );
 }
