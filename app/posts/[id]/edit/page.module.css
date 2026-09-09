@@ -49,7 +49,7 @@
   .archiveLink span { font-size: 20px; }
   .article { padding: 42px 25px 55px; }
   .backLink { margin-bottom: 52px; }
-  .meta { gap: 8px; font-size: 8px; }
+  .meta { gap: 8px; }
   .article h1 { font-size: 45px; }
   .body { font-size: 17px; }
   .image {height: 400px;}

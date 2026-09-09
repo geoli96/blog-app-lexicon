@@ -18,7 +18,7 @@
 .writeButton b { margin-left: 10px; color: #e9a183; font-size: 17px; font-weight: normal; }
 .content { max-width: 1240px; margin: 0 auto; padding: 65px 36px 90px; }
 .backLink { display: block; margin-bottom: 69px; color: #57606a;  }
-.titleRow { display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; gap: 30px; }
+.titleRow { display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; gap: 30px; height: 211px; }
 .titleRow h1 { margin: 0; font-family: Georgia, serif; font-size: clamp(48px, 7vw, 78px); font-weight: normal; line-height: .98; letter-spacing: -3px; }
 .search { display: flex; align-items: center; gap: 8px; width: 200px; padding: 8px 0; border-bottom: 1px solid #aaa49a; color: #6c6962; }
 .search span { font-family: Georgia, serif; font-size: 22px; line-height: 1; }
@@ -49,12 +49,21 @@
   cursor: pointer;
   border-radius: 6px;
   padding: 11px 15px;}
-.followButtonContainer{height: 40px;}
+.imageResponsive {display: none;}
 .name{margin-bottom: 20px; font-size: 20px;}
+.emptyButton{height: 40px;}
 
 @media (max-width: 700px) {
   .titleRow { align-items: start; flex-direction: column; gap: 25px; }
   .titleRow h1 { font-size: 53px; letter-spacing: -2px; }
+  .post{display: flex; flex-direction: column; justify-content: flex-start; height: auto; align-items: flex-start; height: 467px;}
+  .postInfo {margin-left: 0px;}
+  .postInfo {width: 100%;}
+  .imageStandard {display: none;}
+  .imageResponsive {margin-bottom: 20px; display: block;}
+  .postInfo h2 {height: 50px;}
+  .postInfo p {height: 50px;}
+  .image {width: 100% !important; height: 200px;}
 
   .filterControls { align-items: stretch; flex-direction: column; gap: 18px; width: 100%; }
 }

@@ -14,6 +14,12 @@ export default async function MyPosts({ searchParams }: { searchParams: Promise<
   const parsedPage = Number.parseInt(params.page || "1", 10);
   const currentPage = Number.isFinite(parsedPage) && parsedPage > 0 ? parsedPage : 1;
 
+  if(!user){
+    return <main>
+      <h1>Not signed in</h1>
+    </main>
+  }
+
   const filter = new URLSearchParams({
     _page: String(currentPage),
     _per_page: "6",

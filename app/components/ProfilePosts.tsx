@@ -22,7 +22,7 @@ export default async function ProfilePosts({ params, authedUser, username, posts
   const category = categories.includes(selectedCategory) ? selectedCategory : "";
   const parsedPage = Number.parseInt(params.page || "1", 10);
   const currentPage = Number.isFinite(parsedPage) && parsedPage > 0 ? parsedPage : 1;
-  const isFollowedByUser = Boolean((await axios.get(`http://localhost:4000/follows?followedBy=${user.username}&follow=${username}`)).data[0]);
+  const isFollowedByUser = user ? Boolean((await axios.get(`http://localhost:4000/follows?followedBy=${user.username}&follow=${username}`)).data[0]) : false;
   const profile = ((await axios.get("http://localhost:4000/users",{params:{username: username}})).data)[0]
 
   const postsResult = postsResponse.data;
@@ -46,7 +46,7 @@ export default async function ProfilePosts({ params, authedUser, username, posts
           <div><h1>{authedUser?.username === username ? 'My blog posts' : `${username}'s posts`}</h1></div>
           <div className={styles.followButtonContainer}>
             <p className={styles.name}>{profile.name}</p>
-          {user && user.username !== username ? <FollowButton isFollowedByUser={isFollowedByUser} username={username}/>: null}
+          {user && user.username !== username ? <FollowButton isFollowedByUser={isFollowedByUser} username={username}/>: <div className={styles.emptyButton}></div>}
           </div>
         </div>
         <div className={styles.filterControls}>
@@ -55,10 +55,18 @@ export default async function ProfilePosts({ params, authedUser, username, posts
           </div>
         <p className={styles.count}>{postCount} {postCount === 1 ? "post" : "posts"}</p>
         <div className={styles.postList}>
-          {filteredPosts.map((post: Post, index: number) => (
+          {filteredPosts.map((post: Post) => (
             <div className={styles.post} key={post.id}>
-              <img src={post.imageUrl} className={`${styles.image} ${index % 2 === 0 ? styles.coral : styles.green}`}></img>
-              <Link className={styles.postInfo} href={authedUser?.username === username ? `/my-posts/${post.id}`: `/user/${post.createdBy}/post/${post.id}`}><div className={styles.meta}><span>{post.category}</span><span>{post.date}</span></div><h2>{post.title}</h2><p>{post.excerpt}</p></Link>
+              <img src={post.imageUrl} className={`${styles.image} ${styles.imageStandard}`}></img>
+              <Link className={styles.postInfo} href={authedUser?.username === username ? `/my-posts/${post.id}`: `/user/${post.createdBy}/post/${post.id}`}>
+                <div className={styles.meta}>
+                    <span>{post.category}</span>
+                    <span>{post.date}</span>
+                </div>
+                <h2>{post.title}</h2>
+                <img src={post.imageUrl} className={`${styles.image} ${styles.imageResponsive}`}></img>
+                <p>{post.excerpt}</p>
+              </Link>
               {authedUser?.username === username ? 
               <PostActions id={post.id} title={post.title} />
               : null}
