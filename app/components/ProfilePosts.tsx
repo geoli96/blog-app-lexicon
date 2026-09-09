@@ -23,16 +23,7 @@ export default async function ProfilePosts({ params, authedUser, username, posts
   const parsedPage = Number.parseInt(params.page || "1", 10);
   const currentPage = Number.isFinite(parsedPage) && parsedPage > 0 ? parsedPage : 1;
   const isFollowedByUser = Boolean((await axios.get(`http://localhost:4000/follows?followedBy=${user.username}&follow=${username}`)).data[0]);
-
-  const filter = new URLSearchParams({
-    _page: String(currentPage),
-    _per_page: "6",
-    createdBy: username,
-  });
-  if(category){
-    filter.append("category", category);
-  }
-  if (query) filter.set("title:contains", query);
+  const profile = ((await axios.get("http://localhost:4000/users",{params:{username: username}})).data)[0]
 
   const postsResult = postsResponse.data;
   const filteredPosts = postsResult.data;
@@ -54,6 +45,7 @@ export default async function ProfilePosts({ params, authedUser, username, posts
         <div className={styles.titleRow}>
           <div><h1>{authedUser?.username === username ? 'My blog posts' : `${username}'s posts`}</h1></div>
           <div className={styles.followButtonContainer}>
+            <p className={styles.name}>{profile.name}</p>
           {user && user.username !== username ? <FollowButton isFollowedByUser={isFollowedByUser} username={username}/>: null}
           </div>
         </div>
