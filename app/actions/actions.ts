@@ -2,7 +2,6 @@
 import { auth, signIn } from "@/auth";
 import axios from "axios";
 import bcrypt from "bcrypt";
-import { redirect } from "next/navigation";
 import { API_URL, Post } from "../lib/posts";
 import { verifyCsrfToken } from "../csrf";
 import { z } from 'zod';
@@ -47,7 +46,7 @@ const PostSchema = z.object({
 });
 
 export async function publishPost(formData: FormData) {
-    const user:any = (await auth())?.user;
+    const user = (await auth())?.user;
 
     if(!user) {
       throw new Error('User not authenticated');
@@ -111,7 +110,7 @@ export async function publishPost(formData: FormData) {
   }
 
  export async function updatePost(formData: FormData) {
-      const user:any = (await auth())?.user;
+      const user = (await auth())?.user;
 
         if(!user) {
             throw new Error('User not authenticated');
@@ -173,7 +172,7 @@ export async function publishPost(formData: FormData) {
     }
 
 export async function deletePost(id: string) {
-    const user:any = (await auth())?.user;
+    const user = (await auth())?.user;
 
     if(!user) {
         throw new Error('User not authenticated');
@@ -240,7 +239,7 @@ const UpdateUserSchema = z.object({
 });
 
 export async function updateUser(formData: FormData) {
-    const user:any = (await auth())?.user;
+    const user = (await auth())?.user;
     if(!user) {
         throw new Error('User not authenticated');
     }
@@ -271,7 +270,7 @@ const UpdatePasswordSchema = z.object({
 });
 
 export async function updatePassword(formData: FormData) {
-    const user:any = (await auth())?.user;
+    const user = (await auth())?.user;
     if(!user) {
         throw new Error('User not authenticated');
     }
@@ -302,7 +301,7 @@ export async function updatePassword(formData: FormData) {
 }
 
 export async function followAuthor(username:string) {
-    const user:any = (await auth())?.user;
+    const user = (await auth())?.user;
     if(!user) {
         throw new Error('User not authenticated');
     }
@@ -343,7 +342,7 @@ export async function followAuthor(username:string) {
 }
 
 export async function unfollowAuthor(username:string) {
-    const user:any = (await auth())?.user;
+    const user = (await auth())?.user;
     if(!user) {
         throw new Error('User not authenticated');
     }

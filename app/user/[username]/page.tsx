@@ -6,7 +6,7 @@ import axios from "axios";
 import ProfilePosts from "@/app/components/ProfilePosts";
 
 export default async function UserPosts({ searchParams, params }: { params: Promise<{username:string}>; searchParams: Promise<{sortBy?:string; search?: string; page?: string; category?: string }> }) {
-    const user:any = (await auth())?.user;
+    const user = (await auth())?.user;
     const username = (await params)?.username
   const _searchParams = await searchParams;
   const query = _searchParams.search || "";

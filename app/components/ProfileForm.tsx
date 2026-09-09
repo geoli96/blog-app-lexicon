@@ -4,8 +4,9 @@ import styles from "./ProfileForm.module.css"
 import { updateUser } from "../actions/actions";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
+import { User } from "next-auth";
 
-export default function ProfileForm({user}: {user: any}) {
+export default function ProfileForm({user}: {user: User}) {
   const router = useRouter();
   const {update} = useSession();
   const [name, setName] = useState(user.name || "");

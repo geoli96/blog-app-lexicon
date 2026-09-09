@@ -5,7 +5,7 @@ import { updatePassword } from "../actions/actions";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
-export default function ProfileForm({user}: {user: any}) {
+export default function ProfileForm() {
   const router = useRouter();
   const {update} = useSession();
   const [password, setPassword] = useState("");

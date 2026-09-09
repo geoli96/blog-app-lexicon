@@ -6,7 +6,7 @@ import { auth } from "@/auth";
 import BackLink from "@/app/components/BackLink";
 
 export default async function PostPage({ params, searchParams }: { params: Promise<{ id: string }>; searchParams:  Promise<{ hideBackLink: string }> }) {
-  const user:any = (await auth())?.user;
+  const user = (await auth())?.user;
   const { id } = await params;
   const  hideBackLink  = Boolean((await searchParams).hideBackLink);
   const post = await getPost(id);

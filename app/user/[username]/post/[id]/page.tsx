@@ -6,7 +6,7 @@ import { auth } from "@/auth";
 import BackLink from "@/app/components/BackLink";
 
 export default async function PostPage({ params }: { params: Promise<{ id: string }>; }) {
-  const user:any = (await auth())?.user;
+  const user = (await auth())?.user;
   const { id } = await params;
   const post = await getPost(id);
 

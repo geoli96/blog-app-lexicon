@@ -5,8 +5,9 @@ import SignOutButton from "./SignOutButton";
 import { auth } from "@/auth"
 
 export default async function SiteHeader({ actions }: { actions?: ReactNode }) {
-  const session: any = await auth();
-  const isLoggedIn = !!session?.user;
+  const session = await auth();
+  const user = session?.user;
+  const isLoggedIn = !!user;
 
   return <header className={styles.header}>
     <HeaderLink href="/">Posts</HeaderLink>
@@ -25,7 +26,7 @@ export default async function SiteHeader({ actions }: { actions?: ReactNode }) {
         <HeaderLink href="/settings">Settings</HeaderLink>
       ) : null}
       {isLoggedIn ? (
-        <p className={styles.signedInAs}>Signed in as <b>{session?.user?.username}</b></p>
+        <p className={styles.signedInAs}>Signed in as <b>{user?.username}</b></p>
       ) : null}
       {isLoggedIn ? (
         <SignOutButton />

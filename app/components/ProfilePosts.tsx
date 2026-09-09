@@ -9,15 +9,16 @@ import axios from "axios";
 import FollowButton from "./FollowButton";
 import BackLink from "./BackLink";
 import SortBy from "./SortBy";
+import { User } from "next-auth";
 
-export default async function ProfilePosts({ params, authedUser, username, postsResponse,backLinkVisible, pathname }: {pathname: string; backLinkVisible?: boolean; authedUser?: {id:number, username:string,name:string} ; params: Record<string, string>; username: string, postsResponse: {
+export default async function ProfilePosts({ params, authedUser, username, postsResponse,backLinkVisible, pathname }: {pathname: string; backLinkVisible?: boolean; authedUser?: User ; params: Record<string, string>; username: string, postsResponse: {
     data: {
         data: Post[];
         items: number;
         pages: number;
     };
 } }) {
-  const user:any = (await auth())?.user;
+  const user = (await auth())?.user;
   const query = params.search || "";
   const sortBy = params.sortBy || "";
   const selectedCategory = params.category || "";

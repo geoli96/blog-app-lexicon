@@ -7,7 +7,7 @@ import { auth } from "@/auth";
 import SortBy from "../components/SortBy";
 
 export default async function FollowingPage({ searchParams }: {searchParams: Promise<{sortBy?:string; search?: string; category?: string; page?: string; searchFilter?:string }> }) {
-  const user:any = (await auth())?.user;
+  const user = (await auth())?.user;
   if(!user){
     return null;
   }
@@ -26,7 +26,7 @@ export default async function FollowingPage({ searchParams }: {searchParams: Pro
   filter.append("_per_page", "6");
   filter.append("_sort", sortBy || "-dateInMs");
 
-  const followedAuthors:any = (await axios.get(`http://localhost:4000/follows?followedBy=${user.username}`)).data;
+  const followedAuthors = (await axios.get(`http://localhost:4000/follows?followedBy=${user.username}`)).data;
   filter.append("_where", `{"or": ${JSON.stringify(followedAuthors.map(({follow}:{follow:string}) => ({createdBy: {eq: follow}})))} }`);
   const filteredPostsResponse = await axios.get<PaginatedPosts>('http://localhost:4000/posts?' + filter.toString());
 

@@ -10,7 +10,7 @@ import { auth } from "@/auth";
 import SortBy from "./components/SortBy";
 
 export default async function Home({ searchParams }: { searchParams: Promise<{ search?: string; category?: string; page?: string; searchFilter?:string;sortBy?:string }> }) {
-  const user:any = (await auth())?.user;
+  const user = (await auth())?.user;
   const params = await searchParams;
   const query = params.search || "";
   const sortBy = params.sortBy || "";

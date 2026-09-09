@@ -29,7 +29,7 @@
 .post:hover { padding-left: 12px; background: #f6f8fa; }
 .emptyPost { visibility: hidden; pointer-events: none; }
 .noPostsText { border-bottom: 0px; grid-template-columns: auto; align-items: flex-start; }
-.image { display: grid; width:120px; height: 120px; place-items: center; color: #f2efe9; font-family: Georgia, serif; font-size: 18px;  }
+.image {object-fit: cover; display: grid; width:120px; height: 120px; place-items: center; color: #f2efe9; font-family: Georgia, serif; font-size: 18px;  }
 .postInfo { min-width: 0;margin-left: 40px; }
 .postInfo div {height: 21px; overflow: hidden;}
 .postInfo h2 {height: 26px; overflow: hidden;}

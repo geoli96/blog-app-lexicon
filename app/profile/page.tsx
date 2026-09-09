@@ -6,6 +6,9 @@ import { SessionProvider } from "next-auth/react";
 
 export default async function ProfilePage() {
     const user = (await auth())?.user;
+    if(!user){
+      return <main className={styles.page}><h1>Not signed in</h1></main>
+    }
     const session = await auth();
   return (
     <main className={styles.page}>
