@@ -25,6 +25,8 @@ export default async function MyPosts({ searchParams }: { searchParams: Promise<
     _per_page: "6",
     createdBy: user.username,
   });
+  filter.append("_sort", "-dateInMs");
+  
   if(category){
     filter.append("category", category);
   }

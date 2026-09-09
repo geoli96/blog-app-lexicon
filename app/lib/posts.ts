@@ -18,6 +18,7 @@ export type Post = {
   imageUrl: string;
   imageKey:string;
   imageCaption: string;
+  dateInMs: string;
 };
 
 export type PaginatedPosts = {
@@ -36,7 +37,7 @@ export const searchFilters = ["title", "createdBy","excerpt","content"];
 export const searchFilterLabelMapper: Record<string, string> = {title: "Title", createdBy: "Author", excerpt: "Description", content: "Content"}
 
 export async function getPosts(searchParams?: Record<string, string>): Promise<Post[]> {
-    const urlParams = new URLSearchParams({_per_page: "6" });
+    const urlParams = new URLSearchParams({_per_page: "6", _sort: "-dateInMs" });
     Object.entries(searchParams || {}).forEach(([key, value]) => {
       urlParams.set(key, value);
     });

@@ -25,6 +25,7 @@ export default async function FollowingPage({ searchParams }: {searchParams: Pro
   const filter = new URLSearchParams();
   filter.append("_page", String(currentPage));
   filter.append("_per_page", "6");
+  filter.append("_sort", "-dateInMs");
 
   const followedAuthors:any = (await axios.get(`http://localhost:4000/follows?followedBy=${user.username}`)).data;
   filter.append("_where", `{"or": ${JSON.stringify(followedAuthors.map(({follow}:{follow:string}) => ({createdBy: {eq: follow}})))} }`);
@@ -56,7 +57,7 @@ export default async function FollowingPage({ searchParams }: {searchParams: Pro
             <section className={styles.archive}>
               <div className={styles.pageLinksContainer}>
               <a href="/" >All posts</a>
-              {user?<a href="/following" className={styles.pageLinkActive}>Followed authors</a> : null}
+              {user?<a href="/following" className={styles.pageLinkActive}>By followed authors</a> : null}
               </div>
               <div className={styles.sectionHeader}>
                 <div><h2>Latest posts</h2></div>

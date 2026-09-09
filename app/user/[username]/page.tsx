@@ -20,6 +20,7 @@ export default async function UserPosts({ searchParams, params }: { params: Prom
     _per_page: "6",
     createdBy: username,
   });
+  filter.append("_sort", "-dateInMs");
   if(category){
     filter.append("category", category);
   }
