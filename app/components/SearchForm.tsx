@@ -10,7 +10,6 @@ export default function SearchForm({ value, action, clearHref = action, hiddenFi
   const clearParams = new URLSearchParams(searchParams);
   clearParams.delete("search");
   return <div className={styles.search} >
-    <span aria-hidden="true">⌕</span>
     <input key={value} id="search" name="search" defaultValue={value} placeholder="Search posts" aria-label="Search posts" />
     {Object.entries(hiddenFields).map(([name, fieldValue]) => <input type="hidden" name={name} value={fieldValue} key={name} />)}
     <button onClick={() => {

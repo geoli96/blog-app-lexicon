@@ -127,7 +127,6 @@ export async function publishPost(formData: FormData) {
         }
 
         try {
-
          const postData = PostSchema.parse({
             title: formData.get("title"),
             excerpt: formData.get("excerpt"),

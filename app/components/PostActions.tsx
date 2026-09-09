@@ -8,7 +8,7 @@ export default function PostActions({ id, title }: { id: string; title: string }
   const router = useRouter();
 
   async function confirmDeletion() {
-    if (!window.confirm(`Delete “${title}”? This cannot be undone.`)) return;
+    if (!window.confirm(`Delete ${title}?`)) return;
     await deletePost(id);
     router.refresh();
   }

@@ -79,11 +79,12 @@ export default async function FollowingPage({ searchParams }: {searchParams: Pro
 }
 
 function PostCard({ post, featured }: { post: Post; featured: boolean }) {
+  const date = new Date(post.date);
   return <Link className={`${styles.postCard} ${featured ? styles.featured : ""}`} href={`/posts/${post.id}`}>
-    <img className={styles.cardVisual} height={295} width={"40%"} src={post.imageUrl}/>
+    <img className={styles.postImage} height={295} width={"40%"} src={post.imageUrl}/>
     <div className={styles.cardContent}><div className={styles.cardMeta}>
       <span>{post.category}</span>
-      <span>{post.date}</span>
+      <span>0{date.getDay()}/{date.getMonth() < 10 ? "0" : ""}{date.getMonth()}/{String(date.getFullYear()).substring(2)}</span>
       </div>
         <h3>{post.title}</h3>
         <p>{post.excerpt}</p>
