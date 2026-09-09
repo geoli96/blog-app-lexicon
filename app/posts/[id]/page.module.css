@@ -22,13 +22,13 @@
 .wordmark { display: flex; align-items: center; gap: 11px; font-family: Georgia, serif; font-size: 19px;  }
 .mark { display: grid; width: 30px; height: 30px; place-items: center; color: #ffffff; background: #24292f; border-radius: 50%;  font-weight: 700; }
 .archiveLink { color: #57606a;  }
-.archiveLink span { margin-left: 7px; color: #bd5438; font-size: 16px; }
+.archiveLink span { margin-left: 7px; color: blue; font-size: 16px; }
 .article { max-width: 1240px; margin: 0 auto; padding: 65px 36px 90px; }
 .backLink { display: block; margin-bottom: 75px; color: #57606a;  }
-.backLink:first-letter { color: #bd5438; }
+.backLink:first-letter { color: blue; }
 .meta { display: flex; align-items: center; gap: 13px; color: #57606a;  letter-spacing: .08em;  }
 .meta span { color: #0969da; }
-.meta i { width: 3px; height: 3px; background: #bd5438; border-radius: 50%; }
+.meta i { width: 3px; height: 3px; background: blue; border-radius: 50%; }
 .article h1 { margin: 25px 0 19px; font-family: Georgia, serif; font-size: clamp(44px, 6vw, 72px); font-weight: normal; line-height: 1; letter-spacing: -2px; }
 .lead { max-width: 580px; margin: 0 0 55px; color: #57606a; font-family: Georgia, serif; font-size: 20px;  line-height: 1.5; }
 .body { max-width: 640px; font-family: Georgia, serif; font-size: 18px; line-height: 1.75;margin-top: 20px; }
@@ -37,7 +37,7 @@
 .editLink span { margin-left: 9px; font-size: 16px; }
 .state { display: grid; min-height: 100vh; place-items: center; color: #1f2328; background: #ffffff; font-family: Georgia, serif; }
 .state h1 { margin-bottom: 10px; font-size: 44px; font-weight: normal; }
-.state a { color: #bd5438; }
+.state a { color: blue; }
 .image {width:100%; height: 700px; object-fit: cover;}
 .contentContainer {display: flex; flex-direction: column;}
 .contentContainer > * {width:100%}
