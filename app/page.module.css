@@ -81,7 +81,7 @@
 .postCard:not(.featured) .postImage { background: white }
 .postImage span { font-family: Georgia, serif; font-size: 48px;  }
 .cardContent { display: flex; flex: 1; flex-direction: column; align-items: flex-start; padding: 26px 27px; }
-.cardMeta { display: flex; height: 21px; overflow: hidden; justify-content: space-between; width: 100%; color: #817b72;  letter-spacing: .07em;  }
+.cardMeta { display: flex; height: 21px; overflow: hidden; justify-content: space-between; width: 100%;  letter-spacing: .07em;  }
 .cardMeta span:first-child { color: blue; }
 .cardContent h3 { height: 59px; text-wrap: wrap; word-wrap: anywhere; overflow: hidden; max-width: 340px; margin: 29px 0 10px; font-family: Georgia, serif; font-size: 26px; font-weight: normal; line-height: 1.08; }
 .cardContent p { max-width: 310px; height: 55px; overflow: hidden; margin: 0; color: #57606a;  line-height: 1.5; }

@@ -61,14 +61,14 @@ export default async function ProfilePosts({ params, authedUser, username, posts
         <div className={styles.postList}>
           {filteredPosts.map((post: Post) => (
             <div className={styles.post} key={post.id}>
-              <img src={post.imageUrl} className={`${styles.image} ${styles.imageStandard}`}></img>
+              <img alt={post.imageCaption} src={post.imageUrl} className={`${styles.image} ${styles.imageStandard}`}></img>
               <Link className={styles.postInfo} href={authedUser?.username === username ? `/my-posts/${post.id}`: `/user/${post.createdBy}/post/${post.id}`}>
                 <div className={styles.meta}>
                     <span>{post.category}</span>
                     <span>{post.date}</span>
                 </div>
                 <h2>{post.title}</h2>
-                <img src={post.imageUrl} className={`${styles.image} ${styles.imageResponsive}`}></img>
+                <img alt={post.imageCaption} src={post.imageUrl} className={`${styles.image} ${styles.imageResponsive}`}></img>
                 <p>{post.excerpt}</p>
               </Link>
               {authedUser?.username === username ? 
