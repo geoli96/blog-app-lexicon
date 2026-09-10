@@ -87,7 +87,7 @@ function PostCard({ post, featured }: { post: Post; featured: boolean }) {
     <img className={styles.postImage} height={295} width={"40%"} alt={post.imageCaption} src={post.imageUrl}/>
     <div className={styles.cardContent}><div className={styles.cardMeta}>
       <span>{post.category}</span>
-      <span>0{date.getDay()}/{date.getMonth() < 10 ? "0" : ""}{date.getMonth()}/{String(date.getFullYear()).substring(2)}</span>
+      <span>{date.getDate() < 10 ? "0" : ""}{date.getDate()}/{date.getMonth() < 10 ? "0" : ""}{date.getMonth()}/{String(date.getFullYear()).substring(2)}</span>
       </div>
         <h3>{post.title}</h3>
         <p>{post.excerpt}</p>
