@@ -2,10 +2,10 @@
 .formGroup { display: flex; flex-direction: column; gap: 9px; align-items: stretch; }
 .formGroup label { color: #57606a; letter-spacing: .08em; }
 .formGroup input { width: 100%; padding: 13px 0; border: 0; border-bottom: 1px solid #d0d7de; outline: 0; color: #1f2328; background: transparent; font: 18px Georgia, serif; }
-.formGroup input:focus { border-color: blue; }
+.formGroup input:focus { border-color: #0969da; }
 .form button { align-self: flex-start; margin-top: 4px; padding: 14px 18px; border: 0; color: #ffffff; background: black; border-radius: 6px; cursor: pointer;}
 .form button:hover { background: #176b32; }
-.loginLink { display: inline-block; margin-top: 13px; color: blue;   text-decoration: underline; text-underline-offset: 3px; }
+.loginLink { display: inline-block; margin-top: 13px; color: #0969da;   text-decoration: underline; text-underline-offset: 3px; }
 .error {color: red; height: 22px;}
 .errorHidden {visibility: hidden; height: 22px;}
 .username{border-bottom: 0px !important;}
