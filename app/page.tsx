@@ -43,8 +43,6 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ d
 
   const filteredPostsResponse = await axios.get<PaginatedPosts>('http://localhost:4000/posts?' + filter.toString());
 
-  console.log(filteredPostsResponse.data.items,"filteredPostsResponse.data.items")
-
   const filteredPosts = filteredPostsResponse.data.data;
   const extraCards = 6 - filteredPosts.length - Number(filteredPosts.length === 0);
   const extra:number[] = [];
