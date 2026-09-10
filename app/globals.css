@@ -31,6 +31,17 @@ body {
   font-family: Arial, Helvetica, sans-serif !important;
 }
 
+.dark-mode-html * {
+  color: white !important;
+  background-color: black !important;
+}
+
+.dark-mode-html button {
+  border: 1px solid white !important;
+}
+
+.dark-mode-html .primaryLink{border: 1px solid white;}
+
 a {
   color: inherit;
   text-decoration: none;

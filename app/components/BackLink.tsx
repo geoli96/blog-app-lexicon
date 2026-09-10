@@ -22,5 +22,5 @@ export default function BackLink({ path = "/", children = "← Back", navigatedT
       history.back();
   }
 
-  return <button className={styles.link} onClick={goBack}>{children}</button>;
+  return <a className={styles.link} onClick={goBack}>{children}</a>;
 }

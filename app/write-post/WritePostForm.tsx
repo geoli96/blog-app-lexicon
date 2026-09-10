@@ -22,7 +22,7 @@ export default function WritePostForm({csrfToken}: {csrfToken:string}){
           </div>
           <label htmlFor="content">Body<textarea id="content" name="content" required placeholder="Start writing..."></textarea></label>
           <ImageInput></ImageInput>
-          <div className={styles.formFooter}><span>Your post will be saved to the blog database.</span><button type="submit">Publish post </button></div>
+          <div className={styles.formFooter}><span>Your post will be saved to the blog database.</span><button className="primary-button" type="submit">Publish post </button></div>
             <input type="hidden" name="csrfToken" value={csrfToken} />
         </form>
 }

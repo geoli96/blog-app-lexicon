@@ -11,12 +11,14 @@ declare module "next-auth" {
       username: string;
       id: string;
       name: string;
+      darkmode?: string;
     }
   }
   interface User {
     username: string;
     name: string;
     id: string;
+    darkmode?: string;
   }
 }
 
@@ -29,6 +31,7 @@ declare module "next-auth/jwt" {
     username: string;
     id: string;
     name: string;
+    darkmode?: string;
   } 
   }
 }

@@ -41,5 +41,5 @@ export default async function SiteHeader({ actions }: { actions?: ReactNode }) {
 }
 
 export function HeaderLink({ href, children, primary = false }: { href: string; children: ReactNode; primary?: boolean }) {
-  return <Link className={primary ? styles.primaryLink : styles.link} href={href}>{children}</Link>;
+  return <Link className={(primary ? styles.primaryLink + " " + "primaryLink" : styles.link)} href={href}>{children}</Link>;
 }

@@ -91,7 +91,7 @@
 .empty { color: #57606a;}
 .pagination { display: flex; align-items: center; justify-content: space-between; margin-top: 30px; padding-top: 18px; border-top: 1px solid #d0d7de; color: #57606a;  }
 .pagination a { padding: 8px 0; color: #0969da; cursor: pointer; font: inherit; text-decoration: none; }
-.pagination .disabledPage { color: #8c959f; cursor: not-allowed; pointer-events: none; }
+.pagination .disabledPage { color: #8c959f !important; cursor: not-allowed; pointer-events: none;}
 
 .article { max-width: 770px; margin: 0 auto; padding: 65px 0; }
 .backButton { display: block; margin-bottom: 75px; padding: 0; color: #6c6962; background: transparent;  }

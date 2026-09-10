@@ -14,7 +14,16 @@ export default function ProfileForm({user}: {user: User}) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
+    const darkmode = formData.get("darkmode");
     await updateUser(formData);
+    if(darkmode){
+      localStorage.setItem("darkmode", "true");
+      document.getElementsByTagName("html")[0].classList.add("dark-mode-html");
+    }else{
+      localStorage.removeItem("darkmode");
+      document.getElementsByTagName("html")[0].classList.remove("dark-mode-html");
+    }
+
     await update(null);
     router.refresh();
     alert("Profile updated successfully!");
@@ -34,7 +43,16 @@ export default function ProfileForm({user}: {user: User}) {
         </label>
         <input name="name" id="name" type="text" value={name} onChange={(e) => setName(e.target.value)} required />
         </div>
-      <button type="submit">Update profile</button>
+        <div className={styles.formGroup}>
+      <label htmlFor="darkmode">
+        Dark mode
+        </label>
+        <div className={styles.darkmodeInputContainer}>
+        <span>Enable</span>
+        <input name="darkmode" defaultChecked={user.darkmode === "true" ? true : false} id="darkmode" type="checkbox"/>
+        </div>
+        </div>
+      <button className="primary-button" type="submit">Update profile</button>
     </form>
   )
 }
