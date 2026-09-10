@@ -29,7 +29,7 @@ export default async function PostPage({ params }: { params: Promise<{ id: strin
         <div className={styles.body}>{post.content.split("\n\n").map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>
         {user?.username === post.createdBy ? (
           <Link className={styles.editLink} href={`/edit-post/${post.id}`}>Edit this post </Link>
-        ) : <Link className={styles.editLink} href={`/user/${post.createdBy}`}>By {post.createdBy}</Link>}
+        ) : null}
       </article>
     </main>
   );
