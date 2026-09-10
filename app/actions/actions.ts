@@ -217,6 +217,7 @@ export async function createUser(formData: FormData) {
             username,
             name,
             password: hashedPassword,
+            darkmode: "false"
           })).data;
 
           const users = (await axios.get(`${process.env.API_URL}/users`, {
@@ -235,7 +236,8 @@ export async function createUser(formData: FormData) {
 }
 
 const UpdateUserSchema = z.object({
-  name: z.string().min(2).max(100).trim()
+  name: z.string().min(2).max(100).trim(),
+  darkmode: z.null().or(z.enum(["on"]))
 });
 
 export async function updateUser(formData: FormData) {
@@ -249,12 +251,14 @@ export async function updateUser(formData: FormData) {
               params: { username: user.username },
           })).data[0];
 
-          const { name } = UpdateUserSchema.parse({
-              name: formData.get("name")
+          const { name,darkmode } = UpdateUserSchema.parse({
+              name: formData.get("name"),
+              darkmode: formData.get("darkmode")
           });
 
           await axios.put(`http://localhost:4000/users/${user.id}`, {..._user,
-            name
+            name,
+            darkmode: darkmode === "on" ? "true" : "false"
           });
 
 
