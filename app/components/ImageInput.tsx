@@ -17,19 +17,18 @@ export default function ImageInput({imgUrl,imgCaption}: {imgUrl?:string;imgCapti
     }, [selectedImage])
 
     return <>
+      <label htmlFor='image'>Image</label>
             {imgUrl || selectedImage ? 
-            <img className={styles.preview} id="imagepreview" src={imgUrl || "#"} alt="Image preview" /> : <p className={styles.preview}>No image selected</p>}
+            <img className={styles.preview} id="imagepreview" src={imgUrl || "#"} alt={"Image preview"} /> : <p className={styles.preview}>No image selected</p>}
             {imgUrl && !selectedImage ? 
             <div className={styles.fakeFileInputContainer}>
-            <button type="button" onClick={(e) => {
+            <button aria-label='change image' type="button" onClick={() => {
               const imgInp = document.getElementById("image") as any;
               imgInp.click();
             }} className={styles.fakeButton}>Browse...</button>
             <p className={styles.fakeButtonLabel}>Change image</p>
             </div>: null}
-          <input onClick={(e) => {
-            e.stopPropagation();
-          }} className={styles.input + (imgUrl ? " "+ styles.inputHidden : "")} placeholder="" onChange={() => {
+          <input className={styles.input + (imgUrl ? " "+ styles.inputHidden : "")} placeholder="" onChange={() => {
             if(!selectedImage){
                 // wait for img element to be mounted first
                 setSelectedImage(true);
@@ -42,8 +41,8 @@ export default function ImageInput({imgUrl,imgCaption}: {imgUrl?:string;imgCapti
               imgPreview.src = URL.createObjectURL(file)
             }
           }} type="file" id="image" name="image" accept="image/png, image/jpeg"/>
-          <label>Image Caption</label>
-          <input name="imagecaption" defaultValue={imgCaption} type='text' required />
+          <label htmlFor='imagecaption'>Image Caption</label>
+          <input id="imagecaption" name="imagecaption" defaultValue={imgCaption} type='text' required />
           </>
           
 }

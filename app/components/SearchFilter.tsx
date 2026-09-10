@@ -14,5 +14,5 @@ export default function CategoryFilter({ selectedSearchFilter }: { selectedSearc
     router.push(url.toString());
   }
 
-  return <label className={styles.searchFilter}>Search by<select defaultValue={selectedSearchFilter} onChange={(event) => changeCategory(event.target.value)} aria-label="Filter posts by category">{searchFilters.map((option) => <option value={option} key={option}>{searchFilterLabelMapper[option]}</option>)}</select></label>;
+  return <label htmlFor="search-filter" className={styles.searchFilter}>Search by<select id="search-filter" defaultValue={selectedSearchFilter} onChange={(event) => changeCategory(event.target.value)} aria-label="Filter posts by category">{searchFilters.map((option) => <option value={option} key={option}>{searchFilterLabelMapper[option]}</option>)}</select></label>;
 }

@@ -50,25 +50,25 @@ export default function RegisterForm() {
       <label htmlFor="username">
         Username
         </label>
-        <input name="username" minLength={2} maxLength={100} type="text" value={username} onChange={(e) => setUsername(e.target.value.trim())} required />
+        <input name="username" id="username" minLength={2} maxLength={100} type="text" value={username} onChange={(e) => setUsername(e.target.value.trim())} required />
         </div>
         <div className={styles.formGroup}>
       <label htmlFor="name">
         Name
         </label>
-        <input name="name" minLength={2} maxLength={100} type="text" value={name} onChange={(e) => setName(e.target.value)} required />
+        <input name="name" id="name" minLength={2} maxLength={100} type="text" value={name} onChange={(e) => setName(e.target.value)} required />
         </div>
         <div className={styles.formGroup}>
       <label htmlFor="password">
         Password
         </label>
-        <input name="password" minLength={6} maxLength={100} type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+        <input name="password" id="password" minLength={6} maxLength={100} type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         </div>
         <div className={styles.formGroup}>
-        <label htmlFor="confirmPassword">
+        <label htmlFor="confirmpassword">
         Confirm Password
         </label>
-        <input name="confirmPassword" type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
+        <input name="confirmpassword" id="confirmpassword" type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
         </div>
         {errorMsg && (
             <>

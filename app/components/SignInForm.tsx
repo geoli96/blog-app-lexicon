@@ -24,16 +24,16 @@ export default function SignInForm() {
   return (
     <form action={formAction} className={styles.form}>
         <div className={styles.formGroup}>
-      <label htmlFor="username">
+      <label htmlFor="username" id="username">
         Username
         </label>
-        <input name="username" type="text" value={username} onChange={(e) => setUsername(e.target.value)} required />
+        <input id="username" name="username" type="text" value={username} onChange={(e) => setUsername(e.target.value)} required />
         </div>
         <div className={styles.formGroup}>
-      <label htmlFor="password">
+      <label htmlFor="password" id="password">
         Password
         </label>
-        <input name="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
+        <input name="password" id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         </div>
         {errorMessage && errorMessage !== "success" && (
             <>

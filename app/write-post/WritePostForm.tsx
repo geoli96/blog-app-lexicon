@@ -15,13 +15,12 @@ export default function WritePostForm({csrfToken}: {csrfToken:string}){
         sessionStorage.setItem("pushed","true");
         router.push(`/posts/${res.id}?hideBackLink=true`);
     }}  >
-          <label>Title<input name="title" required placeholder="Give your post a good name" /></label>
+          <label htmlFor="title">Title<input id="title" name="title" required placeholder="Give your post a good name" /></label>
           <div className={styles.formRow}>
-            <label>Category<select name="category" defaultValue="General">{categories.filter((category) => category !== "All").map((category) => <option value={category} key={category}>{category}</option>)}</select></label>
-            <label>Short description<input name="excerpt" required placeholder="What is this post about?" /></label>
+            <label htmlFor="category">Category<select id="category" name="category" defaultValue="General">{categories.filter((category) => category !== "All").map((category) => <option value={category} key={category}>{category}</option>)}</select></label>
+            <label htmlFor="excerpt">Short description<input id="excerpt" name="excerpt" required placeholder="What is this post about?" /></label>
           </div>
-          <label>Body<textarea name="content" required placeholder="Start writing..."></textarea></label>
-          <label>Image</label>
+          <label htmlFor="content">Body<textarea id="content" name="content" required placeholder="Start writing..."></textarea></label>
           <ImageInput></ImageInput>
           <div className={styles.formFooter}><span>Your post will be saved to the blog database.</span><button type="submit">Publish post </button></div>
             <input type="hidden" name="csrfToken" value={csrfToken} />

@@ -14,5 +14,5 @@ export default function SortBy({ selectedSort = "-dateInMs", _sortKeys }: { sele
     router.push(url.toString());
   }
 
-  return <label className={styles.categoryFilter}>Sort by<select key={selectedSort} defaultValue={selectedSort} onChange={(event) => changeSort(event.target.value)} aria-label="Sort posts by attribute">{(_sortKeys || sortKeys).map((sortKey) => <option value={sortKey} key={sortKey}>{sortKeyMapper[sortKey]}</option>)}</select></label>;
+  return <label htmlFor="sort-by" className={styles.categoryFilter}>Sort by<select id="sort-by" key={selectedSort} defaultValue={selectedSort} onChange={(event) => changeSort(event.target.value)} aria-label="Sort posts by attribute">{(_sortKeys || sortKeys).map((sortKey) => <option value={sortKey} key={sortKey}>{sortKeyMapper[sortKey]}</option>)}</select></label>;
 }

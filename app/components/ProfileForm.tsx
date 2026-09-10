@@ -26,13 +26,13 @@ export default function ProfileForm({user}: {user: User}) {
       <label htmlFor="username">
         Username
         </label>
-        <input className={styles.username} name="username" type="text" value={user.username} disabled/>
+        <input id="username" className={styles.username} name="username" type="text" value={user.username} disabled/>
         </div>
         <div className={styles.formGroup}>
       <label htmlFor="name">
         Name
         </label>
-        <input name="name" type="text" value={name} onChange={(e) => setName(e.target.value)} required />
+        <input name="name" id="name" type="text" value={name} onChange={(e) => setName(e.target.value)} required />
         </div>
       <button type="submit">Update profile</button>
     </form>
