@@ -24,7 +24,7 @@ export default async function PostPage({ params, searchParams }: { params: Promi
         <h1>{post.title}</h1>
         <p className={styles.lead}>{post.excerpt}</p>
         <figure>
-          <img className={styles.image} src={post.imageUrl}/>
+          <img alt={post.imageCaption} className={styles.image} src={post.imageUrl}/>
           <figcaption>{post.imageCaption}</figcaption>
           </figure>
         <div className={styles.body}>{post.content.split("\n\n").map((paragraph) => <p key={paragraph}>{paragraph}</p>)}</div>

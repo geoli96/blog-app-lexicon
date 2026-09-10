@@ -19,18 +19,16 @@ export default function ImageInput({imgUrl,imgCaption}: {imgUrl?:string;imgCapti
     return <>
       <label htmlFor='image'>Image</label>
             {imgUrl || selectedImage ? 
-            <img className={styles.preview} id="imagepreview" src={imgUrl || "#"} alt="Image preview" /> : <p className={styles.preview}>No image selected</p>}
+            <img className={styles.preview} id="imagepreview" src={imgUrl || "#"} alt={"Image preview"} /> : <p className={styles.preview}>No image selected</p>}
             {imgUrl && !selectedImage ? 
             <div className={styles.fakeFileInputContainer}>
-            <button type="button" onClick={(e) => {
+            <button aria-label='change image' type="button" onClick={() => {
               const imgInp = document.getElementById("image") as any;
               imgInp.click();
             }} className={styles.fakeButton}>Browse...</button>
             <p className={styles.fakeButtonLabel}>Change image</p>
             </div>: null}
-          <input onClick={(e) => {
-            e.stopPropagation();
-          }} className={styles.input + (imgUrl ? " "+ styles.inputHidden : "")} placeholder="" onChange={() => {
+          <input className={styles.input + (imgUrl ? " "+ styles.inputHidden : "")} placeholder="" onChange={() => {
             if(!selectedImage){
                 // wait for img element to be mounted first
                 setSelectedImage(true);

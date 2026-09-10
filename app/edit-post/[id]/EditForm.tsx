@@ -15,10 +15,9 @@ export default function EditForm({ post}: { post: Post;}) {
     router.back();
   }}>
     <input type="hidden" name="id" value={post.id} />
-    <label>Title<input name="title" required defaultValue={post.title} /></label>
-    <div className={styles.formRow}><label>Category<select name="category" defaultValue={post.category}>{!categories.includes(post.category) && <option value={post.category}>{post.category}</option>}{categories.filter((category) => category !== "All").map((category) => <option value={category} key={category}>{category}</option>)}</select></label><label>Short description<input name="excerpt" required defaultValue={post.excerpt} /></label></div>
-    <label>Body<textarea name="content" required defaultValue={post.content}></textarea></label>
-    <label>Image</label>
+    <label htmlFor="title">Title<input id="title" name="title" required defaultValue={post.title} /></label>
+    <div className={styles.formRow}><label htmlFor="category">Category<select id="category" name="category" defaultValue={post.category}>{!categories.includes(post.category) && <option value={post.category}>{post.category}</option>}{categories.filter((category) => category !== "All").map((category) => <option value={category} key={category}>{category}</option>)}</select></label><label>Short description<input name="excerpt" required defaultValue={post.excerpt} /></label></div>
+    <label htmlFor="content">Body<textarea id="content" name="content" required defaultValue={post.content}></textarea></label>
     <ImageInput imgUrl={post.imageUrl} imgCaption={post.imageCaption}/>
     <div className={styles.formFooter}><span>Originally published {post.date}.</span><button type="submit">Save changes </button></div>
     <input type="hidden" name="createdBy" value={post.createdBy} />
