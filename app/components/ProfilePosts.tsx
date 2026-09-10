@@ -11,7 +11,7 @@ import BackLink from "./BackLink";
 import SortBy from "./SortBy";
 import { User } from "next-auth";
 
-export default async function ProfilePosts({ params, authedUser, username, postsResponse,backLinkVisible, pathname }: {pathname: string; backLinkVisible?: boolean; authedUser?: User ; params: Record<string, string>; username: string, postsResponse: {
+export default async function ProfilePosts({ params, authedUser, username, postsResponse, pathname }: {pathname: string; authedUser?: User ; params: Record<string, string>; username: string, postsResponse: {
     data: {
         data: Post[];
         items: number;
@@ -44,7 +44,6 @@ export default async function ProfilePosts({ params, authedUser, username, posts
 
   return (
       <section className={styles.content}>
-        {backLinkVisible ? <BackLink>← Back to post</BackLink> : null}
         <div className={styles.titleRow}>
           <div><h1>{authedUser?.username === username ? 'My blog posts' : `${username}'s posts`}</h1></div>
           <div className={styles.followButtonContainer}>

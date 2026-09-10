@@ -1,9 +1,9 @@
-import styles from "./page.module.css";
 import { categories } from "@/app/lib/posts";
-import SiteHeader from "@/app/components/SiteHeader";
 import { auth } from "@/auth";
 import axios from "axios";
 import ProfilePosts from "@/app/components/ProfilePosts";
+import SiteHeader from "@/app/components/SiteHeader";
+import styles from './page.module.css'
 
 export default async function UserPosts({ searchParams, params }: { params: Promise<{username:string}>; searchParams: Promise<{sortBy?:string; search?: string; page?: string; category?: string }> }) {
     const user = (await auth())?.user;
@@ -29,10 +29,9 @@ export default async function UserPosts({ searchParams, params }: { params: Prom
 
   const postsResponse = await axios.get("http://localhost:4000/posts?" + filter.toString()).catch(() => ({ data: { data: [], items: 0, pages: 1 } }));
 
-  return (
-    <main className={styles.page}>
-      <SiteHeader  />
-      <ProfilePosts pathname={`/user/${username}`} backLinkVisible params={_searchParams} authedUser={user} username={username}  postsResponse={postsResponse}></ProfilePosts>
-    </main>
+  return (<main className={styles.page}>
+        <SiteHeader  />
+      <ProfilePosts pathname={`/user/${username}`} params={_searchParams} authedUser={user} username={username}  postsResponse={postsResponse}></ProfilePosts>
+      </main>
   );
 }
