@@ -27,7 +27,7 @@
   cursor: pointer;
 }
 
-.filterControls { display: flex; align-items: end; gap: 24px; height: 48px; }
+.filterControls { display: flex; align-items: end; gap: 24px; }
 
 .wordmark {
   display: flex;
@@ -66,7 +66,7 @@
 .sectionHeader { display: flex; margin-bottom: 29px; flex-wrap: wrap; flex-direction: column;}
 .sectionHeader { margin-bottom: 30px; }
 .sectionHeader h2, .composer h2 { margin: 0; font-family: Georgia, serif; font-size: 31px; font-weight: normal; }
-.filterControls { display: flex; align-items: end; gap: 24px; }
+.filterControls { display: flex; align-items: end; gap: 24px; flex-wrap: wrap; }
 .search { display: flex; align-items: center; gap: 8px; width: 180px; padding: 8px 0; border-bottom: 1px solid #d0d7de; color: #57606a; }
 .search span { font-family: Georgia, serif; font-size: 22px; line-height: 1; }
 .search input { width: 100%; border: 0; outline: 0; color: #1f2328; background: transparent;  }
@@ -75,7 +75,7 @@
 .postGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
 .postCard,.postCardEmpty { display: flex; padding: 0; overflow: hidden; color: inherit; text-align: left; background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 6px; transition: border-color .2s ease, box-shadow .2s ease; }
 .postCardEmpty {border: 1px solid black; visibility: hidden;}
-.postCardEmpty > div {height: 295px;}
+.postCardEmpty > div {height: 550px;}
 .postCard:hover { border-color: #0969da; box-shadow: 0 3px 8px rgba(31, 35, 40, .12); }
 .postImage { display: grid; place-items: center; object-fit: cover; }
 .postCard:not(.featured) .postImage { background: white }
@@ -118,7 +118,7 @@
 .publishButton { align-self: flex-start; margin-top: 13px; padding: 13px 17px; border: 0; color: #f8f5ef; background: #0969da; cursor: pointer; font: 13px var(--font-geist-sans), sans-serif; }
 .publishButton span { margin-left: 14px; font-size: 17px; }
 
-@media (max-width: 700px) {
+@media (max-width: 800px) {
   .header { height: 70px; min-height: 70px; padding: 20px; }
   .main { padding: 0 20px 55px; }
   .nav { gap: 15px; }
@@ -128,7 +128,7 @@
   .writeButton b { margin: 0; font-size: 21px; }
   .archive { padding: 45px 0 0; }
   .sectionHeader { align-items: start; flex-direction: column; gap: 22px; height: 147px; }
-  .filterControls { align-items: stretch; flex-direction: column; gap: 18px; width: 100%; }
+  .filterControls { align-items: stretch; flex-direction: column; gap: 18px; width: 100%;}
   .categoryFilter { justify-content: space-between; }
   .categoryFilter select { flex: 1; max-width: 220px; }
   .search { width: 100%; }
@@ -140,6 +140,7 @@
   .cardContent { padding: 22px 20px; }
   .pagination { gap: 12px; }
   .article { padding: 42px 5px; }
+  .sectionHeader {height: 280px;}
   .backButton { margin-bottom: 52px; }
   .articleMeta { gap: 8px; }
   .article h1 { font-size: 45px; }
