@@ -26,18 +26,18 @@
 .count { margin: 27px 0 18px;  }
 .postList { border-top: 1px solid #d0d7de; }
 .post { display: grid; height: 170px; grid-template-columns: 72px 1fr auto; align-items: center; gap: 26px; padding: 25px 12px 25px 0; border-bottom: 1px solid #d0d7de; transition: padding .2s ease, background .2s ease; }
-.post:hover { padding-left: 12px; background: #f6f8fa; }
 .emptyPost { visibility: hidden; pointer-events: none; }
 .noPostsText { border-bottom: 0px; grid-template-columns: auto; align-items: flex-start; }
 .image {object-fit: cover; display: grid; width:120px; height: 120px; place-items: center; color: #f2efe9; font-family: Georgia, serif; font-size: 18px;  }
 .postInfo { min-width: 0;margin-left: 40px; }
-.postInfo div {height: 21px; overflow: hidden;}
+.postInfo div {overflow: hidden;}
 .postInfo h2 {height: 26px; overflow: hidden;}
 .postInfo p {height: 60px; overflow: hidden;}
 .meta { display: flex; gap: 17px; color: #57606a;  letter-spacing: .08em;  }
 .meta span:first-child { color: #0969da; }
 .post h2 { margin: 11px 0 7px; color: #0969da; font-family: var(--font-geist-sans), sans-serif; font-size: 20px; font-weight: 600; line-height: 1.3; }
 .post p { margin: 0; color: #57606a;  line-height: 1.5; }
+.post:hover{background-color: #57606a0d;}
 .empty { color: #57606a;}
 .pagination { display: flex; align-items: center; justify-content: space-between; margin-top: 30px; padding-top: 18px; border-top: 1px solid #d0d7de; color: #57606a;  }
 .pagination a { padding: 8px 0; color: #0969da; cursor: pointer; font: inherit; text-decoration: none; }
@@ -56,13 +56,12 @@
 @media (max-width: 700px) {
   .titleRow { align-items: start; flex-direction: column; gap: 25px; }
   .titleRow h1 { font-size: 53px; letter-spacing: -2px; }
-  .post{display: flex; flex-direction: column; justify-content: flex-start; height: auto; align-items: flex-start; height: 467px;}
+  .post{display: flex; flex-direction: column; justify-content: flex-start; height: auto; align-items: flex-start; height: 467px; border-top: 1px solid #d0d7de;}
   .postInfo {margin-left: 0px;}
   .postInfo {width: 100%;}
+  .postList { display: flex; flex-direction: column; gap: 20px; }
   .imageStandard {display: none;}
   .imageResponsive {margin-bottom: 20px; display: block;}
-  .postInfo h2 {height: 50px;}
-  .postInfo p {height: 50px;}
   .image {width: 100% !important; height: 200px;}
 
   .filterControls { align-items: stretch; flex-direction: column; gap: 18px; width: 100%; }
