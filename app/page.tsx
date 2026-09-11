@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styles from "./page.module.css";
-import { categories, PaginatedPosts, Post, searchFilters } from "./lib/posts";
+import { categories, getFilterTimeInMs, PaginatedPosts, Post, searchFilters } from "./lib/posts";
 import CategoryFilter from "./components/CategoryFilter";
 import SiteHeader from "./components/SiteHeader";
 import SearchForm from "./components/SearchForm";
@@ -8,12 +8,14 @@ import axios from "axios";
 import SearchFilter from "./components/SearchFilter";
 import { auth } from "@/auth";
 import SortBy from "./components/SortBy";
+import DateFilter from "./components/DateFilter";
 
-export default async function Home({ searchParams }: { searchParams: Promise<{ search?: string; category?: string; page?: string; searchFilter?:string;sortBy?:string }> }) {
+export default async function Home({ searchParams }: { searchParams: Promise<{ dateFilter?:string; search?: string; category?: string; page?: string; searchFilter?:string;sortBy?:string }> }) {
   const user = (await auth())?.user;
   const params = await searchParams;
   const query = params.search || "";
   const sortBy = params.sortBy || "";
+  const dateFilter = params.dateFilter || "";
   const selectedCategory = params.category || "";
   const category = categories.includes(selectedCategory) ? selectedCategory : "";
   const selectedSearchFilter = params.searchFilter || "";
@@ -25,6 +27,9 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ s
   filter.append("_page", String(currentPage));
   filter.append("_per_page", "6");
   filter.append("_sort", sortBy || "-dateInMs");
+  if(dateFilter){
+    filter.append("dateInMs:gte", String(getFilterTimeInMs(dateFilter)));
+  }
   if(category){
     filter.append("category", category);
   }
@@ -50,6 +55,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ s
   function pageUrl(page: number) {
     const nextParams = new URLSearchParams();
     if (query) nextParams.set("search", query);
+    if (dateFilter) nextParams.set("dateFilter", dateFilter);
     if (category) nextParams.set("category", category);
     if (searchFilter) nextParams.set("searchFilter", searchFilter);
     nextParams.set("page", String(page));
@@ -67,12 +73,13 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ s
               {user?<a href="/following">By followed authors</a> : null}
               </div>
               <div className={styles.sectionHeader}>
-                <div><h2>Latest posts</h2></div>
+                <div><h2>Latest posts</h2><p>{filteredPostsResponse.data.items} posts</p></div>
                 <div className={styles.filterControls}>
                   <CategoryFilter selectedCategory={category} />
+                  <DateFilter dateFilter={dateFilter} />
                   <SortBy selectedSort={sortBy} />
                   <SearchFilter selectedSearchFilter={searchFilter}/>
-                  <SearchForm value={query} action="/" clearHref={category ? `/?category=${encodeURIComponent(category)}` : "/"} hiddenFields={category !== "All" ? { category } : {}} />
+                  <SearchForm value={query} action="/" hiddenFields={category !== "All" ? { category } : {}} />
                 </div>
               </div>
               <div className={styles.postGrid}>
@@ -98,7 +105,7 @@ function PostCard({ post, featured }: { post: Post; featured: boolean }) {
     <img alt={post.imageCaption} className={styles.postImage} height={295} width={"40%"} src={post.imageUrl}/>
     <div className={styles.cardContent}><div className={styles.cardMeta}>
       <span>{post.category}</span>
-      <span>0{date.getDay()}/{date.getMonth() < 10 ? "0" : ""}{date.getMonth()}/{String(date.getFullYear()).substring(2)}</span>
+      <span>{date.getDate() < 10 ? "0" : ""}{date.getDate()}/{date.getMonth() < 10 ? "0" : ""}{date.getMonth()}/{String(date.getFullYear()).substring(2)}</span>
       </div>
         <h3>{post.title}</h3>
         <p>{post.excerpt}</p>

@@ -1,10 +1,10 @@
 "use client";
 
-import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import {  useRouter, useSearchParams } from "next/navigation";
 import styles from "./SearchForm.module.css";
 import Link from "next/link";
 
-export default function SearchForm({ value, action, clearHref = action, hiddenFields = {} }: { value: string; action: string; clearHref?: string; hiddenFields?: Record<string, string> }) {
+export default function SearchForm({ value, action, hiddenFields = {} }: { value: string; action: string; hiddenFields?: Record<string, string> }) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const clearParams = new URLSearchParams(searchParams);
