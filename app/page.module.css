@@ -126,7 +126,7 @@
   .writeButton { padding: 10px; font-size: 0; }
   .writeButton b { margin: 0; font-size: 21px; }
   .archive { padding: 45px 0 0; }
-  .sectionHeader { align-items: start; flex-direction: column; gap: 22px; height: 330px; }
+  .sectionHeader { align-items: start; flex-direction: column; gap: 22px; height: 331px; }
   .filterControls { align-items: stretch; flex-direction: column; gap: 18px; width: 100%;}
   .categoryFilter { justify-content: space-between; }
   .categoryFilter select { flex: 1; max-width: 220px; }
