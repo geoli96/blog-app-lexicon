@@ -12,7 +12,7 @@
 .switchPrompt { margin-top: 30px;  }
 .switchPrompt a { color: #0969da;  text-decoration: underline; text-underline-offset: 3px; }
 
-@media (max-width: 700px) {
+@media (max-width: 768px) {
   .content { padding: 42px 25px 55px; }
   .title { font-size: 54px; letter-spacing: -2px; }
   .intro { margin-bottom: 35px; }

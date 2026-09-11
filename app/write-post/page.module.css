@@ -41,7 +41,7 @@
 .formFooter b { margin-left: 12px; font-size: 16px; font-weight: normal; }
 
 
-@media (max-width: 700px) {
+@media (max-width: 768px) {
   .header { height: 70px; min-height: 70px; padding: 20px; }
   .archiveLink { font-size: 0; }
   .archiveLink span { font-size: 20px; }

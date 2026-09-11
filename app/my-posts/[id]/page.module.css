@@ -14,4 +14,4 @@
 .state { display: grid; min-height: 100vh; place-items: center; color: #1f2328; background: #ffffff; font-family: Georgia, serif; }
 .state h1 { margin-bottom: 10px; font-size: 44px; font-weight: normal; }
 .state a { color: #0969da; }
-@media (max-width: 700px) { .article { padding: 42px 25px 55px; } .backLink { margin-bottom: 52px; } .meta { gap: 8px; } .article h1 { font-size: 45px; } .body { font-size: 17px; } }
+@media (max-width: 768px) { .article { padding: 42px 25px 55px; } .backLink { margin-bottom: 52px; } .meta { gap: 8px; } .article h1 { font-size: 45px; } .body { font-size: 17px; } }

@@ -24,7 +24,7 @@
 .state h1 { margin-bottom: 10px; font-size: 44px; font-weight: normal; }
 .state a { color: #0969da; }
 .title {margin-bottom: 20px;}
-@media (max-width: 700px) {
+@media (max-width: 768px) {
   .header { height: 70px; min-height: 70px; padding: 20px; }
   .archiveLink { font-size: 0; }
   .archiveLink span { font-size: 20px; }
