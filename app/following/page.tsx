@@ -59,9 +59,9 @@ export default async function FollowingPage({ searchParams }: {searchParams: Pro
               {user?<a href="/following" className={styles.pageLinkActive}>By followed authors</a> : null}
               </div>
               <div className={styles.sectionHeader}>
-                <div><h2>Latest posts</h2></div>
+                <div><h2>Latest posts</h2><p>{filteredPostsResponse.data.items} posts</p></div>
                 <div className={styles.filterControls}>
-                <SortBy selectedSort={sortBy} />
+                  <SortBy selectedSort={sortBy}/>
                 </div>
               </div>
               <div className={styles.postGrid}>
@@ -87,7 +87,7 @@ function PostCard({ post, featured }: { post: Post; featured: boolean }) {
     <img className={styles.postImage} height={295} width={"40%"} alt={post.imageCaption} src={post.imageUrl}/>
     <div className={styles.cardContent}><div className={styles.cardMeta}>
       <span>{post.category}</span>
-      <span>0{date.getDay()}/{date.getMonth() < 10 ? "0" : ""}{date.getMonth()}/{String(date.getFullYear()).substring(2)}</span>
+      <span>{date.getDate() < 10 ? "0" : ""}{date.getDate()}/{date.getMonth() < 10 ? "0" : ""}{date.getMonth()}/{String(date.getFullYear()).substring(2)}</span>
       </div>
         <h3>{post.title}</h3>
         <p>{post.excerpt}</p>

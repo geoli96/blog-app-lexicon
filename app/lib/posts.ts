@@ -35,8 +35,28 @@ export const API_URL = "http://localhost:4000";
 export const categories = ["All", "General", "Essay", "Ideas", "Guides", "Reviews", "Personal", "Travel", "Fitness", "Food"];
 export const searchFilters = ["title", "createdBy","excerpt","content"];
 export const searchFilterLabelMapper: Record<string, string> = {title: "Title", createdBy: "Author", excerpt: "Description", content: "Content"};
+export const dateFilters = ["all-time", "1","7","30"] as const;
+export const dateFilterLabelMapper: Record<string, string> = {"all-time": "All time", "1": "Past day", "7": "Past 7 days", "30": "Past 30 days"};
 export const sortKeys = ["-dateInMs", "title","createdBy"];
 export const sortKeyMapper: Record<string, string> = {title: "Title", createdBy: "Author", "-dateInMs": "Publication date"};
+
+export const getFilterTimeInMs = (dateFilterOption: string) => {
+    if(dateFilterOption === "all-time"){
+        return 0;
+    }
+    const offset = parseInt(dateFilterOption, 10);
+    const oneDayInMs = 86400000;
+    const totalOffset = oneDayInMs * offset;
+    const filterDateInMs = Date.now()-totalOffset;
+    const filterDate = new Date(filterDateInMs);
+    filterDate.setHours(0);
+    filterDate.setMinutes(0);
+    filterDate.setSeconds(0);
+    filterDate.setMilliseconds(0);
+
+    return filterDate.valueOf()
+}
+
 
 export async function getPosts(searchParams?: Record<string, string>): Promise<Post[]> {
     const urlParams = new URLSearchParams({_per_page: "6", _sort: "-dateInMs" });
