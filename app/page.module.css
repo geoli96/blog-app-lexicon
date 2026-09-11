@@ -64,7 +64,7 @@
 
 .archive { padding: 55px 0 0; }
 .sectionHeader { display: flex; margin-bottom: 29px; flex-wrap: wrap; flex-direction: column;}
-.sectionHeader { margin-bottom: 30px; height: 158px; }
+.sectionHeader { margin-bottom: 30px; }
 .sectionHeader h2, .composer h2 { margin: 0; font-family: Georgia, serif; font-size: 31px; font-weight: normal; }
 .search { display: flex; align-items: center; gap: 8px; width: 180px; padding: 8px 0; border-bottom: 1px solid #d0d7de; color: #57606a; }
 .search span { font-family: Georgia, serif; font-size: 22px; line-height: 1; }
@@ -126,7 +126,7 @@
   .writeButton { padding: 10px; font-size: 0; }
   .writeButton b { margin: 0; font-size: 21px; }
   .archive { padding: 45px 0 0; }
-  .sectionHeader { align-items: start; flex-direction: column; gap: 22px; height: 331px; }
+  .sectionHeader { align-items: start; flex-direction: column; gap: 22px; height: 361px; }
   .filterControls { align-items: stretch; flex-direction: column; gap: 18px; width: 100%;}
   .categoryFilter { justify-content: space-between; }
   .categoryFilter select { flex: 1; max-width: 220px; }

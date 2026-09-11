@@ -1,10 +1,15 @@
 import Link from "next/link";
 import styles from "../page.module.css";
+import styles2 from './page.module.css'
 import { categories, PaginatedPosts, Post, searchFilters } from "../lib/posts";
 import SiteHeader from "../components/SiteHeader";
 import axios from "axios";
 import { auth } from "@/auth";
 import SortBy from "../components/SortBy";
+import CategoryFilter from "../components/CategoryFilter";
+import DateFilter from "../components/DateFilter";
+import SearchFilter from "../components/SearchFilter";
+import SearchForm from "../components/SearchForm";
 
 export default async function FollowingPage({ searchParams }: {searchParams: Promise<{sortBy?:string; search?: string; category?: string; page?: string; searchFilter?:string }> }) {
   const user = (await auth())?.user;
@@ -60,8 +65,12 @@ export default async function FollowingPage({ searchParams }: {searchParams: Pro
               </div>
               <div className={styles.sectionHeader}>
                 <div><h2>Latest posts</h2><p>{filteredPostsResponse.data.items} posts</p></div>
-                <div className={styles.filterControls}>
-                  <SortBy selectedSort={sortBy}/>
+                <div className={styles.filterControls + " " + styles2.filterControls}>
+                  <SortBy selectedSort={sortBy} />
+                  <CategoryFilter selectedCategory={""} />
+                                    <DateFilter dateFilter={""} />
+                                    <SearchFilter selectedSearchFilter={""}/>
+                                    <SearchForm value={""} action="/" hiddenFields={category !== "All" ? { category } : {}} />
                 </div>
               </div>
               <div className={styles.postGrid}>
