@@ -38,7 +38,7 @@ export const searchFilterLabelMapper: Record<string, string> = {title: "Title", 
 export const dateFilters = ["all-time", "1","7","30"] as const;
 export const dateFilterLabelMapper: Record<string, string> = {"all-time": "All time", "1": "Past day", "7": "Past 7 days", "30": "Past 30 days"};
 export const sortKeys = ["-dateInMs", "title","createdBy"];
-export const sortKeyMapper: Record<string, string> = {title: "Title", createdBy: "Author", "-dateInMs": "Publication date"};
+export const sortKeyMapper: Record<string, string> = {title: "Title", createdBy: "Author", "-dateInMs": "Date"};
 
 export const getFilterTimeInMs = (dateFilterOption: string) => {
     if(dateFilterOption === "all-time"){

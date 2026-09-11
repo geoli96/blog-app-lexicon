@@ -40,6 +40,8 @@ body {
   border: 1px solid white !important;
 }
 
+select {width:160px}
+
 .dark-mode-html .primaryLink{border: 1px solid white;}
 
 a {
