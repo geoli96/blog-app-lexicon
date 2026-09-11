@@ -64,7 +64,7 @@
 
 .archive { padding: 55px 0 0; }
 .sectionHeader { display: flex; margin-bottom: 29px; flex-wrap: wrap; flex-direction: column;}
-.sectionHeader { margin-bottom: 30px; }
+.sectionHeader { margin-bottom: 30px; height: 158px; }
 .sectionHeader h2, .composer h2 { margin: 0; font-family: Georgia, serif; font-size: 31px; font-weight: normal; }
 .filterControls { display: flex; align-items: end; gap: 24px; flex-wrap: wrap; }
 .search { display: flex; align-items: center; gap: 8px; width: 180px; padding: 8px 0; border-bottom: 1px solid #d0d7de; color: #57606a; }
