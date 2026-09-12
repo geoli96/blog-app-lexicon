@@ -81,7 +81,7 @@
 .cardMeta { display: flex; height: 21px; overflow: hidden; justify-content: space-between; width: 100%;  letter-spacing: .07em;  }
 .cardMeta span:first-child { color: #0969da; }
 .cardContent h3 { height: 59px; text-wrap: wrap; word-wrap: anywhere; overflow: hidden; max-width: 340px; margin: 29px 0 10px; font-family: Georgia, serif; font-size: 26px; font-weight: normal; line-height: 1.08; }
-.cardContent p { max-width: 310px; height: 55px; overflow: hidden; margin: 0; color: #57606a;  line-height: 1.5; }
+.cardContent p { max-width: 310px; height: 68px; overflow: hidden; margin: 0; color: #57606a;  line-height: 1.5; }
 .readLink { margin-top: auto; height: 42px; padding-top: 20px; color: #0969da;   }
 .author { margin-top: auto; height: 40px; padding-top: 20px; color: #57606a;   }
 .readLink b { margin-left: 7px; color: #0969da; font-size: 16px; font-weight: normal; }

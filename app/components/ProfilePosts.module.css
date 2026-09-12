@@ -32,7 +32,7 @@
 .postInfo { min-width: 0;margin-left: 40px; }
 .postInfo div {overflow: hidden;}
 .postInfo h2 {height: 26px; overflow: hidden;}
-.postInfo p {height: 60px; overflow: hidden;}
+.postInfo p {height: 70px; overflow: hidden;}
 .meta { display: flex; gap: 17px; color: #57606a;  letter-spacing: .08em;  }
 .meta span:first-child { color: #0969da; }
 .post h2 { margin: 11px 0 7px; color: #0969da; font-family: var(--font-geist-sans), sans-serif; font-size: 20px; font-weight: 600; line-height: 1.3; }
