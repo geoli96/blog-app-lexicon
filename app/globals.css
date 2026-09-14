@@ -32,8 +32,16 @@ body {
 }
 
 .dark-mode-html * {
-  color: white !important;
   background-color: black !important;
+  color: white !important;
+}
+
+.dark-mode-html .pagination a {
+  color: white !important;
+}
+
+.dark-mode-html .pagination .disabledPage {
+  color: #8c959f !important;
 }
 
 .dark-mode-html button {

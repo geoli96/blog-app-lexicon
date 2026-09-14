@@ -87,10 +87,10 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ d
                 {filteredPosts.length === 0 && <p className={styles.empty}>No posts match that search.</p>}
                 {extra.map((v,i) => <Link key={"postcard-empty"+(i+1)} className={`${styles.postCardEmpty}`} href=""><div></div></Link>)}
               </div>
-              {<div className={styles.pagination} aria-label="Post pagination">
-                <Link scroll={false} aria-disabled={safePage === 1} className={safePage === 1 ? styles.disabledPage : ""} href={safePage === 1 ? "#" : pageUrl(safePage - 1)}>← Previous</Link>
+              {<div className={styles.pagination + " " + "pagination"} aria-label="Post pagination">
+                <Link scroll={false} aria-disabled={safePage === 1} className={safePage === 1 ? styles.disabledPage + " " + "disabledPage" : ""} href={safePage === 1 ? "#" : pageUrl(safePage - 1)}>← Previous</Link>
                 <span>Page {safePage} of {pageCount}</span>
-                <Link scroll={false} aria-disabled={safePage === pageCount} className={safePage === pageCount ? styles.disabledPage : ""} href={safePage === pageCount ? "#" : pageUrl(safePage + 1)}>Next →</Link>
+                <Link scroll={false} aria-disabled={safePage === pageCount} className={safePage === pageCount ? styles.disabledPage + " " + "disabledPage" : ""} href={safePage === pageCount ? "#" : pageUrl(safePage + 1)}>Next →</Link>
               </div>}
             </section>
         </>
