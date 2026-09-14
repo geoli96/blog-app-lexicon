@@ -21,7 +21,7 @@
 .primaryLink { padding: 11px 15px; color: #ffffff; background: black; border-radius: 6px; }
 .signedInAs{   }
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   .header { height: auto; padding: 20px; flex-wrap: wrap; gap:20px; }
   .actions { gap: 15px; }
   .link span {  }

@@ -43,7 +43,7 @@
 .contentContainer > * {width:100%}
 .contentContainer > :first-child {padding-right: 8px;}
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   .header { height: 70px; min-height: 70px; padding: 20px; }
   .archiveLink { font-size: 0; }
   .archiveLink span { font-size: 20px; }
