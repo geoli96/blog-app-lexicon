@@ -20,7 +20,7 @@
 .backLink { display: block; margin-bottom: 69px;   }
 .titleRow { display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; gap: 30px; height: 211px; }
 .titleRow h1 { margin: 0; font-family: Georgia, serif; font-size: clamp(48px, 7vw, 78px); font-weight: normal; line-height: .98; letter-spacing: -3px; }
-.search { display: flex; align-items: center; gap: 8px; width: 200px; padding: 8px 0; border-bottom: 1px solid #aaa49a; color: #6c6962; }
+.search { display: flex; align-items: center; gap: 8px; width: 300px; padding: 8px 0; border-bottom: 1px solid #aaa49a; color: #6c6962; }
 .search span { font-family: Georgia, serif; font-size: 22px; line-height: 1; }
 .search input { width: 100%; border: 0; outline: 0; color: #24231f; background: transparent;  }
 .count { margin: 27px 0 18px;  }
