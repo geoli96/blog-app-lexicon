@@ -9,7 +9,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1240px;
+  max-width: 1300px;
   margin: 0 auto;
   height: 87px;
   min-height: 87px;
@@ -58,7 +58,7 @@
 .writeButton { padding: 11px 15px; color: #ffffff; background: black; border-radius: 6px;  }
 .writeButton b { margin-left: 10px; color: #ffffff; font-size: 17px; font-weight: normal; }
 
-.main { max-width: 1240px; margin: 0 auto; padding: 0 36px 90px; }
+.main { max-width: 1300px; margin: 0 auto; padding: 0 36px 90px; }
 
 .archive { padding: 55px 0 0; }
 .sectionHeader { display: flex; margin-bottom: 29px; flex-direction: column; }
@@ -113,7 +113,7 @@
 .formRow { display: grid; grid-template-columns: 1fr 1.7fr; gap: 25px; }
 .publishButton { align-self: flex-start; margin-top: 13px; padding: 13px 17px; border: 0; color: #f8f5ef; background: #0969da; cursor: pointer; font: 13px var(--font-geist-sans), sans-serif; }
 .publishButton span { margin-left: 14px; font-size: 17px; }
-.filterControls {margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; height: 118px; align-items: flex-start; }
+.filterControls {margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; align-items: flex-start; }
 .html-dark-mode .pagination {color: green !important;}
 
 @media (max-width: 800px) {
@@ -125,7 +125,7 @@
   .writeButton { padding: 10px; font-size: 0; }
   .writeButton b { margin: 0; font-size: 21px; }
   .archive { padding: 45px 0 0; }
-  .sectionHeader { align-items: start; flex-direction: column; gap: 22px; height: 361px; }
+  .sectionHeader { align-items: start; flex-direction: column; gap: 22px; }
   .filterControls { flex-direction: column; gap: 18px; width: 100%;}
   .categoryFilter { justify-content: space-between; }
   .categoryFilter select { flex: 1; max-width: 220px; }

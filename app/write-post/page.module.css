@@ -9,7 +9,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1240px;
+  max-width: 1300px;
   margin: 0 auto;
   height: 87px;
   min-height: 87px;
@@ -23,7 +23,7 @@
 .mark { display: grid; width: 30px; height: 30px; place-items: center; color: #ffffff; background: #24292f; border-radius: 50%;  font-weight: 700; }
 .archiveLink {   }
 .archiveLink span { margin-left: 7px; color: #0969da !important; font-size: 16px; }
-.editor { max-width: 1240px; margin: 0 auto; padding: 65px 36px 90px; }
+.editor { max-width: 1300px; margin: 0 auto; padding: 65px 36px 90px; }
 .backLink { display: block; margin-bottom: 75px;   }
 .title {margin-bottom: 20px;}
 .editor h1 { margin: 0; font-family: Georgia, serif; font-size: clamp(48px, 7vw, 78px); font-weight: normal; line-height: .98; letter-spacing: -3px; }
