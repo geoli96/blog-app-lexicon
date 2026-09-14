@@ -65,6 +65,7 @@ export default async function FollowingPage({ searchParams }: {searchParams: Pro
               </div>
               <div className={styles.sectionHeader}>
                 <div><h2>Latest posts</h2><p>{filteredPostsResponse.data.items} posts</p></div>
+                <p className={styles.filterHeader}>Filters</p>
                 <div className={styles.filterControls + " " + styles2.filterControls}>
                   <SortBy selectedSort={sortBy} />
                   <CategoryFilter selectedCategory={""} />

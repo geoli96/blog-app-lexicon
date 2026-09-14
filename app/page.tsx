@@ -74,6 +74,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ d
               </div>
               <div className={styles.sectionHeader}>
                 <div><h2>Latest posts</h2><p>{filteredPostsResponse.data.items} posts</p></div>
+                <p className={styles.filterHeader}>Filters</p>
                 <div className={styles.filterControls}>
                   <CategoryFilter selectedCategory={category} />
                   <DateFilter dateFilter={dateFilter} />
