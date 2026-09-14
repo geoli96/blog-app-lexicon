@@ -36,6 +36,6 @@ You can also follow posters.
 ## Tech stack used
 Next.js with App router for frontend and server side actions.  
 NextAuth.js/Auth.js for authentication.  
-uploadthing for image uploads and storage.  
-json-server for mock CRUD server and database (db.json).
+Uploadthing for image uploads and storage.  
+Json-server for mock CRUD server and database (db.json).
 
