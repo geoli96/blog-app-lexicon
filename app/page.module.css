@@ -116,7 +116,7 @@
 .formRow { display: grid; grid-template-columns: 1fr 1.7fr; gap: 25px; }
 .publishButton { align-self: flex-start; margin-top: 13px; padding: 13px 17px; border: 0; color: #f8f5ef; background: #0969da; cursor: pointer; font: 13px var(--font-geist-sans), sans-serif; }
 .publishButton span { margin-left: 14px; font-size: 17px; }
-.filterControls {margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: flex-start; }
+.filterControls {margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: flex-start; }
 .html-dark-mode .pagination {color: green !important;}
 
 @media (max-width: 1000px) {
