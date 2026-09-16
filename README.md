@@ -11,7 +11,7 @@ You can also follow posters.
 ## Pre-requisites
 `.env` file with `API_URL`, `AUTH_SECRET` and
 `UPLOADTHING_TOKEN`, `AUTH_TRUST_HOST` variables set. The values from `.env.example` can be used but `UPLOADTHING_TOKEN` needs to be a real token.
-A Uploadthing account with token is needed for image uploads to work. It can be created on this website:  
+An Uploadthing account with token is needed for image uploads to work. It can be created on this website:  
 https://uploadthing.com/
 
 ## Run development server
