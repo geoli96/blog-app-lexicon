@@ -1,2 +1,2 @@
-.searchFilter { display: flex; align-items: flex-start; gap: 9px; justify-content: space-between; letter-spacing: .08em;  }
+.searchFilter { width: 400px; justify-content: space-between; display: flex; align-items: flex-start; gap: 9px; letter-spacing: .08em;  }
 .searchFilter select {  padding: 8px 18px 8px 8px; border: 1px solid #d0d7de; border-radius: 6px; outline: 0; color: black; background: #f6f8fa; cursor: pointer;  }
