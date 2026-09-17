@@ -1,6 +1,6 @@
 .page {
   min-height: 100vh;
-  color: #1f2328;
+  color: black;
   background: #ffffff;
   font-family: var(--font-geist-sans), sans-serif;
 }
@@ -56,7 +56,7 @@
 .nav { display: flex; align-items: center; gap: 29px; }
 .navLink, .navLinkActive { padding: 8px 0; background: transparent;  }
 .navLink span, .navLinkActive span { margin-left: 5px; }
-.navLinkActive { color: #1f2328; border-bottom: 1px solid #0969da; }
+.navLinkActive { color: black; border-bottom: 1px solid #0969da; }
 .writeButton { padding: 11px 15px; color: #ffffff; background: black; border-radius: 6px;  }
 .writeButton b { margin-left: 10px; color: #ffffff;  }
 .filterHeader{margin-top: 20px;}
@@ -69,7 +69,7 @@
 .sectionHeader h2, .composer h2 { margin: 0; font-family: Georgia, serif;  }
 .search { display: flex; align-items: center; gap: 8px; width: 180px; padding: 8px 0; border-bottom: 1px solid #d0d7de;  }
 .search span { font-family: Georgia, serif;  }
-.search input { width: 100%; border: 0; outline: 0; color: #1f2328; background: transparent;  }
+.search input { width: 100%; border: 0; outline: 0; color: black; background: transparent;  }
 .search input::placeholder { color: #8d8880; }
 .search button { padding: 5px 0 5px 8px; border: 0; border-left: 1px solid #d0d7de; color: #0969da !important; background: transparent; cursor: pointer;}
 .postGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }

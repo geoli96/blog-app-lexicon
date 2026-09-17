@@ -1,4 +1,4 @@
-.page { min-height: 100vh; color: #1f2328; background: #ffffff; font-family: var(--font-geist-sans), sans-serif; }
+.page { min-height: 100vh; color: black; background: #ffffff; font-family: var(--font-geist-sans), sans-serif; }
 .header { display: flex; align-items: center; justify-content: space-between; max-width: 1300px; height: 87px; min-height: 87px; flex-shrink: 0; margin: 0 auto; padding: 28px 36px; border-bottom: 1px solid #d0d7de; }
 .wordmark, .archiveLink, .backLink { color: inherit; text-decoration: none; }
 .wordmark { display: flex; align-items: center; gap: 11px; font-family: Georgia, serif;   }
@@ -12,7 +12,7 @@
 .intro { margin: 24px 0 60px;  font-family: Georgia, serif;   }
 .editor form { display: flex; flex-direction: column; gap: 25px; }
 .editor label { display: flex; flex-direction: column; gap: 9px;    letter-spacing: .08em;  }
-.editor input, .editor select, .editor textarea { width: 100%; padding: 13px 0; border: 0; border-bottom: 1px solid #d0d7de; outline: 0; color: #1f2328; background: transparent;}
+.editor input, .editor select, .editor textarea { width: 100%; padding: 13px 0; border: 0; border-bottom: 1px solid #d0d7de; outline: 0; color: black; background: transparent;}
 .editor input:focus, .editor textarea:focus { border-color: #0969da !important; }
 .editor textarea { min-height: 230px; resize: vertical; line-height: 1.6; }
 .formRow { display: grid; grid-template-columns: 1fr 2fr; gap: 30px; }
@@ -20,7 +20,7 @@
 .formFooter span {   line-height: 1.4; }
 .formFooter button { flex-shrink: 0; padding: 14px 18px; border: 0; color: #ffffff; background: black; border-radius: 6px; cursor: pointer; }
 .formFooter b { margin-left: 12px;  }
-.state { display: grid; min-height: 100vh; place-items: center; color: #1f2328; background: #ffffff; font-family: Georgia, serif; }
+.state { display: grid; min-height: 100vh; place-items: center; color: black; background: #ffffff; font-family: Georgia, serif; }
 .state h1 { margin-bottom: 10px;  }
 .state a { color: #0969da !important; }
 .title {margin-bottom: 20px;}

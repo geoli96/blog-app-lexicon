@@ -1,6 +1,6 @@
 .page {
   min-height: 100vh;
-  color: #1f2328;
+  color: black;
   background: #ffffff;
   font-family: var(--font-geist-sans), sans-serif;
 }
@@ -35,7 +35,7 @@
 .body p { margin: 0 0 25px; }
 .editLink { display: inline-block; margin-top: 28px; padding-bottom: 7px; color: #0969da !important; border-bottom: 1px solid #0969da;  text-decoration: none; }
 .editLink span { margin-left: 9px;  }
-.state { display: grid; min-height: 100vh; place-items: center; color: #1f2328; background: #ffffff; font-family: Georgia, serif; }
+.state { display: grid; min-height: 100vh; place-items: center; color: black; background: #ffffff; font-family: Georgia, serif; }
 .state h1 { margin-bottom: 10px;  }
 .state a { color: #0969da !important; }
 .image {width:100%; height: 700px; object-fit: cover;}
