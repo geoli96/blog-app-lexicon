@@ -7,9 +7,7 @@ You can also follow posters.
 <img src="blog-app-homepage.png" alt="List of posts posted by users" width="800"/>
 <figcaption>The home page</figcaption>
 </figure>
-
-<br>
-
+<br/>
 <figure>
 <img src="blog-app-post.png" alt="A blog post with title, text and image" width="800"/>
 <figcaption>A blog post</figcaption>
