@@ -7,7 +7,7 @@ You can also follow posters.
 *The home page*
 <figure>
 <img src="blog-app-homepage.png" width="800"/>
-<caption>The home page</caption>
+<figcaption>The home page</figcaption>
 </figure>
 
 ![A blog post with title, text and image](blog-app-post.png)
