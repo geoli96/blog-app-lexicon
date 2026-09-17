@@ -159,7 +159,7 @@
   .writeButton b { margin: 0;  }
   .archive { padding: 45px 0 0; }
   .sectionHeader { align-items: start; flex-direction: column; }
-  .filterControls { flex-direction: column; gap: 18px; width: 100%;}
+  .filterControls { flex-direction: column; gap: 30px;}
   .categoryFilter { justify-content: space-between; }
   .categoryFilter select { flex: 1; max-width: 220px; }
   .search { width: 100%; }
