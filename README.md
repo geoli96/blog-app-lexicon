@@ -8,6 +8,8 @@ You can also follow posters.
 <figcaption>The home page</figcaption>
 </figure>
 
+<br/>
+
 <figure>
 <img src="blog-app-post.png" alt="A blog post with title, text and image" width="800"/>
 <figcaption>A blog post</figcaption>
