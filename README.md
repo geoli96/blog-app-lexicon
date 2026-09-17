@@ -50,7 +50,7 @@ npm run start
 ```
 
 ## Tech stack used
-Github copilot prompts used to create prototype and initial code base.  
+Github copilot prompts were used to create prototype and initial code base.  
 Next.js with App router for frontend and server side actions.  
 NextAuth.js/Auth.js for authentication.  
 Uploadthing for image uploads and storage.  
