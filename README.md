@@ -4,11 +4,11 @@ The Blog is an app where you can upload blog posts and view other people's posts
 You can also follow posters.
 
 <figure>
-<img src="blog-app-homepage.png" alt="List of posts posted by users" width="800"/>
+<img src="blog-app-homepage.png" alt="List of posts posted by users" width="900"/>
 <figcaption>The home page</figcaption>
 </figure>
 <figure>
-<img src="blog-app-post.png" alt="A blog post with title, text and image" width="800"/>
+<img src="blog-app-post.png" alt="A blog post with title, text and image" width="900"/>
 <figcaption>A blog post</figcaption>
 </figure>
 
