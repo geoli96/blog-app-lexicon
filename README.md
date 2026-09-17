@@ -54,6 +54,7 @@ It is a blog app where you can upload blog posts and view other people's posts.
 You can also follow posters.
 
 ## Tech stack used
+Github copilot prompts were used to create prototype and initial code base.  
 Next.js with App router for frontend and server side actions.  
 NextAuth.js/Auth.js for authentication.  
 Uploadthing for image uploads and storage.  
@@ -64,7 +65,3 @@ Email confirmation.
 Reset password functionality.   
 User blacklist.  
 Non-mock backend with a real database. 
-
-
-
-
