@@ -3,10 +3,14 @@
 The Blog is an app where you can upload blog posts and view other people's posts.  
 You can also follow posters.
 
-![alt text](blog-app-homepage.png)
-*The home page*
-![alt text](blog-app-post.png)
-*A post*
+<figure>
+<img src="blog-app-homepage.png" alt="List of posts posted by users" width="900"/>
+<figcaption>The home page</figcaption>
+</figure>
+<figure>
+<img src="blog-app-post.png" alt="A blog post with title, text and image" width="900"/>
+<figcaption>A blog post</figcaption>
+</figure>
 
 ## Pre-requisites
 `.env` file with `API_URL`, `AUTH_SECRET` and
