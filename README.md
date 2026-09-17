@@ -5,7 +5,7 @@ You can also follow posters.
 
 ![List of posts posted by users](blog-app-homepage.png)
 *The home page*
-<img src="blog-app-homepage.png" width="500"/>
+<img src="blog-app-homepage.png" width="700"/>
 
 ![A blog post with title, text and image](blog-app-post.png)
 *A post*
