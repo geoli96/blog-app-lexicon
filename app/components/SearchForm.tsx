@@ -19,7 +19,7 @@ export default function SearchForm({ value, action, hiddenFields = {} }: { value
   return <div className={styles.search} >
     <input key={value} id="search" name="search" defaultValue={value} placeholder="Search posts" aria-label="Search posts" />
     {Object.entries(hiddenFields).map(([name, fieldValue]) => <input type="hidden" name={name} value={fieldValue} key={name} />)}
-    <button onClick={() => {
+    <button className="search-button" onClick={() => {
       const value = (document.getElementById("search") as HTMLInputElement)!.value;
       const nextParams = new URLSearchParams(searchParams);
       nextParams.delete("page");

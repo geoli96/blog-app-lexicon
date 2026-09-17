@@ -14,8 +14,8 @@ export default function DateFilter({ dateFilter }: { dateFilter: string }) {
     router.push(url.toString());
   }
 
-  return <label key={dateFilter || "all-time"} htmlFor="category-select" className={styles.dateFilter}>Publish date
-        <select id="category-select" name="category-select" key={dateFilter} 
+  return <label key={dateFilter || "all-time"} htmlFor="date-select" className={styles.dateFilter}>Publish date
+        <select id="category-select" name="date-select" key={dateFilter} 
         defaultValue={dateFilter || "all-time"} onChange={(event) => changeDateFilter(event.target.value)}
         aria-label="Filter posts by category">{dateFilters.map((option) => <option value={option} key={option}>{dateFilterLabelMapper[option]}</option>)}
         </select>

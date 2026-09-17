@@ -31,11 +31,11 @@
 .image {object-fit: cover; display: grid; width:120px; height: 120px; place-items: center; color: #f2efe9; font-family: Georgia, serif;   }
 .postInfo { min-width: 0;margin-left: 40px; }
 .postInfo div {overflow: hidden;}
-.postInfo h2 { overflow: hidden;}
+.postInfo h3 { overflow: hidden;}
 .postInfo p {height: 70px; overflow: hidden;}
 .meta { display: flex; gap: 17px;   letter-spacing: .08em;  }
 .meta span:first-child { color: #0969da !important; }
-.post h2 { margin: 11px 0 7px; color: #0969da !important; font-family: var(--font-geist-sans), sans-serif;  }
+.post h3 { margin: 11px 0 7px; color: #0969da !important; font-family: var(--font-geist-sans), sans-serif;  }
 .post p { margin: 0;   line-height: 1.5; }
 .post:hover{background-color: black0d;}
 .empty { }

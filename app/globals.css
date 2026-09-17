@@ -44,6 +44,8 @@ body {
   color: #8c959f !important;
 }
 
+h1,h2,h3,h4 {color: #0969da !important;}
+
 .dark-mode-html button {
   border: 1px solid white !important;
 }
@@ -51,6 +53,10 @@ body {
 select {width:200px}
 
 .dark-mode-html .primaryLink{border: 1px solid white;}
+.primaryLink{background-color: #0969da !important;}
+button{background-color: #0969da !important;}
+.dark-mode-html button, .dark-mode-html .primaryLink{background-color: black !important;}
+.dark-mode-html .search-button{color: white !important;}
 
 a {
   color: inherit;

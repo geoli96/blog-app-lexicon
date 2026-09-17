@@ -83,7 +83,7 @@
 .cardContent { display: flex; flex: 1; flex-direction: column; align-items: flex-start; padding: 26px 27px; }
 .cardMeta { display: flex; height: 28px; overflow: hidden; justify-content: space-between; width: 100%;  letter-spacing: .07em;  }
 .cardMeta span:first-child { color: #0969da !important; }
-.cardContent h3 { height: 115px; text-wrap: wrap; word-wrap: anywhere; overflow: hidden; margin: 29px 0 10px; font-family: Georgia, serif;  }
+.cardContent h3 { height: 115px; color: #0969da !important; text-wrap: wrap; word-wrap: anywhere; overflow: hidden; margin: 29px 0 10px; font-family: Georgia, serif;  }
 .cardContent p { height: 150px; overflow: hidden; margin: 0;   line-height: 1.5; }
 .author { margin-top: auto; height: 48px; padding-top: 20px;    }
 .readLink b { margin-left: 7px; color: #0969da !important;  }

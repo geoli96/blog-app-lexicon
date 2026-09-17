@@ -66,7 +66,7 @@ export default async function ProfilePosts({ params, authedUser, username, posts
                     <span>{post.category}</span>
                     <span>{post.date}</span>
                 </div>
-                <h2>{post.title}</h2>
+                <h3>{post.title}</h3>
                 <img alt={post.imageCaption} src={post.imageUrl} className={`${styles.image} ${styles.imageResponsive}`}></img>
                 <p>{post.excerpt}</p>
               </Link>
