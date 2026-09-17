@@ -56,7 +56,7 @@
 @media (max-width: 1000px) {
   .titleRow { align-items: start; flex-direction: column; gap: 25px; }
   .titleRow h1 {  }
-  .post{display: flex; flex-direction: column; justify-content: flex-start; height: auto; align-items: flex-start; height: 467px; border-top: 1px solid #d0d7de;}
+  .post{padding:0;padding-top: 16px; padding-bottom: 16px; display: flex; flex-direction: column; justify-content: flex-start; height: auto; align-items: flex-start; height: 467px; border-top: 1px solid #d0d7de;}
   .postInfo {margin-left: 0px;}
   .postInfo {width: 100%;}
   .postList { display: flex; flex-direction: column; gap: 20px; }
