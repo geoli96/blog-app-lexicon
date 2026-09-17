@@ -28,7 +28,7 @@ export default async function FollowingPage({ searchParams }: {searchParams: Pro
 
   const filter = new URLSearchParams();
   filter.append("_page", String(currentPage));
-  filter.append("_per_page", "6");
+  filter.append("_per_page", "8");
   filter.append("_sort", sortBy || "-dateInMs");
 
   const followedAuthors = (await axios.get(`http://localhost:4000/follows?followedBy=${user.username}`)).data;
@@ -36,7 +36,7 @@ export default async function FollowingPage({ searchParams }: {searchParams: Pro
   const filteredPostsResponse = await axios.get<PaginatedPosts>('http://localhost:4000/posts?' + filter.toString());
 
   const filteredPosts = filteredPostsResponse.data.data;
-  const extraCards = 6 - filteredPosts.length - Number(filteredPosts.length === 0);
+  const extraCards = 8 - filteredPosts.length - Number(filteredPosts.length === 0);
   const extra:number[] = [];
   extra.length = extraCards;
   extra.fill(0);
@@ -59,12 +59,12 @@ export default async function FollowingPage({ searchParams }: {searchParams: Pro
       <main className={styles.main}>
         <>
             <section className={styles.archive}>
+              <div className={styles.sectionHeader}>
+                <div><h2>Latest posts</h2>
               <div className={styles.pageLinksContainer}>
               <a href="/" >All posts</a>
               {user?<a href="/following" className={styles.pageLinkActive}>By followed authors</a> : null}
-              </div>
-              <div className={styles.sectionHeader}>
-                <div><h2>Latest posts</h2><p>{filteredPostsResponse.data.items} posts</p></div>
+              </div> <p>{filteredPostsResponse.data.items} posts</p></div>
                 <p className={styles.filterHeader}>Filters</p>
                 <div className={styles.filterControls + " " + styles2.filterControls}>
                   <SortBy selectedSort={sortBy} />
@@ -95,7 +95,7 @@ export default async function FollowingPage({ searchParams }: {searchParams: Pro
 function PostCard({ post, featured }: { post: Post; featured: boolean }) {
   const date = new Date(post.date);
   return <Link className={`${styles.postCard} ${featured ? styles.featured : ""}`} href={`/posts/${post.id}`}>
-    <img className={styles.postImage} height={442} width={"40%"} alt={post.imageCaption} src={post.imageUrl}/>
+    <img className={styles.postImage} height={442} width={"50%"} alt={post.imageCaption} src={post.imageUrl}/>
     <div className={styles.cardContent}><div className={styles.cardMeta}>
       <span>{post.category}</span>
       <span>{date.getDate() < 10 ? "0" : ""}{date.getDate()}/{date.getMonth() < 10 ? "0" : ""}{date.getMonth()}/{String(date.getFullYear()).substring(2)}</span>

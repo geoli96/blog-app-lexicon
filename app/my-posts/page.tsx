@@ -23,7 +23,7 @@ export default async function MyPosts({ searchParams }: { searchParams: Promise<
 
   const filter = new URLSearchParams({
     _page: String(currentPage),
-    _per_page: "6",
+    _per_page: "8",
     createdBy: user.username,
   });
   filter.append("_sort", sortBy || "-dateInMs");

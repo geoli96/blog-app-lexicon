@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  max-width: 1300px;
+  max-width: 1600px;
   margin: 0 auto;
   height: 87px;
   min-height: 87px;
@@ -16,7 +16,7 @@
 .mark { display: grid; width: 30px; height: 30px; place-items: center; color: #ffffff; background: #24292f; border-radius: 50%;  font-weight: 700; }
 .writeButton { padding: 11px 15px; color: #ffffff; background: black; border-radius: 6px;  text-decoration: none; }
 .writeButton b { margin-left: 10px; color: #e9a183;  }
-.content { max-width: 1300px; margin: 0 auto; padding: 65px 36px 90px; }
+.content { max-width: 1600px; margin: 0 auto; padding: 65px 36px 90px; }
 .backLink { display: block; margin-bottom: 69px;   }
 .titleRow { display: flex; flex-direction: column; align-items: flex-start; justify-content: space-between; gap: 30px; height: 211px; }
 .titleRow h1 { margin: 0; font-family: Georgia, serif;  }

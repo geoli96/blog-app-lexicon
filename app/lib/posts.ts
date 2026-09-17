@@ -59,7 +59,7 @@ export const getFilterTimeInMs = (dateFilterOption: string) => {
 
 
 export async function getPosts(searchParams?: Record<string, string>): Promise<Post[]> {
-    const urlParams = new URLSearchParams({_per_page: "6", _sort: "-dateInMs" });
+    const urlParams = new URLSearchParams({_per_page: "8", _sort: "-dateInMs" });
     Object.entries(searchParams || {}).forEach(([key, value]) => {
       urlParams.set(key, value);
     });

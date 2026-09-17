@@ -18,7 +18,7 @@ export default async function UserPosts({ searchParams, params }: { params: Prom
 
   const filter = new URLSearchParams({
     _page: String(currentPage),
-    _per_page: "6",
+    _per_page: "8",
     createdBy: username,
   });
   filter.append("_sort", sortBy || "-dateInMs");
