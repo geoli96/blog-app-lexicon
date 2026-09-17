@@ -73,7 +73,7 @@
 .search input::placeholder { color: #8d8880; }
 .search button { padding: 5px 0 5px 8px; border: 0; border-left: 1px solid #d0d7de; color: #0969da !important; background: transparent; cursor: pointer;}
 .postGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
-.postCard,.postCardEmpty {height: 339px; display: flex; padding: 0; overflow: hidden; color: inherit; text-align: left; background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 6px; transition: border-color .2s ease, box-shadow .2s ease; }
+.postCard,.postCardEmpty {height: 442px; display: flex; padding: 0; overflow: hidden; color: inherit; text-align: left; background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 6px; transition: border-color .2s ease, box-shadow .2s ease; }
 .postCardEmpty {border: 1px solid black; visibility: hidden;}
 .postCardEmpty > div {height: 564px;}
 .postCard:hover { border-color: #0969da !important; box-shadow: 0 3px 8px rgba(31, 35, 40, .12); }
@@ -83,8 +83,8 @@
 .cardContent { display: flex; flex: 1; flex-direction: column; align-items: flex-start; padding: 26px 27px; }
 .cardMeta { display: flex; height: 28px; overflow: hidden; justify-content: space-between; width: 100%;  letter-spacing: .07em;  }
 .cardMeta span:first-child { color: #0969da !important; }
-.cardContent h3 { height: 80px; text-wrap: wrap; word-wrap: anywhere; overflow: hidden; max-width: 340px; margin: 29px 0 10px; font-family: Georgia, serif;  }
-.cardContent p { max-width: 310px; height: 90px; overflow: hidden; margin: 0;   line-height: 1.5; }
+.cardContent h3 { height: 115px; text-wrap: wrap; word-wrap: anywhere; overflow: hidden; margin: 29px 0 10px; font-family: Georgia, serif;  }
+.cardContent p { height: 150px; overflow: hidden; margin: 0;   line-height: 1.5; }
 .author { margin-top: auto; height: 48px; padding-top: 20px;    }
 .readLink b { margin-left: 7px; color: #0969da !important;  }
 .empty { }
@@ -137,7 +137,7 @@
   .postImage{width: 100%;}
   .postCard{flex-direction: column;}
 
-  .postCard,.postCardEmpty {height: 663px; display: flex; padding: 0; overflow: hidden; color: inherit; text-align: left; background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 6px; transition: border-color .2s ease, box-shadow .2s ease; }
+  .postCard,.postCardEmpty {height: 861px; display: flex; padding: 0; overflow: hidden; color: inherit; text-align: left; background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 6px; transition: border-color .2s ease, box-shadow .2s ease; }
 
   .cardContent h3 { margin-top: 24px;  }
   .cardContent { padding: 22px 20px; }

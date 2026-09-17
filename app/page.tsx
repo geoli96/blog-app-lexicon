@@ -103,7 +103,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ d
 function PostCard({ post, featured }: { post: Post; featured: boolean }) {
   const date = new Date(post.date);
   return <Link className={`${styles.postCard} ${featured ? styles.featured : ""}`} href={`/posts/${post.id}`}>
-    <img alt={post.imageCaption} className={styles.postImage} height={339} width={"40%"} src={post.imageUrl}/>
+    <img alt={post.imageCaption} className={styles.postImage} height={442} width={"40%"} src={post.imageUrl}/>
     <div className={styles.cardContent}><div className={styles.cardMeta}>
       <span>{post.category}</span>
       <span>{date.getDate() < 10 ? "0" : ""}{date.getDate()}/{date.getMonth() < 10 ? "0" : ""}{date.getMonth()}/{String(date.getFullYear()).substring(2)}</span>
