@@ -37,7 +37,7 @@
   color: inherit;
   background: transparent;
   font-family: Georgia, serif;
-  font-size: 19px;
+  
   
 }
 
@@ -58,7 +58,7 @@
 .navLink span, .navLinkActive span { margin-left: 5px; }
 .navLinkActive { color: #1f2328; border-bottom: 1px solid #0969da; }
 .writeButton { padding: 11px 15px; color: #ffffff; background: black; border-radius: 6px;  }
-.writeButton b { margin-left: 10px; color: #ffffff; font-size: 17px; font-weight: normal; }
+.writeButton b { margin-left: 10px; color: #ffffff;  }
 .filterHeader{margin-top: 20px;}
 
 .main { max-width: 1300px; margin: 0 auto; padding: 0 36px 90px; }
@@ -66,9 +66,9 @@
 .archive { padding: 55px 0 0; }
 .sectionHeader { display: flex; margin-bottom: 29px; flex-direction: column; }
 .sectionHeader { margin-bottom: 30px; }
-.sectionHeader h2, .composer h2 { margin: 0; font-family: Georgia, serif; font-size: 31px; font-weight: normal; }
+.sectionHeader h2, .composer h2 { margin: 0; font-family: Georgia, serif;  }
 .search { display: flex; align-items: center; gap: 8px; width: 180px; padding: 8px 0; border-bottom: 1px solid #d0d7de;  }
-.search span { font-family: Georgia, serif; font-size: 22px; line-height: 1; }
+.search span { font-family: Georgia, serif;  }
 .search input { width: 100%; border: 0; outline: 0; color: #1f2328; background: transparent;  }
 .search input::placeholder { color: #8d8880; }
 .search button { padding: 5px 0 5px 8px; border: 0; border-left: 1px solid #d0d7de; color: #0969da !important; background: transparent; cursor: pointer;}
@@ -79,14 +79,14 @@
 .postCard:hover { border-color: #0969da !important; box-shadow: 0 3px 8px rgba(31, 35, 40, .12); }
 .postImage { display: grid; place-items: center; object-fit: cover; }
 .postCard:not(.featured) .postImage { background: white }
-.postImage span { font-family: Georgia, serif; font-size: 48px;  }
+.postImage span { font-family: Georgia, serif;   }
 .cardContent { display: flex; flex: 1; flex-direction: column; align-items: flex-start; padding: 26px 27px; }
 .cardMeta { display: flex; height: 28px; overflow: hidden; justify-content: space-between; width: 100%;  letter-spacing: .07em;  }
 .cardMeta span:first-child { color: #0969da !important; }
-.cardContent h3 { height: 59px; text-wrap: wrap; word-wrap: anywhere; overflow: hidden; max-width: 340px; margin: 29px 0 10px; font-family: Georgia, serif; font-size: 26px; font-weight: normal; line-height: 1.08; }
+.cardContent h3 { height: 59px; text-wrap: wrap; word-wrap: anywhere; overflow: hidden; max-width: 340px; margin: 29px 0 10px; font-family: Georgia, serif;  }
 .cardContent p { max-width: 310px; height: 68px; overflow: hidden; margin: 0;   line-height: 1.5; }
 .author { margin-top: auto; height: 40px; padding-top: 20px;    }
-.readLink b { margin-left: 7px; color: #0969da !important; font-size: 16px; font-weight: normal; }
+.readLink b { margin-left: 7px; color: #0969da !important;  }
 .empty { }
 .pagination { display: flex; align-items: center; justify-content: space-between; margin-top: 30px; padding-top: 18px; border-top: 1px solid #d0d7de;   }
 .pagination a { padding: 8px 0; color: #0969da !important; cursor: pointer; font: inherit; text-decoration: none; }
@@ -94,28 +94,28 @@
 
 .article { max-width: 770px; margin: 0 auto; padding: 65px 0; }
 .backButton { display: block; margin-bottom: 75px; padding: 0; color: #6c6962; background: transparent;  }
-.backButton span { margin-right: 8px; color: #0969da !important; font-size: 18px; }
+.backButton span { margin-right: 8px; color: #0969da !important;  }
 .articleMeta { display: flex; align-items: center; gap: 13px; color: #817b72;  letter-spacing: .08em;  }
 .articleMeta span { color: #0969da !important; }
 .articleMeta i { width: 3px; height: 3px; background: #0969da; border-radius: 50%; }
-.article h1 { margin: 25px 0 19px; font-family: Georgia, serif; font-size: clamp(44px, 6vw, 72px); font-weight: normal; line-height: 1; letter-spacing: -2px; }
-.articleLead { max-width: 580px; margin: 0 0 55px; color: #6c6962; font-family: Georgia, serif; font-size: 20px;  line-height: 1.5; }
-.articleBody { max-width: 640px; font-family: Georgia, serif; font-size: 18px; line-height: 1.75; }
+.article h1 { margin: 25px 0 19px; font-family: Georgia, serif;  }
+.articleLead { max-width: 580px; margin: 0 0 55px; color: #6c6962; font-family: Georgia, serif;  }
+.articleBody { max-width: 640px; font-family: Georgia, serif;  }
 .articleBody p { margin: 0 0 25px; }
 
 .modalBackdrop { position: fixed; z-index: 2; inset: 0; display: grid; padding: 20px; place-items: center; background: rgba(36, 35, 31, .48); }
 .composer { width: min(650px, 100%); max-height: 90vh; overflow-y: auto; padding: 38px; background: #f2efe9; box-shadow: 0 20px 60px rgba(36, 35, 31, .25); }
 .composerHeader { display: flex; align-items: start; justify-content: space-between; margin-bottom: 35px; }
 .composerHeader  { margin-bottom: 8px; }
-.closeButton { padding: 0; color: #6c6962; background: transparent; font-size: 28px; font-weight: 200; line-height: .7; }
+.closeButton { padding: 0; color: #6c6962; background: transparent;  }
 .composer form { display: flex; flex-direction: column; gap: 19px; }
 .composer label { display: flex; flex-direction: column; gap: 8px; color: #6c6962;   letter-spacing: .08em;  }
-.composer input, .composer textarea { width: 100%; padding: 12px 0; border: 0; border-bottom: 1px solid #bdb6aa; outline: 0; color: #24231f; background: transparent; font: 17px Georgia, serif; }
+.composer input, .composer textarea { width: 100%; padding: 12px 0; border: 0; border-bottom: 1px solid #bdb6aa; outline: 0; color: #24231f; background: transparent;}
 .composer input:focus, .composer textarea:focus { border-color: #0969da !important; }
 .composer textarea { min-height: 150px; resize: vertical; line-height: 1.5; }
 .formRow { display: grid; grid-template-columns: 1fr 1.7fr; gap: 25px; }
-.publishButton { align-self: flex-start; margin-top: 13px; padding: 13px 17px; border: 0; color: #f8f5ef; background: #0969da; cursor: pointer; font: 13px var(--font-geist-sans), sans-serif; }
-.publishButton span { margin-left: 14px; font-size: 17px; }
+.publishButton { align-self: flex-start; margin-top: 13px; padding: 13px 17px; border: 0; color: #f8f5ef; background: #0969da; cursor: pointer; }
+.publishButton span { margin-left: 14px;  }
 .filterControls {margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: flex-start; }
 .html-dark-mode .pagination {color: green !important;}
 
@@ -123,10 +123,10 @@
   .header { height: 70px; min-height: 70px; padding: 20px; }
   .main { padding: 0 20px 55px; }
   .nav { gap: 15px; }
-  .navLink, .navLinkActive { font-size: 0; }
+  .navLink, .navLinkActive {  }
   .filterControls { grid-template-columns: 1fr;}
-  .writeButton { padding: 10px; font-size: 0; }
-  .writeButton b { margin: 0; font-size: 21px; }
+  .writeButton { padding: 10px;  }
+  .writeButton b { margin: 0;  }
   .archive { padding: 45px 0 0; }
   .sectionHeader { align-items: start; flex-direction: column; }
   .filterControls { flex-direction: column; gap: 18px; width: 100%;}
@@ -140,14 +140,14 @@
 
   .postCard,.postCardEmpty {height: 564px; display: flex; padding: 0; overflow: hidden; color: inherit; text-align: left; background: #f6f8fa; border: 1px solid #d0d7de; border-radius: 6px; transition: border-color .2s ease, box-shadow .2s ease; }
 
-  .cardContent h3 { margin-top: 24px; font-size: 22px; }
+  .cardContent h3 { margin-top: 24px;  }
   .cardContent { padding: 22px 20px; }
   .pagination { gap: 12px; }
   .article { padding: 42px 5px; }
   .backButton { margin-bottom: 52px; }
   .articleMeta { gap: 8px; }
-  .article h1 { font-size: 45px; }
-  .articleBody { font-size: 17px; }
+  .article h1 {  }
+  .articleBody {  }
   .composer { padding: 28px 22px; }
   .formRow { grid-template-columns: 1fr; gap: 19px; }
 }

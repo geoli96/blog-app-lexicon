@@ -17,7 +17,8 @@ export default function ImageInput({imgUrl,imgCaption}: {imgUrl?:string;imgCapti
     }, [selectedImage])
 
     return <>
-      <label htmlFor='image'>Image</label>
+    <div>
+      <label htmlFor='image' className={styles.imageLabel}>Image</label>
             {imgUrl || selectedImage ? 
             <img className={styles.preview} id="imagepreview" src={imgUrl || "#"} alt={"Image preview"} /> : <p className={styles.preview}>No image selected</p>}
             {imgUrl && !selectedImage ? 
@@ -41,6 +42,7 @@ export default function ImageInput({imgUrl,imgCaption}: {imgUrl?:string;imgCapti
               imgPreview.src = URL.createObjectURL(file)
             }
           }} type="file" id="image" name="image" accept="image/png, image/jpeg"/>
+          </div>
           <label htmlFor='imagecaption'>Image Caption</label>
           <input id="imagecaption" name="imagecaption" defaultValue={imgCaption} type='text' required />
           </>
