@@ -26,7 +26,7 @@ export default function ImageInput({imgUrl,imgCaption}: {imgUrl?:string;imgCapti
             <button aria-label='change image' type="button" onClick={() => {
               const imgInp = document.getElementById("image") as any;
               imgInp.click();
-            }} className={styles.fakeButton}>Browse...</button>
+            }} className={styles.fakeButton + " fakeButton"}>Browse...</button>
             <p className={styles.fakeButtonLabel}>Change image</p>
             </div>: null}
           <input className={styles.input + (imgUrl ? " "+ styles.inputHidden : "")} placeholder="" onChange={() => {
