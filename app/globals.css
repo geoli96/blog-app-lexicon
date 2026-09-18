@@ -45,6 +45,7 @@ body {
 }
 
 h1,h2,h3,h4 {color: #0969da !important;}
+.dark-mode-html h1, .dark-mode-html h1, .dark-mode-html h2,.dark-mode-html h3,.dark-mode-html h4 {color: #0969da !important;}
 
 .dark-mode-html button {
   border: 1px solid white !important;
