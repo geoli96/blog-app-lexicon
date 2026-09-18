@@ -25,7 +25,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ d
 
   const filter = new URLSearchParams();
   filter.append("_page", String(currentPage));
-  filter.append("_per_page", "8");
+  filter.append("_per_page", "6");
   filter.append("_sort", sortBy || "-dateInMs");
   if(dateFilter){
     filter.append("dateInMs:gte", String(getFilterTimeInMs(dateFilter)));
@@ -44,7 +44,7 @@ export default async function Home({ searchParams }: { searchParams: Promise<{ d
   const filteredPostsResponse = await axios.get<PaginatedPosts>('http://localhost:4000/posts?' + filter.toString());
 
   const filteredPosts = filteredPostsResponse.data.data;
-  const extraCards = 8 - filteredPosts.length - Number(filteredPosts.length === 0);
+  const extraCards = 6 - filteredPosts.length - Number(filteredPosts.length === 0);
   const extra:number[] = [];
   extra.length = extraCards;
   extra.fill(0);

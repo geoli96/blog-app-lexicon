@@ -33,7 +33,7 @@ export default async function ProfilePosts({ params, authedUser, username, posts
   const postCount = postsResult.items;
   const pageCount = postsResult.pages || 1;
   const safePage = Math.min(currentPage, pageCount);
-  const emptyPostCount = Math.max(0, 8 - filteredPosts.length);
+  const emptyPostCount = Math.max(0, 6 - filteredPosts.length);
 
   function pageUrl(page: number) {
     const nextParams = new URLSearchParams(params);

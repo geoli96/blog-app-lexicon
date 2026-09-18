@@ -163,7 +163,7 @@
   .categoryFilter { justify-content: space-between; }
   .categoryFilter select { flex: 1; max-width: 220px; }
   .search { width: 100%; }
-  .postGrid { grid-template-columns: 1fr 1fr 1fr 1fr; }
+  .postGrid { grid-template-columns: 1fr 1fr 1fr }
   .empty {height: 225px;}
   .postImage{width: 100%;}
   .postCard{flex-direction: column;}
