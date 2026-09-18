@@ -1,5 +1,5 @@
 .page { min-height: 100vh; color: black; background: #ffffff; font-family: var(--font-geist-sans), sans-serif; }
-.article { max-width: 1600px; margin: 0 auto; padding: 65px 36px 90px; }
+.article { max-width: 1600px; margin: 0 auto; padding: 65px 20px 90px; }
 .backLink { display: block; margin-bottom: 75px;   text-decoration: none; }
 .meta { display: flex; align-items: center; gap: 13px;   letter-spacing: .08em;  }
 .meta span { color: #0969da !important; }
