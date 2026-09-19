@@ -324,7 +324,7 @@ export async function followAuthor(username:string) {
             throw new Error();
           }
 
-          // code below should be a transaction in real database
+          // better to use unique index in real database instead of code below
           const follow = (await axios.post(`${process.env.API_URL}/follows`, {
             follow: followedUser.username,
             followedBy: user.username
