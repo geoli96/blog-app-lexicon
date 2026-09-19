@@ -212,7 +212,7 @@ export async function createUser(formData: FormData) {
     try {
          const hashedPassword = await bcrypt.hash(password, 10);
 
-         // code below should be a transaction in real database
+         // better to use unique index in real database instead of code below
           const createdUser = (await axios.post(`http://localhost:4000/users`, {
             username,
             name,
@@ -226,7 +226,7 @@ export async function createUser(formData: FormData) {
 
           if(users.length > 1){
             await axios.delete(`http://localhost:4000/users/${createdUser.id}`);
-            throw new Error('Username already in use');
+            throw new Error('Username being processed or is already taken. Please try again later or try a different username');
           }
     } catch (error) {
       console.log(error);
